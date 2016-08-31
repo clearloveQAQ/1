@@ -6,15 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>春风十里</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="做题却也不如你">
-<meta property="og:type" content="website">
+  <meta name="description" content="php—1查看源代码 
+    可知 最少五位可number应为4444所以采用00截断 number=4444%004即可得到flag{PHP_Is_4UN}php-2源代码">
+<meta property="og:type" content="article">
 <meta property="og:title" content="春风十里">
-<meta property="og:url" content="http://byd.dropsec.xyz/index.html">
+<meta property="og:url" content="http://byd.dropsec.xyz/2016/08/31/drops-php-write up/index.html">
 <meta property="og:site_name" content="春风十里">
-<meta property="og:description" content="做题却也不如你">
+<meta property="og:description" content="php—1查看源代码 
+    可知 最少五位可number应为4444所以采用00截断 number=4444%004即可得到flag{PHP_Is_4UN}php-2源代码">
+<meta property="og:updated_time" content="2016-08-31T07:51:58.044Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="春风十里">
-<meta name="twitter:description" content="做题却也不如你">
+<meta name="twitter:description" content="php—1查看源代码 
+    可知 最少五位可number应为4444所以采用00截断 number=4444%004即可得到flag{PHP_Is_4UN}php-2源代码">
   
     <link rel="alternative" href="/atom.xml" title="春风十里" type="application/atom+xml">
   
@@ -126,13 +130,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-drops-php-write-up" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-drops-php-write up" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/31/drops-php-write-up/" class="article-date">
-  	<time datetime="2016-08-31T08:01:16.000Z" itemprop="datePublished">2016-08-31</time>
+      <a href="/2016/08/31/drops-php-write up/" class="article-date">
+  	<time datetime="2016-08-31T07:34:56.914Z" itemprop="datePublished">2016-08-31</time>
 </a>
     </div>
   
@@ -141,37 +143,55 @@
       <input type="hidden" class="isFancy" />
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/31/drops-php-write-up/">drops-php write up</a>
-    </h1>
-  
-
-      </header>
-      
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p>php—1<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
+        <p>php—1<br>查看源代码 </p>
+<p><pre></pre><br>    <!--
+    if (!isset($_GET['number'])) die('wrong request!');
+    $number = $_GET['number'];
+    $flag="xxx";
+    if (strlen($number)<5)
+    die("Length of string must more than 5 ");
+    if ($number == 4444) 
+    echo $flag;
+    else 
+    echo "Please try again!";
+    --><br>可知 最少五位可number应为4444所以采用00截断 number=4444%004<br>即可得到flag{PHP_Is_4UN}<br>php-2<br>源代码</p>
+<p><pre></pre><br>    <!--
+    $flag = 'xxx';
+    if (isset($_GET['which']))
+    {
+        $which = $_GET['which'];
+        if ($which > 0 or $which == NULL)die('lalala,comeon!');
+    switch($which)
+    {
+        case 0:
+        case 1:
+        case 2:
+            echo $flag;
+            break;
+        default:
+            echo "You konw PHP is loosely typed language!";
+    }
+    }    
+    --></p>
 
       
-        <p class="article-more-link">
-          <a  href="/2016/08/31/drops-php-write-up/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/14/hello/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
@@ -180,64 +200,28 @@
 
 
 
-
-
-
-  
-    <article id="post-hello" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/30/hello/" class="article-date">
-  	<time datetime="2016-08-30T08:01:16.000Z" itemprop="datePublished">2016-08-30</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/30/hello/">hello</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello<br>欢迎来到我的bolg</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="drops-php-write up" data-title="" data-url="http://byd.dropsec.xyz/2016/08/31/drops-php-write up/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"clearloveQAQ"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -261,8 +245,8 @@
 		fancybox: true,
 		mathjax: undefined,
 		animate: undefined,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

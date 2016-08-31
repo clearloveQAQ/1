@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>drops-php write up | 春风十里</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="php—1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="drops-php write up">
+<meta property="og:url" content="http://byd.dropsec.xyz/2016/08/31/drops-php-write-up/index.html">
+<meta property="og:site_name" content="春风十里">
+<meta property="og:description" content="php—1">
+<meta property="og:updated_time" content="2016-08-31T09:13:49.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="drops-php write up">
+<meta name="twitter:description" content="php—1">
+  
+    <link rel="alternative" href="/atom.xml" title="春风十里" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="//clearloveqaq.github.io/img/111.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zp</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">春风十里 不如做题</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/clearloveQAQ" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="//clearloveqaq.github.io/img/111.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zp</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">春风十里 不如做题</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/clearloveQAQ" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-drops-php-write-up" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/31/drops-php-write-up/" class="article-date">
+  	<time datetime="2016-08-31T08:01:16.000Z" itemprop="datePublished">2016-08-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      drops-php write up
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>php—1<br><a id="more"></a><br>查看源代码 </p>
+<pre><code>&lt;!--
+if (!isset($_GET[&apos;number&apos;])) die(&apos;wrong request!&apos;);
+$number = $_GET[&apos;number&apos;];
+$flag=&quot;xxx&quot;;
+if (strlen($number)&lt;5)
+die(&quot;Length of string must more than 5 &quot;);
+if ($number == 4444) 
+echo $flag;
+else 
+echo &quot;Please try again!&quot;;
+--&gt;
+</code></pre><p>可知 最少五位可number应为4444所以采用00截断 number=4444%004<br>即可得到flag{PHP_Is_4UN}</p>
+<hr>
+<p>php-2<br>源代码</p>
+<pre><code>&lt;!--
+$flag = &apos;xxx&apos;;
+if (isset($_GET[&apos;which&apos;]))
+{
+    $which = $_GET[&apos;which&apos;];
+    if ($which &gt; 0 or $which == NULL)die(&apos;lalala,comeon!&apos;);
+switch($which)
+{
+    case 0:
+    case 1:
+    case 2:
+        echo $flag;
+        break;
+    default:
+        echo &quot;You konw PHP is loosely typed language!&quot;;
+}
+}    
+--&gt;
+</code></pre><p>可知which应该&lt;0 测试which=-1 然而并不行 看到有个 which=NULL 又测试下 which=- 得到flag{Love_Is_Forever} 后来又用了下双等号发现无论双等号后面是什么都能得到flag QAQ</p>
+<hr>
+<p>php-3<br>源代码</p>
+<pre><code>&lt;!--
+$one = ord(&apos;1&apos;);
+$nine = ord(&apos;9&apos;);
+$flag = &apos;xxx&apos;;
+if(isset($_GET[&apos;key&apos;]))
+{
+$number = $_GET[&apos;key&apos;];
+for ($i = 0; $i &lt; strlen($number); $i++)
+{
+    $digit = ord($number{$i});
+    if (($digit &gt;= $one) &amp;&amp; ($digit &lt;= $nine))
+        return False;
+}
+if ($number == &apos;11259375&apos;)
+    echo $flag;
+}
+else
+echo &quot;I&apos;m sorry things didn’t work out...It’s just what it’s meant to be.Paul,forget everything else,your destiny still awaits.---《Kung Fu Panda》&quot;;
+--&gt;
+</code></pre><p>发现它是逐个过滤 不能出现1-9 但是number==’11259375’ 有点蒙蔽 弄了半天都没明白 无意间发现这个地方有相似的题 原来是php黑魔法<br><a href="https://www.91ri.org/12634.html" target="_blank" rel="external">https://www.91ri.org/12634.html</a><br>不让输入1-9就用16进制代替 11259375正好是abcdef<br>输入key=0xabcdef 得到flag{Yesterday_Is_History}</p>
+<hr>
+<p>php-4<br>源代码</p>
+<pre><code>&lt;!--
+$flag = &quot;xxx&quot;;
+if (isset($_GET[&apos;name&apos;]) and isset($_GET[&apos;password&apos;])) {
+if ($_GET[&apos;name&apos;] == $_GET[&apos;password&apos;])
+    print &apos;Your password can not be your name.&apos;;
+else if (md5($_GET[&apos;name&apos;]) === md5($_GET[&apos;password&apos;]))
+    die($flag);
+else
+    print &apos;Invalid password&apos;;
+}
+--&gt;
+</code></pre><p>这里发现第一个是==第二个是=== 就去百度了一下两者的区别</p>
+<pre><code>==是比较运算，它不会去检查条件式的表达式的类型
+===是恒等，它会检查查表达式的值与类型是否相等
+</code></pre><p>越看越熟悉 发现这一题在第三题的网站里也有相似的题目</p>
+<pre><code>name[] = 1和password[]= 2相比较，可以跳过第一个判断，而如果使用md5对一个数组进行加密，返回的将是NULL，NULL===NULL，这是成立的，所以构造两个数组，成功拿到flag
+</code></pre><p>然而我并没有看明白= = 尝试在界面填写 一直出错 然后观察URL发现在输入框里写无法构成数组 然后直接在url里写name[]=1&amp;password[]=2得到flag{Array_IS_Fun} = = 得到结论：当md5一个数组的时候，得到的结果是一个空值。那么2个数组的md5是相等</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/30/hello/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hello</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="drops-php-write-up" data-title="drops-php write up" data-url="http://byd.dropsec.xyz/2016/08/31/drops-php-write-up/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"clearloveQAQ"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 zp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
