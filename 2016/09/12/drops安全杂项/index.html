@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>drops-php write up | 春风十里</title>
+  <title>drops安全杂项 | 春风十里</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="php—1">
+  <meta name="description" content="听说不是base64">
 <meta property="og:type" content="article">
-<meta property="og:title" content="drops-php write up">
-<meta property="og:url" content="http://byd.dropsec.xyz/2016/08/31/drops-php-write-up/index.html">
+<meta property="og:title" content="drops安全杂项">
+<meta property="og:url" content="http://byd.dropsec.xyz/2016/09/12/drops安全杂项/index.html">
 <meta property="og:site_name" content="春风十里">
-<meta property="og:description" content="php—1">
-<meta property="og:updated_time" content="2016-08-31T09:13:49.948Z">
+<meta property="og:description" content="听说不是base64">
+<meta property="og:updated_time" content="2016-09-12T10:30:17.949Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="drops-php write up">
-<meta name="twitter:description" content="php—1">
+<meta name="twitter:title" content="drops安全杂项">
+<meta name="twitter:description" content="听说不是base64">
   
     <link rel="alternative" href="/atom.xml" title="春风十里" type="application/atom+xml">
   
@@ -127,11 +127,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-drops-php-write-up" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-drops安全杂项" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/08/31/drops-php-write-up/" class="article-date">
-  	<time datetime="2016-08-31T08:01:16.000Z" itemprop="datePublished">2016-08-31</time>
+      <a href="/2016/09/12/drops安全杂项/" class="article-date">
+  	<time datetime="2016-09-12T10:22:32.000Z" itemprop="datePublished">2016-09-12</time>
 </a>
     </div>
   
@@ -144,7 +144,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      drops-php write up
+      drops安全杂项
     </h1>
   
 
@@ -160,81 +160,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>php—1<br><a id="more"></a><br>查看源代码 </p>
-<pre><code>&lt;!--
-if (!isset($_GET[&apos;number&apos;])) die(&apos;wrong request!&apos;);
-$number = $_GET[&apos;number&apos;];
-$flag=&quot;xxx&quot;;
-if (strlen($number)&lt;5)
-die(&quot;Length of string must more than 5 &quot;);
-if ($number == 4444) 
-echo $flag;
-else 
-echo &quot;Please try again!&quot;;
---&gt;
-</code></pre><p>可知 最少五位可number应为4444所以采用00截断 number=4444%004<br>即可得到flag{PHP_Is_4UN}</p>
+        <p>听说不是base64<br><a id="more"></a><br>base32 解码 然后培根密码即可得到flag<br>base32解码网站 <a href="http://pbaseconverter.com/" target="_blank" rel="external">http://pbaseconverter.com/</a></p>
 <hr>
-<p>php-2<br>源代码</p>
-<pre><code>&lt;!--
-$flag = &apos;xxx&apos;;
-if (isset($_GET[&apos;which&apos;]))
-{
-    $which = $_GET[&apos;which&apos;];
-    if ($which &gt; 0 or $which == NULL)die(&apos;lalala,comeon!&apos;);
-switch($which)
-{
-    case 0:
-    case 1:
-    case 2:
-        echo $flag;
-        break;
-    default:
-        echo &quot;You konw PHP is loosely typed language!&quot;;
-}
-}    
---&gt;
-</code></pre><p>可知which应该&lt;0 测试which=-1 然而并不行 看到有个 which=NULL 又测试下 which=- 得到flag{Love_Is_Forever} 后来又用了下双等号发现无论双等号后面是什么都能得到flag QAQ</p>
+<p>真的是加密？<br>zip伪加密</p>
+<pre><code>压缩源文件目录区：
+50 4B 01 02：目录中文件文件头标记(0x02014b50)
+1F 00：压缩使用的 pkware 版本
+14 00：解压文件所需 pkware 版本
+00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）
+08 00：压缩方式
+07 76：最后修改文件时间
+F2 48：最后修改文件日期 
+</code></pre><p>奇数为有加密偶数为无加密 将01改为00即可</p>
 <hr>
-<p>php-3<br>源代码</p>
-<pre><code>&lt;!--
-$one = ord(&apos;1&apos;);
-$nine = ord(&apos;9&apos;);
-$flag = &apos;xxx&apos;;
-if(isset($_GET[&apos;key&apos;]))
-{
-$number = $_GET[&apos;key&apos;];
-for ($i = 0; $i &lt; strlen($number); $i++)
-{
-    $digit = ord($number{$i});
-    if (($digit &gt;= $one) &amp;&amp; ($digit &lt;= $nine))
-        return False;
-}
-if ($number == &apos;11259375&apos;)
-    echo $flag;
-}
-else
-echo &quot;I&apos;m sorry things didn’t work out...It’s just what it’s meant to be.Paul,forget everything else,your destiny still awaits.---《Kung Fu Panda》&quot;;
---&gt;
-</code></pre><p>发现它是逐个过滤 不能出现1-9 但是number==’11259375’ 有点蒙蔽 弄了半天都没明白 无意间发现这个地方有相似的题 原来是php黑魔法<br><a href="https://www.91ri.org/12634.html" target="_blank" rel="external">https://www.91ri.org/12634.html</a><br>不让输入1-9就用16进制代替 11259375正好是abcdef<br>输入key=0xabcdef 得到flag{Yesterday_Is_History}</p>
+<p>数数字<br>100000-999999<br>排列组合 9的6次方<br>数学题</p>
 <hr>
-<p>php-4<br>源代码</p>
-<pre><code>&lt;!--
-$flag = &quot;xxx&quot;;
-if (isset($_GET[&apos;name&apos;]) and isset($_GET[&apos;password&apos;])) {
-if ($_GET[&apos;name&apos;] == $_GET[&apos;password&apos;])
-    print &apos;Your password can not be your name.&apos;;
-else if (md5($_GET[&apos;name&apos;]) === md5($_GET[&apos;password&apos;]))
-    die($flag);
-else
-    print &apos;Invalid password&apos;;
-}
---&gt;
-</code></pre><p>这里发现第一个是==第二个是=== 就去百度了一下两者的区别</p>
-<pre><code>==是比较运算，它不会去检查条件式的表达式的类型
-===是恒等，它会检查查表达式的值与类型是否相等
-</code></pre><p>越看越熟悉 发现这一题在第三题的网站里也有相似的题目</p>
-<pre><code>name[] = 1和password[]= 2相比较，可以跳过第一个判断，而如果使用md5对一个数组进行加密，返回的将是NULL，NULL===NULL，这是成立的，所以构造两个数组，成功拿到flag
-</code></pre><p>然而我并没有看明白= = 尝试在界面填写 一直出错 然后观察URL发现在输入框里写无法构成数组 然后直接在url里写name[]=1&amp;password[]=2得到flag{Array_IS_Fun} = = 得到结论：当md5一个数组的时候，得到的结果是一个空值。那么2个数组的md5是相等</p>
+<p>损坏的压缩包<br>拉入十六进制工具查看发现缺少头部<br>加上即可</p>
+<hr>
 
       
     </div>
@@ -244,18 +186,9 @@ else
     
 <nav id="article-nav">
   
-    <a href="/2016/09/12/drops安全杂项/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          drops安全杂项
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/08/30/hello/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">hello</div>
+    <a href="/2016/08/31/drops-php-write-up/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">drops-php write up</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -271,7 +204,7 @@ else
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="drops-php-write-up" data-title="drops-php write up" data-url="http://byd.dropsec.xyz/2016/08/31/drops-php-write-up/"></div>
+	<div class="ds-thread" data-thread-key="drops安全杂项" data-title="drops安全杂项" data-url="http://byd.dropsec.xyz/2016/09/12/drops安全杂项/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
