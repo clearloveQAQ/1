@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/index.html">
 <meta property="og:site_name" content="春风十里">
 <meta property="og:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
-<meta property="og:updated_time" content="2016-10-15T14:50:02.637Z">
+<meta property="og:updated_time" content="2016-10-15T14:53:14.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql绕过技巧">
 <meta name="twitter:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
@@ -317,7 +317,8 @@
 </code></pre><h2 id="and-or-被过滤"><a href="#and-or-被过滤" class="headerlink" title="and  or  被过滤"></a>and  or  被过滤</h2><pre><code>解决方案：用&amp;&amp;代替and 用 ||代替or 有时需要用url编码过的&amp;&amp;与||
 </code></pre><h2 id="空格被过滤"><a href="#空格被过滤" class="headerlink" title="空格被过滤"></a>空格被过滤</h2><pre><code>解决方案：如果注释符没被过滤可以用/**/来代替空格 如果注释符也被过滤掉则需要用 其他字符进行代替
 %09  %0a  %0b  %0c  %0d  %a0 环境不同，用不同的字符进行代替，或者使用括号分割语句当然分割的语句也要是不需要连一起的 union select 不能用括号分割。
-</code></pre><h2 id="union-select-被过滤"><a href="#union-select-被过滤" class="headerlink" title="union select 被过滤"></a>union select 被过滤</h2><pre><code>解决方案：如果对大小写敏感则可以用大小写进行绕过 比如：UnIoN SeLeCt 如果大小写不行还可以用叠加绕过 如：uniunionon selselselectectect 具体要看他们过滤了几次 去叠加几次，这个需要前台测试。
+</code></pre><h2 id="union-select-被过滤"><a href="#union-select-被过滤" class="headerlink" title="union select 被过滤"></a>union select 被过滤</h2><pre><code>解决方案：如果对大小写敏感则可以用大小写进行绕过 比如：UnIoN SeLeCt 如果大小写不行还可以用叠加绕过 
+如：uniunionon selselselectectect 具体要看他们过滤了几次 去叠加几次，这个需要前台测试。
 </code></pre><h2 id="union-select-被过滤-1"><a href="#union-select-被过滤-1" class="headerlink" title="union+select 被过滤"></a>union+select 被过滤</h2><pre><code>解决方案：这个是当union 与 select 同时出现时进行过滤
 所以可以用union all select 代替 union select 或者利用之前用来代替空格的字符隔开union select。
 </code></pre><h2 id="waf之利用正则只去匹配数字"><a href="#waf之利用正则只去匹配数字" class="headerlink" title="waf之利用正则只去匹配数字"></a>waf之利用正则只去匹配数字</h2><pre><code>解决方案：多次对id进行重定义，当其只匹配一次id时可以进行绕过，如：id=1&amp;id=2&amp;id=0
@@ -333,7 +334,7 @@
         <p><span>本文标题:</span><a href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zp</a></p>
         <p><span>发布时间:</span>2016-10-15, 14:30:51</p>
-        <p><span>最后更新:</span>2016-10-15, 22:50:02</p>
+        <p><span>最后更新:</span>2016-10-15, 22:53:14</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/15/sql绕过技巧/" title="sql绕过技巧">https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/　　作者: zp" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
