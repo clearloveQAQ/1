@@ -371,16 +371,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="注释符被过滤"><a href="#注释符被过滤" class="headerlink" title="注释符被过滤"></a>注释符被过滤</h2><pre><code>解决方案，构造语句让分号完美闭合不去使用注释符。
-</code></pre><h2 id="and-or-被过滤"><a href="#and-or-被过滤" class="headerlink" title="and  or  被过滤"></a>and  or  被过滤</h2><pre><code>解决方案：用&amp;&amp;代替and 用 ||代替or 有时需要用url编码过的&amp;&amp;与||
-</code></pre><h2 id="空格被过滤"><a href="#空格被过滤" class="headerlink" title="空格被过滤"></a>空格被过滤</h2><pre><code>解决方案：如果注释符没被过滤可以用/**/来代替空格 如果注释符也被过滤掉则需要用 其他字符进行代替
-%09  %0a  %0b  %0c  %0d  %a0 环境不同，用不同的字符进行代替，或者使用括号分割语句当然分割的语句也要是不需要连一起的 union select 不能用括号分割。
-</code></pre><h2 id="union-select-被过滤"><a href="#union-select-被过滤" class="headerlink" title="union select 被过滤"></a>union select 被过滤</h2><pre><code>解决方案：如果对大小写敏感则可以用大小写进行绕过 比如：UnIoN SeLeCt 如果大小写不行还可以用叠加绕过 如：uniunionon selselselectectect 具体要看他们过滤了几次 去叠加几次，这个需要前台测试。
-</code></pre><h2 id="union-select-被过滤-1"><a href="#union-select-被过滤-1" class="headerlink" title="union+select 被过滤"></a>union+select 被过滤</h2><pre><code>解决方案：这个是当union 与 select 同时出现时进行过滤
-所以可以用union all select 代替 union select 或者利用之前用来代替空格的字符隔开union select。
-</code></pre><h2 id="waf之利用正则只去匹配数字"><a href="#waf之利用正则只去匹配数字" class="headerlink" title="waf之利用正则只去匹配数字"></a>waf之利用正则只去匹配数字</h2><pre><code>解决方案：多次对id进行重定义，当其只匹配一次id时可以进行绕过，如：id=1&amp;id=2&amp;id=0
-</code></pre><h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><pre><code>解决方案：利用%df去与%5c组成双字节 从而使后面的攻击代码不被转义 如：id=-1%df&apos; union select 1,2,3 --+ 当使用的是Mysql_set_charset(&apos;gbk&apos;,&apos;$conn&apos;);函数时可以避免被宽字节注入。
-</code></pre>
+              <p>做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf<br>
+          
       
     </div>
     
@@ -393,6 +385,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAF/">WAF</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/10/15/sql绕过技巧/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
