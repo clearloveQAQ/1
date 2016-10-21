@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
 <meta property="og:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
-<meta property="og:updated_time" content="2016-10-21T13:38:28.053Z">
+<meta property="og:updated_time" content="2016-10-21T14:46:29.595Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="极客大挑战">
 <meta name="twitter:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
@@ -321,7 +321,7 @@
 <h3 id="藏着小秘密的流量包"><a href="#藏着小秘密的流量包" class="headerlink" title="藏着小秘密的流量包"></a>藏着小秘密的流量包</h3><p>下载发现是一个14M的流量包，感觉很奇怪，也太大了吧，放到kali里面用binwalk查一下发现里面藏了好多东西，然后foremost提取一下，得到一个flag的压缩包解压就可得到flag</p>
 <h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="web-1"><a href="#web-1" class="headerlink" title="web_1"></a>web_1</h3><p>考基础知识，查看响应头发现flag在里面</p>
 <h3 id="web-2"><a href="#web-2" class="headerlink" title="web_2"></a>web_2</h3><p>进去发现说我不是admin，然后用burpsuite抓下包，把邮箱改为admin发现还是不行，看到后面有个root应该是权限的意思将0改为1，便得到了flag</p>
-<h3 id="Social-Engineeing"><a href="#Social-Engineeing" class="headerlink" title="Social Engineeing"></a>Social Engineeing</h3><p>通过挂VPN访问社工库<a href="http://s.70sec.com/得到邮箱名字为肖力，然后去百度贴吧发现有一个肖力吧里面写了一个qq号，刚开始以为加qq就能得到flag，跟他私聊并没有理我=" target="_blank" rel="external">http://s.70sec.com/得到邮箱名字为肖力，然后去百度贴吧发现有一个肖力吧里面写了一个qq号，刚开始以为加qq就能得到flag，跟他私聊并没有理我=</a> =，然后看到资料里有个域名通过whois反查得到邮箱Google一下邮箱发现有一个奇怪的电话号码，想起题目里也有一个电话号码，提交即是flag</p>
+<h3 id="Social-Engineeing"><a href="#Social-Engineeing" class="headerlink" title="Social Engineeing"></a>Social Engineeing</h3><p>通过挂VPN访问社工库 <a href="http://s.70sec.com/" target="_blank" rel="external">http://s.70sec.com/</a> 得到邮箱名字为肖力，然后去百度贴吧发现有一个肖力吧里面写了一个qq号，刚开始以为加qq就能得到flag，跟他私聊并没有理我= =，然后看到资料里有个域名通过whois反查得到邮箱Google一下邮箱发现有一个奇怪的电话号码，想起题目里也有一个电话号码，提交即是flag</p>
 <h3 id="sql1"><a href="#sql1" class="headerlink" title="sql1"></a>sql1</h3><p>通过联合查询获取到表名与列名<br>查字段</p>
 <pre><code>?sycid=-2 union select 1,2,3
 select * from syc where sycid=-2 union select 1,2,3
@@ -478,7 +478,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
         <p><span>本文标题:</span><a href="/2016/10/21/极客大挑战/">极客大挑战</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-10-21, 10:32:23</p>
-        <p><span>最后更新:</span>2016-10-21, 21:38:28</p>
+        <p><span>最后更新:</span>2016-10-21, 22:46:29</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/21/极客大挑战/" title="极客大挑战">https://clearloveqaq.github.io/2016/10/21/极客大挑战/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/极客大挑战/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
