@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
-<meta property="og:updated_time" content="2016-10-16T11:48:26.470Z">
+<meta property="og:updated_time" content="2016-10-21T13:56:01.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql绕过技巧">
 <meta name="twitter:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
@@ -320,6 +320,7 @@
 </code></pre><h2 id="waf之利用正则只去匹配数字"><a href="#waf之利用正则只去匹配数字" class="headerlink" title="waf之利用正则只去匹配数字"></a>waf之利用正则只去匹配数字</h2><pre><code>解决方案：多次对id进行重定义，当其只匹配一次id时可以进行绕过，如：id=1&amp;id=2&amp;id=0
 </code></pre><h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><pre><code>解决方案：利用%df去与%5c组成双字节 从而使后面的攻击代码不被转义 
 如：id=-1%df&apos; union select 1,2,3 --+ 当使用的是Mysql_set_charset(&apos;gbk&apos;,&apos;$conn&apos;);函数时可以避免被宽字节注入。
+</code></pre><h2 id="反引号绕过"><a href="#反引号绕过" class="headerlink" title="反引号绕过"></a>反引号绕过</h2><pre><code>解决方案：有的题目会将#作为数据库名，然后进行``绕过，反引号是为了区分MySQL的保留字与普通字符而引入的符号。
 </code></pre><h2 id="后续遇到的会进行补充"><a href="#后续遇到的会进行补充" class="headerlink" title="后续遇到的会进行补充"></a>后续遇到的会进行补充</h2>
       
     </div>
@@ -331,7 +332,7 @@
         <p><span>本文标题:</span><a href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-10-15, 14:30:51</p>
-        <p><span>最后更新:</span>2016-10-16, 19:48:26</p>
+        <p><span>最后更新:</span>2016-10-21, 21:56:01</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/15/sql绕过技巧/" title="sql绕过技巧">https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -367,7 +368,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注释符被过滤"><span class="toc-number">1.</span> <span class="toc-text">注释符被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and-or-被过滤"><span class="toc-number">2.</span> <span class="toc-text">and  or  被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空格被过滤"><span class="toc-number">3.</span> <span class="toc-text">空格被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤"><span class="toc-number">4.</span> <span class="toc-text">union select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤-1"><span class="toc-number">5.</span> <span class="toc-text">union+select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#waf之利用正则只去匹配数字"><span class="toc-number">6.</span> <span class="toc-text">waf之利用正则只去匹配数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽字节注入"><span class="toc-number">7.</span> <span class="toc-text">宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续遇到的会进行补充"><span class="toc-number">8.</span> <span class="toc-text">后续遇到的会进行补充</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注释符被过滤"><span class="toc-number">1.</span> <span class="toc-text">注释符被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and-or-被过滤"><span class="toc-number">2.</span> <span class="toc-text">and  or  被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空格被过滤"><span class="toc-number">3.</span> <span class="toc-text">空格被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤"><span class="toc-number">4.</span> <span class="toc-text">union select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤-1"><span class="toc-number">5.</span> <span class="toc-text">union+select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#waf之利用正则只去匹配数字"><span class="toc-number">6.</span> <span class="toc-text">waf之利用正则只去匹配数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽字节注入"><span class="toc-number">7.</span> <span class="toc-text">宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反引号绕过"><span class="toc-number">8.</span> <span class="toc-text">反引号绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续遇到的会进行补充"><span class="toc-number">9.</span> <span class="toc-text">后续遇到的会进行补充</span></a></li></ol>
         
     </div>
     <style>
