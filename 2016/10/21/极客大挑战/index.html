@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
 <meta property="og:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
-<meta property="og:updated_time" content="2016-10-24T06:47:49.845Z">
+<meta property="og:updated_time" content="2016-10-24T06:56:44.740Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="极客大挑战">
 <meta name="twitter:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
@@ -152,13 +152,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜單</li>
-                        <li>標籤</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>友情鏈接</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>關於我</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -268,7 +268,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-极客大挑战" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -446,12 +446,12 @@ href=&quot;robot.txt&quot;&gt;你对php实现计算器感兴趣么,来这里看�
 </code></pre><p>然后返回no data = =<br>重新看下编码发现 $result=include($str . “.php”); 也就是说会自动加上.php，重新构造</p>
 <pre><code>http://game.sycsec.com:50085/result.php?syc=php://filter/convert.base64-encode/resource=syc
 </code></pre><p>得到syc.php的源代码的base64编码，解码得到flag</p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="linux1-2"><a href="#linux1-2" class="headerlink" title="linux1,2"></a>linux1,2</h3><p>题目提示的是docker镜像，因为从来没接触过docker，所以去百度了一下，原来是linux下的一个容器，我自己的虚拟机只有kali，跟redhat，都没有docker，然后百度下centos跟Ubuntu比较支持docker，之前接触了一点Ubuntu所以就去下载了一个ubuntu= =，然而并不会用，还好Rcoil哥哥给了我一个关于docker使用的网站，那就分享一下啦<a href="http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/" title="docker" target="_blank" rel="external">http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/</a><br>列一下我这次用到的命令</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="linux1-2"><a href="#linux1-2" class="headerlink" title="linux1,2"></a>linux1,2</h3><p>题目提示的是docker镜像，因为从来没接触过docker，所以去百度了一下，原来是linux下的一个容器，我自己的虚拟机只有kali，跟redhat，都没有docker，然后百度下centos跟Ubuntu比较支持docker，之前接触了一点Ubuntu所以就去下载了一个ubuntu= =，然而并不会用，还好RcoIl哥哥给了我一个关于docker使用的网站，那就分享一下啦<a href="http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/" title="docker" target="_blank" rel="external">http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/</a><br>列一下我这次用到的命令</p>
 <pre><code>sudo apt-get install docker //安装docker
 docker load -i geek_linux.tar //载入镜像
 docker images -a  //查看所有镜像
 docker run -i -t geek/linux  //运行镜像
-</code></pre><p>运行镜像完成后去遍历了一下目录，在/usr/local/etc/里面有一个geek目录，然后ls并没有东西出来，Rcoil哥哥是用find -name “.*”查了下是不是隐藏文件，然后用vim打开，我就比较暴力了，直接去压缩包里面看了下有一个.flag的文件打开就得到了flag= =<br>然后让接着找有一个flag文件，就在root目录下找到了一个F1Ag2.swp，百度了一下，是vim异常退出产生的临时文件</p>
+</code></pre><p>运行镜像完成后去遍历了一下目录，在/usr/local/etc/里面有一个geek目录，然后ls并没有东西出来，RcoIl哥哥是用find -name “.*”查了下是不是隐藏文件，然后用vim打开，我就比较暴力了，直接去压缩包里面看了下有一个.flag的文件打开就得到了flag= =<br>然后让接着找有一个flag文件，就在root目录下找到了一个F1Ag2.swp，百度了一下，是vim异常退出产生的临时文件</p>
 <pre><code>vim -r F1Ag2.swp  //恢复swp文件
 </code></pre><p>打开得到flag</p>
 <h2 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h2><h3 id="compress300"><a href="#compress300" class="headerlink" title="compress300"></a>compress300</h3><p>解压300次，先是用zipfile 提示不是zip文件，然后去获取了一下文件类型，得到文件类型为tar，当时不知道有tarfile这个函数，然后看下RcoIl的脚本，得知还有tarfile，刚开始还以为要改后缀名，后来发现Python可以自动识别，然后用脚本进行解压，发现解压到295就停止了，看下295的源码发现是zip文件，得到300个应该有zip，有tar，直接借鉴RcoIl同学的脚本：</p>
@@ -487,17 +487,17 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
   
     
     <div class="copyright">
-        <p><span>本文標題:</span><a href="/2016/10/21/极客大挑战/">极客大挑战</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主頁">Isron</a></p>
-        <p><span>發布時間:</span>2016-10-21, 10:32:23</p>
-        <p><span>最後更新:</span>2016-10-24, 14:47:49</p>
+        <p><span>本文标题:</span><a href="/2016/10/21/极客大挑战/">极客大挑战</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
+        <p><span>发布时间:</span>2016-10-21, 10:32:23</p>
+        <p><span>最后更新:</span>2016-10-24, 14:56:44</p>
         <p>
-            <span>原始鏈接:</span><a class="post-url" href="/2016/10/21/极客大挑战/" title="极客大挑战">https://clearloveqaq.github.io/2016/10/21/极客大挑战/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/极客大挑战/　　作者: Isron" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/21/极客大挑战/" title="极客大挑战">https://clearloveqaq.github.io/2016/10/21/极客大挑战/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/极客大挑战/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -518,7 +518,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目錄</strong>
+        <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第七季极客大挑战"><span class="toc-number">1.</span> <span class="toc-text">第七季极客大挑战</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.1.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#闪得好快"><span class="toc-number">1.1.1.</span> <span class="toc-text">闪得好快</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Come-game"><span class="toc-number">1.1.2.</span> <span class="toc-text">Come_game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#snow"><span class="toc-number">1.1.3.</span> <span class="toc-text">snow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转跳跃"><span class="toc-number">1.1.4.</span> <span class="toc-text">旋转跳跃</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凯撒部长的奖励"><span class="toc-number">1.1.5.</span> <span class="toc-text">凯撒部长的奖励</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5cracker"><span class="toc-number">1.1.6.</span> <span class="toc-text">MD5cracker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PEN-AND-APPLE"><span class="toc-number">1.1.7.</span> <span class="toc-text">PEN_AND_APPLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#藏着小秘密的流量包"><span class="toc-number">1.1.8.</span> <span class="toc-text">藏着小秘密的流量包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-number">1.2.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">web_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-2"><span class="toc-number">1.2.2.</span> <span class="toc-text">web_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Social-Engineeing"><span class="toc-number">1.2.3.</span> <span class="toc-text">Social Engineeing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql1"><span class="toc-number">1.2.4.</span> <span class="toc-text">sql1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql2"><span class="toc-number">1.2.5.</span> <span class="toc-text">sql2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-x"><span class="toc-number">1.2.6.</span> <span class="toc-text">127.0.0.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-is-fun"><span class="toc-number">1.2.7.</span> <span class="toc-text">php_is_fun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#人生苦短"><span class="toc-number">1.2.8.</span> <span class="toc-text">人生苦短</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#狗师傅的计算机"><span class="toc-number">1.2.9.</span> <span class="toc-text">狗师傅的计算机</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">1.3.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux1-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">linux1,2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Program"><span class="toc-number">1.4.</span> <span class="toc-text">Program</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#compress300"><span class="toc-number">1.4.1.</span> <span class="toc-text">compress300</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身二十年"><span class="toc-number">1.4.2.</span> <span class="toc-text">单身二十年</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized"><span class="toc-number">1.5.</span> <span class="toc-text">打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized</span></a></li></ol></li></ol>
         
@@ -534,10 +534,10 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
         }
     </style>
 
-    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -583,7 +583,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主頁"><i class="fa fa-home"></i></a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -612,14 +612,14 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
                 2016 Isron
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、簡潔且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="簡而不減 Hexo 雙欄博客主題  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到訪數"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -628,7 +628,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本頁閱讀量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -661,9 +661,9 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回頂部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看評論"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="轉到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
