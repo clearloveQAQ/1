@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
 <meta property="og:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
-<meta property="og:updated_time" content="2016-10-25T11:58:12.672Z">
+<meta property="og:updated_time" content="2016-10-26T05:04:59.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="极客大挑战">
 <meta name="twitter:description" content="第七季极客大挑战第一次参加这样的比赛，写个write up平复一下心情">
@@ -313,9 +313,9 @@
         <h1 id="第七季极客大挑战"><a href="#第七季极客大挑战" class="headerlink" title="第七季极客大挑战"></a>第七季极客大挑战</h1><p>第一次参加这样的比赛，写个write up平复一下心情<br><a id="more"></a></p>
 <h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="闪得好快"><a href="#闪得好快" class="headerlink" title="闪得好快"></a>闪得好快</h3><p>第一次用火狐打开发现是一堆乱码，然后换用360变成了一个下载链接，是一个gif图，像素应该是280*280，改下像素，然后分帧，得到单个的图片，一个一个的扫码。</p>
 <h3 id="Come-game"><a href="#Come-game" class="headerlink" title="Come_game"></a>Come_game</h3><p>第一次做直接玩通关了，竟然真的有flag，但是我死了400多次= =，仔细去审下题，有一个save存档，把000132直接改为000135即可通关。</p>
-<h3 id="snow"><a href="#snow" class="headerlink" title="snow"></a>snow</h3><p>提示为html隐写，好吧百度一下，有个链接<a href="http://fog.misty.com/perry/ccs/snow/snow/snow.html" title="snow html隐写" target="_blank" rel="external">http://fog.misty.com/perry/ccs/snow/snow/snow.html</a><br>进去把网页跟key输进去即可得到flag</p>
+<h3 id="snow"><a href="#snow" class="headerlink" title="snow"></a>snow</h3><p>提示为html隐写，好吧百度一下，有个链接<a href="http://fog.misty.com/perry/ccs/snow/snow/snow.html" target="_blank" rel="external">snow html隐写</a><br>进去把网页跟key输进去即可得到flag</p>
 <h3 id="旋转跳跃"><a href="#旋转跳跃" class="headerlink" title="旋转跳跃"></a>旋转跳跃</h3><p>提示有key，然后是音频文件，想到用MP3Stego<br><img src="http://i1.piimg.com/567571/b53c0ebf5552a22a.png" alt=""><br>解密可得到一个txt文件里面就是flag</p>
-<h3 id="凯撒部长的奖励"><a href="#凯撒部长的奖励" class="headerlink" title="凯撒部长的奖励"></a>凯撒部长的奖励</h3><p>一长串凯撒密码，分享一个链接<a href="http://planetcalc.com/1434/" title="凯撒密码解密" target="_blank" rel="external">http://planetcalc.com/1434/</a>可以把26种情况全部列出来</p>
+<h3 id="凯撒部长的奖励"><a href="#凯撒部长的奖励" class="headerlink" title="凯撒部长的奖励"></a>凯撒部长的奖励</h3><p>一长串凯撒密码，分享一个链接<a href="http://planetcalc.com/1434/" target="_blank" rel="external">凯撒密码解密</a>可以把26种情况全部列出来</p>
 <h3 id="MD5cracker"><a href="#MD5cracker" class="headerlink" title="MD5cracker"></a>MD5cracker</h3><p>放到MD5解密里面说不说正常的MD5，然后看了下确实是32位，发现有一个字符是|将其改为1，得出flag</p>
 <h3 id="PEN-AND-APPLE"><a href="#PEN-AND-APPLE" class="headerlink" title="PEN_AND_APPLE"></a>PEN_AND_APPLE</h3><p>提示与type有关，并没有想到其他的东西，然后RcoIl同学提示说是NTFS流文件，百度一下，原来type命令可以隐藏信息</p>
 <pre><code>type 2.txt&gt;1.txt: shujuliu.txt,回车.即可将文件2.txt的内容加入1.txt, 内容以数据流方式保存,该数据流名为shujuliu.txt
@@ -541,7 +541,7 @@ href=&quot;robot.txt&quot;&gt;你对php实现计算器感兴趣么,来这里看�
 </code></pre><p>然后返回no data = =<br>重新看下编码发现 $result=include($str . “.php”); 也就是说会自动加上.php，重新构造</p>
 <pre><code>http://game.sycsec.com:50085/result.php?syc=php://filter/convert.base64-encode/resource=syc
 </code></pre><p>得到syc.php的源代码的base64编码，解码得到flag</p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="linux1-2"><a href="#linux1-2" class="headerlink" title="linux1,2"></a>linux1,2</h3><p>题目提示的是docker镜像，因为从来没接触过docker，所以去百度了一下，原来是linux下的一个容器，我自己的虚拟机只有kali，跟redhat，都没有docker，然后百度下centos跟Ubuntu比较支持docker，之前接触了一点Ubuntu所以就去下载了一个ubuntu= =，然而并不会用，还好RcoIl哥哥给了我一个关于docker使用的网站，那就分享一下啦<a href="http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/" title="docker" target="_blank" rel="external">http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/</a><br>列一下我这次用到的命令</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="linux1-2"><a href="#linux1-2" class="headerlink" title="linux1,2"></a>linux1,2</h3><p>题目提示的是docker镜像，因为从来没接触过docker，所以去百度了一下，原来是linux下的一个容器，我自己的虚拟机只有kali，跟redhat，都没有docker，然后百度下centos跟Ubuntu比较支持docker，之前接触了一点Ubuntu所以就去下载了一个ubuntu= =，然而并不会用，还好RcoIl哥哥给了我一个关于docker使用的网站，那就分享一下啦<a href="http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/" target="_blank" rel="external">docker基础命令</a><br>列一下我这次用到的命令</p>
 <pre><code>sudo apt-get install docker //安装docker
 docker load -i geek_linux.tar //载入镜像
 docker images -a  //查看所有镜像
@@ -585,7 +585,7 @@ print q.content.decode(&apos;utf-8&apos;) #输出返回值
         <p><span>本文标题:</span><a href="/2016/10/21/极客大挑战/">极客大挑战</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-10-21, 10:32:23</p>
-        <p><span>最后更新:</span>2016-10-25, 19:58:12</p>
+        <p><span>最后更新:</span>2016-10-26, 13:04:59</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/21/极客大挑战/" title="极客大挑战">https://clearloveqaq.github.io/2016/10/21/极客大挑战/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/极客大挑战/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>

