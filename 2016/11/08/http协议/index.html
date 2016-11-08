@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="杂项类的write up">
+<meta name="description" content="做题却也不如你">
 <meta property="og:type" content="article">
-<meta property="og:title" content="drops安全杂项">
-<meta property="og:url" content="https://clearloveqaq.github.io/2016/09/12/drops安全杂项/index.html">
+<meta property="og:title" content="http协议">
+<meta property="og:url" content="https://clearloveqaq.github.io/2016/11/08/http协议/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="杂项类的write up">
-<meta property="og:updated_time" content="2016-10-26T05:05:40.172Z">
+<meta property="og:description" content="做题却也不如你">
+<meta property="og:updated_time" content="2016-11-08T10:18:40.460Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="drops安全杂项">
-<meta name="twitter:description" content="杂项类的write up">
+<meta name="twitter:title" content="http协议">
+<meta name="twitter:description" content="做题却也不如你">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>drops安全杂项 | Isron</title>
+<title>http协议 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -268,11 +268,11 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap"><article id="post-drops安全杂项" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-http协议" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/12/drops安全杂项/" class="article-date">
-      <time datetime="2016-09-12T10:22:32.000Z" itemprop="datePublished">2016-09-12</time>
+      <a href="/2016/11/08/http协议/" class="article-date">
+      <time datetime="2016-11-08T09:59:28.000Z" itemprop="datePublished">2016-11-08</time>
 </a>
 
 
@@ -287,7 +287,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      drops安全杂项
+      http协议
     </h1>
   
 
@@ -298,7 +298,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -308,25 +308,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>杂项类的write up<br><a id="more"></a></p>
-<h3 id="听说不是base64"><a href="#听说不是base64" class="headerlink" title="听说不是base64"></a>听说不是base64</h3><p>base32 解码 然后培根密码即可得到flag<br>base32解码网站 <a href="http://pbaseconverter.com/" target="_blank" rel="external">BASE</a></p>
-<hr>
-<h3 id="真的是加密？"><a href="#真的是加密？" class="headerlink" title="真的是加密？"></a>真的是加密？</h3><p>zip伪加密</p>
-<pre><code>压缩源文件目录区：
-50 4B 01 02：目录中文件文件头标记(0x02014b50)
-1F 00：压缩使用的 pkware 版本
-14 00：解压文件所需 pkware 版本
-00 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）
-08 00：压缩方式
-07 76：最后修改文件时间
-F2 48：最后修改文件日期 
-</code></pre><p>奇数为有加密偶数为无加密 将01改为00即可</p>
-<hr>
-<h3 id="数数字"><a href="#数数字" class="headerlink" title="数数字"></a>数数字</h3><p>100000-999999<br>排列组合 9的6次方<br>也可以写个Python跑一跑<br>数学题</p>
-<hr>
-<h3 id="损坏的压缩包"><a href="#损坏的压缩包" class="headerlink" title="损坏的压缩包"></a>损坏的压缩包</h3><p>拉入十六进制工具查看发现缺少头部<br>加上即可</p>
-<hr>
-
+        
       
     </div>
     
@@ -334,13 +316,13 @@ F2 48：最后修改文件日期
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2016/09/12/drops安全杂项/">drops安全杂项</a></p>
+        <p><span>Title:</span><a href="/2016/11/08/http协议/">http协议</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
-        <p><span>Created:</span>2016-09-12, 18:22:32</p>
-        <p><span>Updated:</span>2016-10-26, 13:05:40</p>
+        <p><span>Created:</span>2016-11-08, 17:59:28</p>
+        <p><span>Updated:</span>2016-11-08, 18:18:40</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2016/09/12/drops安全杂项/" title="drops安全杂项">https://clearloveqaq.github.io/2016/09/12/drops安全杂项/</a>
-            <span class="copy-path" data-clipboard-text="From https://clearloveqaq.github.io/2016/09/12/drops安全杂项/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2016/11/08/http协议/" title="http协议">https://clearloveqaq.github.io/2016/11/08/http协议/</a>
+            <span class="copy-path" data-clipboard-text="From https://clearloveqaq.github.io/2016/11/08/http协议/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -352,16 +334,10 @@ F2 48：最后修改文件日期
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/09/22/sql盲注学习笔记/">
-                    sql盲注学习笔记
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/08/31/drops-php-write-up/">
-                    drops-php write up
+                <a href="/2016/10/25/sqli-labs学习笔记总结/">
+                    sqli-labs学习笔记总结
                 </a>
             </div>
         
@@ -373,7 +349,7 @@ F2 48：最后修改文件日期
     <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#听说不是base64"><span class="toc-number">1.</span> <span class="toc-text">听说不是base64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真的是加密？"><span class="toc-number">2.</span> <span class="toc-text">真的是加密？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数数字"><span class="toc-number">3.</span> <span class="toc-text">数数字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#损坏的压缩包"><span class="toc-number">4.</span> <span class="toc-text">损坏的压缩包</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -413,7 +389,7 @@ F2 48：最后修改文件日期
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/09/12/drops安全杂项/" data-title="drops安全杂项" data-url="https://clearloveqaq.github.io/2016/09/12/drops安全杂项/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/08/http协议/" data-title="http协议" data-url="https://clearloveqaq.github.io/2016/11/08/http协议/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
@@ -436,15 +412,13 @@ F2 48：最后修改文件日期
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/09/22/sql盲注学习笔记/" title="Pre: sql盲注学习笔记">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
         <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/08/31/drops-php-write-up/" title="Next: drops-php write up">
+            <a href="/2016/10/25/sqli-labs学习笔记总结/" title="Next: sqli-labs学习笔记总结">
                 <i class="fa fa-angle-right"></i>
             </a>
         
