@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="南邮也做了好久了，写个write up总结一下吧">
 <meta property="og:image" content="http://tuku02-qn.icp114.cn/public/16-11-9/24630102.jpg">
-<meta property="og:updated_time" content="2016-11-09T13:19:52.572Z">
+<meta property="og:updated_time" content="2016-11-09T14:46:36.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南邮">
 <meta name="twitter:description" content="南邮也做了好久了，写个write up总结一下吧">
@@ -541,6 +541,75 @@ echo serialize($c);
 <h3 id="KeyBoard"><a href="#KeyBoard" class="headerlink" title="KeyBoard"></a>KeyBoard</h3><p>根据字母与键盘上的位置连线得到flag</p>
 <h3 id="base64全家桶"><a href="#base64全家桶" class="headerlink" title="base64全家桶"></a>base64全家桶</h3><p>一次base64，一次base32，一次base16 <a href="http://pbaseconverter.com/" target="_blank" rel="external">解密网站</a></p>
 <h3 id="n次base64"><a href="#n次base64" class="headerlink" title="n次base64"></a>n次base64</h3><p>直接上代码：</p>
+<pre><code>import base64
+str1=&apos;&apos;&apos;&apos;&apos;&apos;
+for i in range(1,16):
+    str1=base64.b64decode(str1)
+print str1
+</code></pre><h3 id="骚年来一发吗"><a href="#骚年来一发吗" class="headerlink" title="骚年来一发吗"></a>骚年来一发吗</h3><p>根据加密代码反处理写出解密代码：</p>
+<pre><code>&lt;?php 
+
+function decode($string){
+    $string=base64_decode(strrev(str_rot13($string)));
+    for($_0=0;$_0&lt;strlen($string);$_0++){
+        $_c=substr($string,$_0,1);
+        $__=ord($_c)-1;
+        $_c=chr($__);
+        $_=$_.$_c;
+    }
+    $string=strrev($_);
+    return $string;
+}
+
+$string=&apos;iEJqak3pjIaZ0NzLiITLwWTqzqGAtW2oyOTq1A3pzqas&apos;;
+echo decode($string);
+?&gt;
+</code></pre><h3 id="mixed-base64"><a href="#mixed-base64" class="headerlink" title="mixed_base64"></a>mixed_base64</h3><p>多重base64，32,16加密代码如下：</p>
+<pre><code>import base64
+code1=&apos;&apos;
+code1=base64.b32decode(code1)
+code1=base64.b16decode(code1)
+code1=base64.b16decode(code1)
+code1=base64.b64decode(code1)
+code1=base64.b16decode(code1)
+code1=base64.b64decode(code1)
+code1=base64.b32decode(code1)
+code1=base64.b16decode(code1)
+code1=base64.b32decode(code1)
+code1=base64.b32decode(code1)
+print code1
+</code></pre><h3 id="异性相吸"><a href="#异性相吸" class="headerlink" title="异性相吸"></a>异性相吸</h3><p>简单的异或</p>
+<pre><code>file_a=open(&apos;1.txt&apos;,&apos;rb&apos;)  
+file_b=open(&apos;2.txt&apos;,&apos;rb&apos;)  
+
+a=file_a.read()  
+b=file_b.read()  
+
+s=&apos;&apos;  
+for i,j in zip(a,b):  
+    s+=chr(ord(i)^ord(j))  
+print s
+</code></pre><h3 id="MD5"><a href="#MD5" class="headerlink" title="MD5"></a>MD5</h3><p>MD5恢复</p>
+<pre><code>import hashlib     
+src1=&quot;TASC&quot;  
+src2=&quot;O3RJMV&quot;  
+src3=&quot;WDJKX&quot;  
+src4=&quot;ZM&quot;  
+dic = [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;D&apos;,&apos;E&apos;,&apos;F&apos;,&apos;G&apos;,&apos;H&apos;,&apos;I&apos;,&apos;J&apos;,&apos;K&apos;,&apos;L&apos;,&apos;M&apos;,&apos;N&apos;,&apos;O&apos;,&apos;P&apos;,&apos;Q&apos;,&apos;R&apos;,&apos;S&apos;,&apos;T&apos;,&apos;U&apos;,&apos;V&apos;,&apos;W&apos;,&apos;X&apos;,&apos;Y&apos;,&apos;Z&apos;]  
+for i in range(26):  
+    for j in range(26):  
+        for k in range(26):  
+            src=src1+dic[i]+src2+dic[j]+src3+dic[k]+src4
+            m2 = hashlib.md5()  
+            m2.update(src)  
+            m3=str(m2.hexdigest())
+            if (m3[0:5]==&apos;e9032&apos; and m3[8:10]==&apos;da&apos;):
+                print src
+                print m3
+</code></pre><h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="easy-wireshark"><a href="#easy-wireshark" class="headerlink" title="easy wireshark"></a>easy wireshark</h3><p>题目提示为抓住他浏览网页的包，那么就过滤一下http协议，发现有一个</p>
+<pre><code>http://115.28.150.176/misc/flag.php 
+</code></pre><p>进去得到flag</p>
+<h3 id="wireshark-2"><a href="#wireshark-2" class="headerlink" title="wireshark 2"></a>wireshark 2</h3><p>通过追踪TCP流发现有一个压缩包里面有flag.txt文件那么放在kali里面用foremost命令提取一下得到一个压缩包，但是有密码打不开，那么用记事本打开流量包搜索一下pass看是否有密码，然后得到了压缩包的密码，打开得到flag</p>
 
       
     </div>
@@ -552,7 +621,7 @@ echo serialize($c);
         <p><span>本文标题:</span><a href="/2016/11/09/南邮/">南邮</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-11-09, 11:56:41</p>
-        <p><span>最后更新:</span>2016-11-09, 21:19:52</p>
+        <p><span>最后更新:</span>2016-11-09, 22:46:36</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮">https://clearloveqaq.github.io/2016/11/09/南邮/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/09/南邮/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -582,7 +651,7 @@ echo serialize($c);
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#签到题"><span class="toc-number">1.1.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-collision"><span class="toc-number">1.2.</span> <span class="toc-text">md5 collision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签到题2"><span class="toc-number">1.3.</span> <span class="toc-text">签到题2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这题不是WEB"><span class="toc-number">1.4.</span> <span class="toc-text">这题不是WEB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层层递进"><span class="toc-number">1.5.</span> <span class="toc-text">层层递进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AAencode"><span class="toc-number">1.6.</span> <span class="toc-text">AAencode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身二十年"><span class="toc-number">1.7.</span> <span class="toc-text">单身二十年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你从哪里来"><span class="toc-number">1.8.</span> <span class="toc-text">你从哪里来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-decode"><span class="toc-number">1.9.</span> <span class="toc-text">php decode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件包含"><span class="toc-number">1.10.</span> <span class="toc-text">文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身一百年也没用"><span class="toc-number">1.11.</span> <span class="toc-text">单身一百年也没用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Download"><span class="toc-number">1.12.</span> <span class="toc-text">Download~!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie"><span class="toc-number">1.13.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MYSQL"><span class="toc-number">1.14.</span> <span class="toc-text">MYSQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-injection-3"><span class="toc-number">1.15.</span> <span class="toc-text">sql injection 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x00"><span class="toc-number">1.16.</span> <span class="toc-text">/x00</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bypass-again"><span class="toc-number">1.17.</span> <span class="toc-text">bypass again</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量覆盖"><span class="toc-number">1.18.</span> <span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP是世界上最好的语言"><span class="toc-number">1.19.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪装者"><span class="toc-number">1.20.</span> <span class="toc-text">伪装者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Header"><span class="toc-number">1.21.</span> <span class="toc-text">Header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传绕过"><span class="toc-number">1.22.</span> <span class="toc-text">上传绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入1"><span class="toc-number">1.23.</span> <span class="toc-text">SQL注入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pass-check"><span class="toc-number">1.24.</span> <span class="toc-text">pass check</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#起名字真难"><span class="toc-number">1.25.</span> <span class="toc-text">起名字真难</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密码重置"><span class="toc-number">1.26.</span> <span class="toc-text">密码重置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-反序列化"><span class="toc-number">1.27.</span> <span class="toc-text">php 反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-injection-4"><span class="toc-number">1.28.</span> <span class="toc-text">sql injection 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综合题"><span class="toc-number">1.29.</span> <span class="toc-text">综合题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入2"><span class="toc-number">1.30.</span> <span class="toc-text">SQL注入2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐写术"><span class="toc-number">2.</span> <span class="toc-text">隐写术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#女神"><span class="toc-number">2.1.</span> <span class="toc-text">女神</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图种"><span class="toc-number">2.2.</span> <span class="toc-text">图种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丘比龙De女神"><span class="toc-number">2.3.</span> <span class="toc-text">丘比龙De女神</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#密码学"><span class="toc-number">3.</span> <span class="toc-text">密码学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy"><span class="toc-number">3.1.</span> <span class="toc-text">easy!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KeyBoard"><span class="toc-number">3.2.</span> <span class="toc-text">KeyBoard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base64全家桶"><span class="toc-number">3.3.</span> <span class="toc-text">base64全家桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n次base64"><span class="toc-number">3.4.</span> <span class="toc-text">n次base64</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#签到题"><span class="toc-number">1.1.</span> <span class="toc-text">签到题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5-collision"><span class="toc-number">1.2.</span> <span class="toc-text">md5 collision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#签到题2"><span class="toc-number">1.3.</span> <span class="toc-text">签到题2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#这题不是WEB"><span class="toc-number">1.4.</span> <span class="toc-text">这题不是WEB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#层层递进"><span class="toc-number">1.5.</span> <span class="toc-text">层层递进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AAencode"><span class="toc-number">1.6.</span> <span class="toc-text">AAencode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身二十年"><span class="toc-number">1.7.</span> <span class="toc-text">单身二十年</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你从哪里来"><span class="toc-number">1.8.</span> <span class="toc-text">你从哪里来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-decode"><span class="toc-number">1.9.</span> <span class="toc-text">php decode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件包含"><span class="toc-number">1.10.</span> <span class="toc-text">文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身一百年也没用"><span class="toc-number">1.11.</span> <span class="toc-text">单身一百年也没用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Download"><span class="toc-number">1.12.</span> <span class="toc-text">Download~!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cookie"><span class="toc-number">1.13.</span> <span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MYSQL"><span class="toc-number">1.14.</span> <span class="toc-text">MYSQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-injection-3"><span class="toc-number">1.15.</span> <span class="toc-text">sql injection 3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x00"><span class="toc-number">1.16.</span> <span class="toc-text">/x00</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bypass-again"><span class="toc-number">1.17.</span> <span class="toc-text">bypass again</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量覆盖"><span class="toc-number">1.18.</span> <span class="toc-text">变量覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP是世界上最好的语言"><span class="toc-number">1.19.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪装者"><span class="toc-number">1.20.</span> <span class="toc-text">伪装者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Header"><span class="toc-number">1.21.</span> <span class="toc-text">Header</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传绕过"><span class="toc-number">1.22.</span> <span class="toc-text">上传绕过</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入1"><span class="toc-number">1.23.</span> <span class="toc-text">SQL注入1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pass-check"><span class="toc-number">1.24.</span> <span class="toc-text">pass check</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#起名字真难"><span class="toc-number">1.25.</span> <span class="toc-text">起名字真难</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#密码重置"><span class="toc-number">1.26.</span> <span class="toc-text">密码重置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-反序列化"><span class="toc-number">1.27.</span> <span class="toc-text">php 反序列化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-injection-4"><span class="toc-number">1.28.</span> <span class="toc-text">sql injection 4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综合题"><span class="toc-number">1.29.</span> <span class="toc-text">综合题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入2"><span class="toc-number">1.30.</span> <span class="toc-text">SQL注入2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#隐写术"><span class="toc-number">2.</span> <span class="toc-text">隐写术</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#女神"><span class="toc-number">2.1.</span> <span class="toc-text">女神</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图种"><span class="toc-number">2.2.</span> <span class="toc-text">图种</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#丘比龙De女神"><span class="toc-number">2.3.</span> <span class="toc-text">丘比龙De女神</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#密码学"><span class="toc-number">3.</span> <span class="toc-text">密码学</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy"><span class="toc-number">3.1.</span> <span class="toc-text">easy!</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KeyBoard"><span class="toc-number">3.2.</span> <span class="toc-text">KeyBoard</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#base64全家桶"><span class="toc-number">3.3.</span> <span class="toc-text">base64全家桶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#n次base64"><span class="toc-number">3.4.</span> <span class="toc-text">n次base64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#骚年来一发吗"><span class="toc-number">3.5.</span> <span class="toc-text">骚年来一发吗</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixed-base64"><span class="toc-number">3.6.</span> <span class="toc-text">mixed_base64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异性相吸"><span class="toc-number">3.7.</span> <span class="toc-text">异性相吸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5"><span class="toc-number">3.8.</span> <span class="toc-text">MD5</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">4.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easy-wireshark"><span class="toc-number">4.1.</span> <span class="toc-text">easy wireshark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wireshark-2"><span class="toc-number">4.2.</span> <span class="toc-text">wireshark 2</span></a></li></ol></li></ol>
         
     </div>
     <style>
