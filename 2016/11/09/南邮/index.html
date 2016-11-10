@@ -15,17 +15,18 @@
 
 
 
-<meta name="description" content="南邮也做了好久了，写个write up总结一下吧">
+<meta name="description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="南邮">
+<meta property="og:title" content="南邮CTF">
 <meta property="og:url" content="https://clearloveqaq.github.io/2016/11/09/南邮/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="南邮也做了好久了，写个write up总结一下吧">
+<meta property="og:description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta property="og:image" content="http://tuku02-qn.icp114.cn/public/16-11-9/24630102.jpg">
-<meta property="og:updated_time" content="2016-11-09T14:46:36.654Z">
+<meta property="og:image" content="http://yotuku.cn/link?url=4183SlTgM&tk_plan=free&tk_storage=tietuku&tk_vuid=89aee7bc-c11d-4c04-8f46-67bec8ffa7a7&tk_time=2016111013">
+<meta property="og:updated_time" content="2016-11-10T05:43:58.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="南邮">
-<meta name="twitter:description" content="南邮也做了好久了，写个write up总结一下吧">
+<meta name="twitter:title" content="南邮CTF">
+<meta name="twitter:description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta name="twitter:image" content="http://tuku02-qn.icp114.cn/public/16-11-9/24630102.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -58,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>南邮 | Isron</title>
+<title>南邮CTF | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -289,7 +290,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      南邮
+      南邮CTF
     </h1>
   
 
@@ -310,7 +311,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>南邮也做了好久了，写个write up总结一下吧<br><a id="more"></a></p>
+        <p>南邮涉及了那么多知识点，怎么能不总结一下呢。<br><a id="more"></a></p>
 <h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="签到题"><a href="#签到题" class="headerlink" title="签到题"></a>签到题</h3><p>查看源代码得到flag</p>
 <h3 id="md5-collision"><a href="#md5-collision" class="headerlink" title="md5 collision"></a>md5 collision</h3><p>由题目可知为MD5碰撞然而发现考的是php语言的特性<br>源码：</p>
 <pre><code>&lt;?php
@@ -369,8 +370,9 @@ gzcompress(): 压缩字符串
 <h3 id="单身一百年也没用"><a href="#单身一百年也没用" class="headerlink" title="单身一百年也没用"></a>单身一百年也没用</h3><p>很明显之前的方法以及不能用了，那么就用firebug查看一下HTTP协议进行的过程，发现有两个请求头与响应头，在第二个响应头里有flag。<a href="https://clearloveqaq.github.io/2016/11/08/http%E5%8D%8F%E8%AE%AE/">HTTP协议</a></p>
 <h3 id="Download"><a href="#Download" class="headerlink" title="Download~!"></a>Download~!</h3><p>查看源代码可以得到</p>
 <pre><code>download.php?url=eGluZ3hpbmdkaWFuZGVuZy5tcDM=&quot;
-</code></pre><p>url为歌曲xingxingdiandeng.mp3 base64编码之后的内容那么想到去任意下载得到index.php的源码发现是拒绝的那么换个思路去download.php的源码得到其源码发现还有一个hereiskey.php文件继续下载得到flag</p>
-<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>抓包修改Cookie值得到flag</p>
+</code></pre><p>url为歌曲xingxingdiandeng.mp3 base64编码之后的内容那么想到去任意下载得到index.php的源码发现是拒绝的那么换个思路去download.php的源码得到其源码发现还有一个hereiskey.php文件继续下载得到flag。</p>
+<pre><code>在页面具有下载功能的时候，有时会因为权限控制不足，导致任意下载漏洞出现。
+</code></pre><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>抓包修改Cookie值得到flag</p>
 <h3 id="MYSQL"><a href="#MYSQL" class="headerlink" title="MYSQL"></a>MYSQL</h3><p>Do you know robots.txt？</p>
 <pre><code>在CTF比赛中，robots.txt文件往往存放着提示信息，或者相关源码
 </code></pre><p>访问robots.txt得到TIP：sql.php以及sql.php的源码：</p>
@@ -454,7 +456,13 @@ if($_GET[id] == &quot;hackerDJ&quot;)
 </code></pre><h3 id="伪装者"><a href="#伪装者" class="headerlink" title="伪装者"></a>伪装者</h3><p>进去发现必须是本地登录直接抓包把X-Forwarded-For改为127.0.0.1即可伪装为本地登录</p>
 <pre><code>X-Forwarded-For：访问者的ip
 </code></pre><h3 id="Header"><a href="#Header" class="headerlink" title="Header"></a>Header</h3><p>F12Firebug查看下响应头信息得到flag</p>
-<h3 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h3><p>刚开始的想法是利用00截断进行上传，发现行不通，最后看了这篇文章才做出来<a href="http://www.cnblogs.com/hack0ne/p/4603144.html" target="_blank" rel="external">上传绕过</a>并且还有一些地方没有搞明白，等彻底弄清楚了再更新一波。</p>
+<h3 id="上传绕过"><a href="#上传绕过" class="headerlink" title="上传绕过"></a>上传绕过</h3><p>刚开始的想法是利用00截断进行上传，发现行不通，最后看了这篇文章才做出来<a href="http://www.cnblogs.com/hack0ne/p/4603144.html" target="_blank" rel="external">上传绕过</a>，主要是这段代码：</p>
+<pre><code>&lt;% 
+path=&quot;upfiles/picture/&quot; 
+file=&quot;XXX.jpg&quot; 
+upfilename=path &amp; file &apos;最后的上传地址 
+%&gt;
+</code></pre><p><img src="http://yotuku.cn/link?url=4183SlTgM&amp;tk_plan=free&amp;tk_storage=tietuku&amp;tk_vuid=89aee7bc-c11d-4c04-8f46-67bec8ffa7a7&amp;tk_time=2016111013" alt=""><br>/uploads/也就是上面代码的path部分，1.jpg就是file部分，如果不进行操作，最后的上传地址应该是/uploads/1.jpg，现在这个path地方我们是可以控制的，那么我们可以利用00截断将其上传地址修改为/uploads/1.php%00，最后的上传地址也就变成了/uploads/1.php%001.jpg，遵循从后往前验证，从前往后解析的规则，在验证的时候也就变成了1.jpg，而解析的时候则由于00截断解析为了1.php，从而绕过验证，得到flag。</p>
 <h3 id="SQL注入1"><a href="#SQL注入1" class="headerlink" title="SQL注入1"></a>SQL注入1</h3><p>得到源码直接上sql语句：</p>
 <pre><code>$sql=&quot;select user from ctf where (user=&apos;&quot;.$user.&quot;&apos;) and (pw=&apos;&quot;.$pass.&quot;&apos;)&quot;;
 </code></pre><p>发现是引号加括号的包裹形式直接万能密码得到flag<br>payload：</p>
@@ -533,7 +541,31 @@ echo serialize($c);
 <pre><code>admin\&amp;password=or 1=1 %23
 </code></pre><p>得到flag</p>
 <h3 id="综合题"><a href="#综合题" class="headerlink" title="综合题"></a>综合题</h3><p>tip：bash<br>进去得到一堆JS代码，F12运行得到1bc29b36f623ba82aaf6724fd3b16718.php<br>访问一下得到再得到一个<br>tip：history of bash<br>查询一下得到<a href="http://www.cnblogs.com/h2-database/archive/2012/07/04/2583318.html" target="_blank" rel="external">linux查看命令行历史记录</a>然后得到一个flagbak.zip 下载得到flag</p>
-<h3 id="SQL注入2"><a href="#SQL注入2" class="headerlink" title="SQL注入2"></a>SQL注入2</h3><p>目前没有搞明白= =</p>
+<h3 id="SQL注入2"><a href="#SQL注入2" class="headerlink" title="SQL注入2"></a>SQL注入2</h3><p>源码：</p>
+<pre><code>&lt;?php
+if($_POST[user] &amp;&amp; $_POST[pass]) {
+   mysql_connect(SAE_MYSQL_HOST_M . &apos;:&apos; . SAE_MYSQL_PORT,SAE_MYSQL_USER,SAE_MYSQL_PASS);
+   mysql_select_db(SAE_MYSQL_DB);
+   $user = $_POST[user];  //传入user值
+   $pass = md5($_POST[pass]);  //对传入的pass值进行md5加密
+   $query = @mysql_fetch_array(mysql_query(&quot;select pw from ctf where user=&apos;$user&apos;&quot;));
+   if (($query[pw]) &amp;&amp; (!strcasecmp($pass, $query[pw]))) {
+    echo &quot;&lt;p&gt;Logged in! Key: ntcf{**************} &lt;/p&gt;&quot;;
+   }
+   else {
+    echo(&quot;&lt;p&gt;Log in failure!&lt;/p&gt;&quot;);
+  }
+}
+?&gt;
+</code></pre><p>很明显注入语句只有一个：</p>
+<pre><code>$query = @mysql_fetch_array(mysql_query(&quot;select pw from ctf where user=&apos;$user&apos;&quot;));
+mysql_query() 函数执行一条 MySQL 查询。
+mysql_fetch_array() 函数从结果集中取得一行作为关联数组，或数字数组，或二者兼有
+</code></pre><p>那么传入一个user=z’ union select 1 #查询语句变为</p>
+<pre><code>select pw from ctf where user=&apos;z&apos; union select 1 #&apos;
+</code></pre><p>那么也就是说返回了一个数组为[z,1]，在进行strcasecmp比较时只要数组里面的值跟$pass相等即可，由于$pass进行过一次md5加密那么我们构造如下payload：</p>
+<pre><code>user=z&apos; union select md5(1) #&amp;pass=1
+</code></pre><p>得到flag</p>
 <h2 id="隐写术"><a href="#隐写术" class="headerlink" title="隐写术"></a>隐写术</h2><h3 id="女神"><a href="#女神" class="headerlink" title="女神"></a>女神</h3><p>记事本打开搜nctf</p>
 <h3 id="图种"><a href="#图种" class="headerlink" title="图种"></a>图种</h3><p>将后缀改为zip得到一个压缩包里面还有一个图片得到flag</p>
 <h3 id="丘比龙De女神"><a href="#丘比龙De女神" class="headerlink" title="丘比龙De女神"></a>丘比龙De女神</h3><p>利用hash查看工具查询到md5值改为小写提交即可</p>
@@ -618,12 +650,12 @@ for i in range(26):
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/09/南邮/">南邮</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/09/南邮/">南邮CTF</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-11-09, 11:56:41</p>
-        <p><span>最后更新:</span>2016-11-09, 22:46:36</p>
+        <p><span>最后更新:</span>2016-11-10, 13:43:58</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮">https://clearloveqaq.github.io/2016/11/09/南邮/</a>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮CTF">https://clearloveqaq.github.io/2016/11/09/南邮/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/09/南邮/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -691,7 +723,7 @@ for i in range(26):
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/09/南邮/" data-title="南邮" data-url="https://clearloveqaq.github.io/2016/11/09/南邮/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/09/南邮/" data-title="南邮CTF" data-url="https://clearloveqaq.github.io/2016/11/09/南邮/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
@@ -726,7 +758,7 @@ for i in range(26):
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/极客大挑战/">极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/极客大挑战/">极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
 
 
 
