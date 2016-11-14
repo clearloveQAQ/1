@@ -15,15 +15,16 @@
 
 
 
-<meta name="description" content="做题却也不如你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Isron">
-<meta property="og:url" content="https://clearloveqaq.github.io/archives/page/2/index.html">
+<meta name="description" content="总结一下在SUCTF中学习到的知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SUCTF知识点总结">
+<meta property="og:url" content="https://clearloveqaq.github.io/2016/11/14/SUCTF知识点总结/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做题却也不如你">
+<meta property="og:description" content="总结一下在SUCTF中学习到的知识">
+<meta property="og:updated_time" content="2016-11-14T07:47:45.588Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Isron">
-<meta name="twitter:description" content="做题却也不如你">
+<meta name="twitter:title" content="SUCTF知识点总结">
+<meta name="twitter:description" content="总结一下在SUCTF中学习到的知识">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | Isron</title>
+<title>SUCTF知识点总结 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,8 +66,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -267,126 +268,191 @@
     </div>
     <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-SUCTF知识点总结" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/11/14/SUCTF知识点总结/" class="article-date">
+      <time datetime="2016-11-14T07:31:21.000Z" itemprop="datePublished">2016-11-14</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SUCTF知识点总结
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/16/sqlmap常见使用语法/" class="archive-article-date">
-      <time datetime="2016-10-16T11:43:02.000Z" itemprop="datePublished">10-16</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+        <p>总结一下在SUCTF中学习到的知识<br><a id="more"></a></p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><ol>
+<li>通过F12修改网页前端代码使不可提交的按钮变为可提交的按钮</li>
+<li>再次复习了一次关于MD5值0e开头的问题</li>
+<li>JS编码与brain fuck编码</li>
+<li>学习到了referer与Origin头的区别以及X-Forwarded-For的应用</li>
+</ol>
+<pre><code>origin：主要是用来说明最初请求是从哪里发起的
+Referer：代表当前访问URL的上一个URL
+X-Forwarded-For：访问者的ip
+</code></pre><h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><ol>
+<li>Linux下file命令的使用：</li>
+</ol>
+<pre><code>file:用来识别文件类型，也可用来辨别一些文件的编码格式
+</code></pre><ol>
+<li>Linux下gzip文件的解压方法：</li>
+</ol>
+<pre><code>gzip：压缩文件，并删除原始文件
+gzip -v：压缩文件，并显示压缩信息
+gunzip：解压文件，gunzip == gzip -d
+zcat：不解压而显示压缩文件的内容
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文標題:</span><a href="/2016/11/14/SUCTF知识点总结/">SUCTF知识点总结</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主頁">Isron</a></p>
+        <p><span>發布時間:</span>2016-11-14, 15:31:21</p>
+        <p><span>最後更新:</span>2016-11-14, 15:47:45</p>
+        <p>
+            <span>原始鏈接:</span><a class="post-url" href="/2016/11/14/SUCTF知识点总结/" title="SUCTF知识点总结">https://clearloveqaq.github.io/2016/11/14/SUCTF知识点总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/14/SUCTF知识点总结/　　作者: Isron" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/15/sql绕过技巧/" class="archive-article-date">
-      <time datetime="2016-10-15T06:30:51.000Z" itemprop="datePublished">10-15</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAF/">WAF</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/09/22/sql盲注学习笔记/" class="archive-article-date">
-      <time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">09-22</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/11/09/南邮/">
+                    南邮CTF
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目錄</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
+
+    <script>
+        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/14/SUCTF知识点总结/" data-title="SUCTF知识点总结" data-url="https://clearloveqaq.github.io/2016/11/14/SUCTF知识点总结/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主頁"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/11/09/南邮/" title="下一篇: 南邮CTF">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/SUCTF知识点总结/">SUCTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/极客大挑战/">极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
