@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="总结了一些常见的sqlmap使用语法">
+<meta name="description" content="长期更新，用于总结在CTF中遇到的自己没想到的知识点">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sqlmap常见使用语法">
-<meta property="og:url" content="https://clearloveqaq.github.io/2016/10/16/sqlmap常见使用语法/index.html">
+<meta property="og:title" content="CTF知识点总结">
+<meta property="og:url" content="https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="总结了一些常见的sqlmap使用语法">
-<meta property="og:updated_time" content="2016-11-17T05:02:07.088Z">
+<meta property="og:description" content="长期更新，用于总结在CTF中遇到的自己没想到的知识点">
+<meta property="og:updated_time" content="2016-11-17T10:32:13.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sqlmap常见使用语法">
-<meta name="twitter:description" content="总结了一些常见的sqlmap使用语法">
+<meta name="twitter:title" content="CTF知识点总结">
+<meta name="twitter:description" content="长期更新，用于总结在CTF中遇到的自己没想到的知识点">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>sqlmap常见使用语法 | Isron</title>
+<title>CTF知识点总结 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -272,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-sqlmap常见使用语法" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-CTF知识点总结" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/10/16/sqlmap常见使用语法/" class="article-date">
-      <time datetime="2016-10-16T11:43:02.000Z" itemprop="datePublished">2016-10-16</time>
+      <a href="/2016/11/14/CTF知识点总结/" class="article-date">
+      <time datetime="2016-11-14T07:31:21.000Z" itemprop="datePublished">2016-11-14</time>
 </a>
 
 
@@ -291,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      sqlmap常见使用语法
+      CTF知识点总结
     </h1>
   
 
@@ -302,7 +302,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -312,18 +312,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>总结了一些常见的sqlmap使用语法<br><a id="more"></a></p>
-<ol>
-<li>sqlmap.py <code>-u url --dbs</code> //爆数据库</li>
-<li>sqlmap.py <code>-u url --current-db</code> //爆当前库</li>
-<li>sqlmap.py <code>-u url --current-user</code> //爆当前用户</li>
-<li>sqlmap.py <code>-u url --users</code>   查看用户权限</li>
-<li>sqlmap.py <code>-u url --tables -D 数据库</code> //爆表段</li>
-<li>sqlmap.py <code>-u url --columns -T 表段 -D 数据库</code> //爆字段</li>
-<li>sqlmap.py <code>-u url --dump -C 字段 -T 表段 -D 数据库</code> //猜解字段</li>
-<li>sqlmap.py <code>-u url --dump --start=1 --stop=3 -C 字段 -T 表段 -D 数据库</code> //猜解1到3的字段</li>
-</ol>
-<p>后续遇到的会进行补充</p>
+        <p>长期更新，用于总结在CTF中遇到的自己没想到的知识点<br><a id="more"></a></p>
+<h1 id="SUCTF"><a href="#SUCTF" class="headerlink" title="SUCTF"></a>SUCTF</h1><h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p> 通过F12修改网页前端代码使不可提交的按钮变为可提交的按钮</p>
+<h3 id="PHP是世界上最好的语言"><a href="#PHP是世界上最好的语言" class="headerlink" title="PHP是世界上最好的语言"></a>PHP是世界上最好的语言</h3><p> 再次复习了一次关于MD5值0e开头的问题</p>
+<h3 id="XSS2"><a href="#XSS2" class="headerlink" title="XSS2"></a>XSS2</h3><p> 越权读取文件</p>
+<h3 id="你是谁？你从哪里来？"><a href="#你是谁？你从哪里来？" class="headerlink" title="你是谁？你从哪里来？"></a>你是谁？你从哪里来？</h3><p> 学习到了referer与Origin头的区别以及X-Forwarded-For的应用</p>
+<pre><code>origin：主要是用来说明最初请求是从哪里发起的
+Referer：代表当前访问URL的上一个URL
+X-Forwarded-For：访问者的ip
+</code></pre><h2 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h2><h3 id="Forensic-100"><a href="#Forensic-100" class="headerlink" title="Forensic-100"></a>Forensic-100</h3><p> Linux下file命令的使用：file:用来识别文件类型，也可用来辨别一些文件的编码格式<br> Linux下gzip文件的解压方法：</p>
+<pre><code>gzip：压缩文件，并删除原始文件
+gzip -v：压缩文件，并显示压缩信息
+gunzip：解压文件，gunzip == gzip -d
+zcat：不解压而显示压缩文件的内容
+</code></pre><h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="easyRSA"><a href="#easyRSA" class="headerlink" title="easyRSA"></a>easyRSA</h3><p> RSA加密还在研究中= =</p>
+<h3 id="普莱费尔"><a href="#普莱费尔" class="headerlink" title="普莱费尔"></a>普莱费尔</h3><p> 学习到了普莱费尔密码，第一次接触…<a href="http://rumkin.com/tools/cipher/playfair.php" target="_blank" rel="external">在线解密</a></p>
+<h1 id="第二届上海市大学生网络安全大赛"><a href="#第二届上海市大学生网络安全大赛" class="headerlink" title="第二届上海市大学生网络安全大赛"></a>第二届上海市大学生网络安全大赛</h1><h2 id="Web-1"><a href="#Web-1" class="headerlink" title="Web"></a>Web</h2><h3 id="仔细"><a href="#仔细" class="headerlink" title="仔细"></a>仔细</h3><p>日志查看题目，第一次遇到= =通过扫描查到有log路径，发现存在日志泄露</p>
+<h3 id="跳"><a href="#跳" class="headerlink" title="跳"></a>跳</h3><p>当时做的时候只是看到存在token而且会三秒一跳，无奈只注意到了id=1便以为是注入，想了好久，依然需要扫描发现存在admin.php路径，带着之前的token去访问admin.php，突然感觉到了扫描工具也是很必要的，以及对token的使用</p>
+<h3 id="物超所值"><a href="#物超所值" class="headerlink" title="物超所值"></a>物超所值</h3><p>当时想的是修改前台的js验证，到了购买的时候发现出错了= =，当时也没想着再去抓包看下，看完write up才发现原来在SHOP NOW的时候还会提交一个POST数据= =，还是不够细心。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>由于前面几个题目被虐哭后面也就没做了= =，发现这个是最简单的题目其实都是那一点套路。</p>
+<h3 id="威胁1"><a href="#威胁1" class="headerlink" title="威胁1"></a>威胁1</h3><p>直接密码爆破</p>
+<h3 id="威胁2"><a href="#威胁2" class="headerlink" title="威胁2"></a>威胁2</h3><p>依然是扫描扫描扫描，哎，真的要学着去利用扫描工具了= =。</p>
+<h2 id="MISC-1"><a href="#MISC-1" class="headerlink" title="MISC"></a>MISC</h2><h3 id="大可爱"><a href="#大可爱" class="headerlink" title="大可爱"></a>大可爱</h3><p>自己做的时候用binwalk查到了里面包含一个zlib文件，可怎么也提取不出来，原来是自己会的姿势太少了= =<br>目前学习到的提取文件命令：<code>binwalk -e</code>,<code>dd</code>,<code>foremost</code></p>
 
       
     </div>
@@ -332,13 +342,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></p>
+        <p><span>本文标题:</span><a href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2016-10-16, 19:43:02</p>
-        <p><span>最后更新:</span>2016-11-17, 13:02:07</p>
+        <p><span>发布时间:</span>2016-11-14, 15:31:21</p>
+        <p><span>最后更新:</span>2016-11-17, 18:32:13</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/16/sqlmap常见使用语法/" title="sqlmap常见使用语法">https://clearloveqaq.github.io/2016/10/16/sqlmap常见使用语法/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/16/sqlmap常见使用语法/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/14/CTF知识点总结/" title="CTF知识点总结">https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -351,15 +361,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/10/21/第七季极客大挑战/">
-                    第七季极客大挑战
+                <a href="/2016/11/17/一些感想/">
+                    一些感想
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/10/15/sql绕过技巧/">
-                    sql绕过技巧
+                <a href="/2016/11/09/南邮/">
+                    南邮CTF
                 </a>
             </div>
         
@@ -371,7 +381,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SUCTF"><span class="toc-number">1.</span> <span class="toc-text">SUCTF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编码"><span class="toc-number">1.1.1.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP是世界上最好的语言"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS2"><span class="toc-number">1.1.3.</span> <span class="toc-text">XSS2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你是谁？你从哪里来？"><span class="toc-number">1.1.4.</span> <span class="toc-text">你是谁？你从哪里来？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Forensic-100"><span class="toc-number">1.2.1.</span> <span class="toc-text">Forensic-100</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number">1.3.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easyRSA"><span class="toc-number">1.3.1.</span> <span class="toc-text">easyRSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#普莱费尔"><span class="toc-number">1.3.2.</span> <span class="toc-text">普莱费尔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二届上海市大学生网络安全大赛"><span class="toc-number">2.</span> <span class="toc-text">第二届上海市大学生网络安全大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-1"><span class="toc-number">2.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#仔细"><span class="toc-number">2.1.1.</span> <span class="toc-text">仔细</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳"><span class="toc-number">2.1.2.</span> <span class="toc-text">跳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物超所值"><span class="toc-number">2.1.3.</span> <span class="toc-text">物超所值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.1.4.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁1"><span class="toc-number">2.1.5.</span> <span class="toc-text">威胁1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁2"><span class="toc-number">2.1.6.</span> <span class="toc-text">威胁2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-1"><span class="toc-number">2.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大可爱"><span class="toc-number">2.2.1.</span> <span class="toc-text">大可爱</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -411,7 +421,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/16/sqlmap常见使用语法/" data-title="sqlmap常见使用语法" data-url="https://clearloveqaq.github.io/2016/10/16/sqlmap常见使用语法/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/14/CTF知识点总结/" data-title="CTF知识点总结" data-url="https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
@@ -434,7 +444,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/10/21/第七季极客大挑战/" title="上一篇: 第七季极客大挑战">
+            <a href="/2016/11/17/一些感想/" title="上一篇: 一些感想">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -442,7 +452,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/10/15/sql绕过技巧/" title="下一篇: sql绕过技巧">
+            <a href="/2016/11/09/南邮/" title="下一篇: 南邮CTF">
                 <i class="fa fa-angle-right"></i>
             </a>
         
