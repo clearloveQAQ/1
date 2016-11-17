@@ -23,7 +23,7 @@
 <meta property="og:description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta property="og:image" content="http://tuku02-qn.icp114.cn/public/16-11-9/24630102.jpg">
 <meta property="og:image" content="http://yotuku.cn/link?url=4183SlTgM&tk_plan=free&tk_storage=tietuku&tk_vuid=89aee7bc-c11d-4c04-8f46-67bec8ffa7a7&tk_time=2016111013">
-<meta property="og:updated_time" content="2016-11-10T05:43:58.829Z">
+<meta property="og:updated_time" content="2016-11-17T13:39:37.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="南邮CTF">
 <meta name="twitter:description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
@@ -572,7 +572,7 @@ mysql_fetch_array() 函数从结果集中取得一行作为关联数组，或数
 </code></pre><p>得到flag</p>
 <h2 id="隐写术"><a href="#隐写术" class="headerlink" title="隐写术"></a>隐写术</h2><h3 id="女神"><a href="#女神" class="headerlink" title="女神"></a>女神</h3><p>记事本打开搜nctf</p>
 <h3 id="图种"><a href="#图种" class="headerlink" title="图种"></a>图种</h3><p>将后缀改为zip得到一个压缩包里面还有一个图片得到flag</p>
-<h3 id="丘比龙De女神"><a href="#丘比龙De女神" class="headerlink" title="丘比龙De女神"></a>丘比龙De女神</h3><p>利用hash查看工具查询到md5值改为小写提交即可</p>
+<h3 id="丘比龙De女神"><a href="#丘比龙De女神" class="headerlink" title="丘比龙De女神"></a>丘比龙De女神</h3><p>放到binwalk里面可知有一个zip的尾，那么对比一下其他的gif图片，找到图片结尾，然后添加上zip文件头，密码为zip头后面的love，解压出来，利用hash查看工具查询到md5值改为小写提交即可</p>
 <h2 id="密码学"><a href="#密码学" class="headerlink" title="密码学"></a>密码学</h2><h3 id="easy"><a href="#easy" class="headerlink" title="easy!"></a>easy!</h3><p>base64解码</p>
 <h3 id="KeyBoard"><a href="#KeyBoard" class="headerlink" title="KeyBoard"></a>KeyBoard</h3><p>根据字母与键盘上的位置连线得到flag</p>
 <h3 id="base64全家桶"><a href="#base64全家桶" class="headerlink" title="base64全家桶"></a>base64全家桶</h3><p>一次base64，一次base32，一次base16 <a href="http://pbaseconverter.com/" target="_blank" rel="external">解密网站</a></p>
@@ -657,7 +657,7 @@ for i in range(26):
         <p><span>本文标题:</span><a href="/2016/11/09/南邮/">南邮CTF</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-11-09, 11:56:41</p>
-        <p><span>最后更新:</span>2016-11-10, 13:43:58</p>
+        <p><span>最后更新:</span>2016-11-17, 21:39:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮CTF">https://clearloveqaq.github.io/2016/11/09/南邮/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/09/南邮/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
