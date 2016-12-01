@@ -21,7 +21,7 @@
 <meta property="og:url" content="https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="长期更新，用于总结在CTF中遇到的自己没想到的知识点">
-<meta property="og:updated_time" content="2016-11-17T10:32:13.962Z">
+<meta property="og:updated_time" content="2016-12-01T07:23:52.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CTF知识点总结">
 <meta name="twitter:description" content="长期更新，用于总结在CTF中遇到的自己没想到的知识点">
@@ -334,7 +334,40 @@ zcat：不解压而显示压缩文件的内容
 <h3 id="威胁1"><a href="#威胁1" class="headerlink" title="威胁1"></a>威胁1</h3><p>直接密码爆破</p>
 <h3 id="威胁2"><a href="#威胁2" class="headerlink" title="威胁2"></a>威胁2</h3><p>依然是扫描扫描扫描，哎，真的要学着去利用扫描工具了= =。</p>
 <h2 id="MISC-1"><a href="#MISC-1" class="headerlink" title="MISC"></a>MISC</h2><h3 id="大可爱"><a href="#大可爱" class="headerlink" title="大可爱"></a>大可爱</h3><p>自己做的时候用binwalk查到了里面包含一个zlib文件，可怎么也提取不出来，原来是自己会的姿势太少了= =<br>目前学习到的提取文件命令：<code>binwalk -e</code>,<code>dd</code>,<code>foremost</code></p>
-
+<h1 id="HCTF2016"><a href="#HCTF2016" class="headerlink" title="HCTF2016"></a>HCTF2016</h1><h2 id="第一层"><a href="#第一层" class="headerlink" title="第一层"></a>第一层</h2><p>很明显我第一层都没过去，看完write up感觉自己还是太年轻…</p>
+<h3 id="MISC签到"><a href="#MISC签到" class="headerlink" title="MISC签到"></a>MISC签到</h3><p>通过追踪TCP流可以发现一系列的linux命令，以及一个Python代码：</p>
+<pre><code>#!/usr/bin/env python
+# coding:utf-8
+__author__ = &apos;Aklis&apos;
+from Crypto import Random
+from Crypto.Cipher import AES
+import sys
+import base64
+def decrypt(encrypted, passphrase):
+    IV = encrypted[:16]
+    aes = AES.new(passphrase, AES.MODE_CBC, IV)
+    return aes.decrypt(encrypted[16:])
+def encrypt(message, passphrase):
+    IV = message[:16]
+    length = 16
+    count = len(message)
+    padding = length - (count % length)
+    message = message + &apos;\0&apos; * padding
+    aes = AES.new(passphrase, AES.MODE_CBC, IV)
+    return aes.encrypt(message)
+IV = &apos;YUFHJKVWEASDGQDH&apos;
+message = IV + &apos;flag is hctf{xxxxxxxxxxxxxxx}&apos;
+print len(message)
+example = encrypt(message, &apos;Qq4wdrhhyEWe4qBF&apos;)
+print example
+example = decrypt(example, &apos;Qq4wdrhhyEWe4qBF&apos;) 
+print example
+</code></pre><p>以及</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cat</span> flag </div><div class="line">mbZoEMrhAO0WWeugNjqNw3U6Tt2C+rwpgpbdWRZgfQI3MAh0sZ9qjnziUKkV90XhAOkIs/OXoYVw5uQDjVvgNA==</div></pre></td></tr></table></figure>
+<p>看懂的话其实就是一个加密函数一个解密函数将flag在代码里面base64解密然后再进行一次decrypt即可。</p>
+<h3 id="IOS99"><a href="#IOS99" class="headerlink" title="IOS99"></a>IOS99</h3><p>改User Agent头信息，改为ios99发现怎么都不对，看完源码才知道是需要一个完整的User Agent头信息<br><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Mozilla/5.0 (iPhone; CPU iPhone OS 9_0 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13A344 Safari/601.1</span></div><div class="line"><span class="keyword">if</span> (preg_match(<span class="string">'/iPhone;\ CPU\ iPhone\ OS\ 99\ like\ Mac\ OS\ X/i'</span>, $ua) &amp;&amp; preg_match(<span class="string">'/Mozilla\/5\.0/i'</span>, $ua) &amp;&amp; </div><div class="line">	preg_match(<span class="string">'/AppleWebKit/i'</span>, $ua) &amp;&amp; preg_match(<span class="string">'/Safari/i'</span>, $ua)) &#123;</div><div class="line"></div><div class="line">	echo <span class="string">'&lt;!-- flag not in html... --&gt;'</span>;</div><div class="line">	<span class="keyword">header</span>(<span class="string">'flag: hctf&#123;h77p_He4dEr_50_E4sy&#125;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>进行了正则匹配</p>
+<h2 id="第N层"><a href="#第N层" class="headerlink" title="第N层"></a>第N层</h2>
       
     </div>
     
@@ -345,7 +378,7 @@ zcat：不解压而显示压缩文件的内容
         <p><span>本文标题:</span><a href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-11-14, 15:31:21</p>
-        <p><span>最后更新:</span>2016-11-17, 18:32:13</p>
+        <p><span>最后更新:</span>2016-12-01, 15:23:52</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/11/14/CTF知识点总结/" title="CTF知识点总结">https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/</a>
             <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/14/CTF知识点总结/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -381,7 +414,7 @@ zcat：不解压而显示压缩文件的内容
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SUCTF"><span class="toc-number">1.</span> <span class="toc-text">SUCTF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编码"><span class="toc-number">1.1.1.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP是世界上最好的语言"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS2"><span class="toc-number">1.1.3.</span> <span class="toc-text">XSS2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你是谁？你从哪里来？"><span class="toc-number">1.1.4.</span> <span class="toc-text">你是谁？你从哪里来？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Forensic-100"><span class="toc-number">1.2.1.</span> <span class="toc-text">Forensic-100</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number">1.3.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easyRSA"><span class="toc-number">1.3.1.</span> <span class="toc-text">easyRSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#普莱费尔"><span class="toc-number">1.3.2.</span> <span class="toc-text">普莱费尔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二届上海市大学生网络安全大赛"><span class="toc-number">2.</span> <span class="toc-text">第二届上海市大学生网络安全大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-1"><span class="toc-number">2.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#仔细"><span class="toc-number">2.1.1.</span> <span class="toc-text">仔细</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳"><span class="toc-number">2.1.2.</span> <span class="toc-text">跳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物超所值"><span class="toc-number">2.1.3.</span> <span class="toc-text">物超所值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.1.4.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁1"><span class="toc-number">2.1.5.</span> <span class="toc-text">威胁1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁2"><span class="toc-number">2.1.6.</span> <span class="toc-text">威胁2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-1"><span class="toc-number">2.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大可爱"><span class="toc-number">2.2.1.</span> <span class="toc-text">大可爱</span></a></li></ol></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SUCTF"><span class="toc-number">1.</span> <span class="toc-text">SUCTF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web"><span class="toc-number">1.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#编码"><span class="toc-number">1.1.1.</span> <span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP是世界上最好的语言"><span class="toc-number">1.1.2.</span> <span class="toc-text">PHP是世界上最好的语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XSS2"><span class="toc-number">1.1.3.</span> <span class="toc-text">XSS2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#你是谁？你从哪里来？"><span class="toc-number">1.1.4.</span> <span class="toc-text">你是谁？你从哪里来？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC"><span class="toc-number">1.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Forensic-100"><span class="toc-number">1.2.1.</span> <span class="toc-text">Forensic-100</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Crypto"><span class="toc-number">1.3.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#easyRSA"><span class="toc-number">1.3.1.</span> <span class="toc-text">easyRSA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#普莱费尔"><span class="toc-number">1.3.2.</span> <span class="toc-text">普莱费尔</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二届上海市大学生网络安全大赛"><span class="toc-number">2.</span> <span class="toc-text">第二届上海市大学生网络安全大赛</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web-1"><span class="toc-number">2.1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#仔细"><span class="toc-number">2.1.1.</span> <span class="toc-text">仔细</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跳"><span class="toc-number">2.1.2.</span> <span class="toc-text">跳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#物超所值"><span class="toc-number">2.1.3.</span> <span class="toc-text">物超所值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">2.1.4.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁1"><span class="toc-number">2.1.5.</span> <span class="toc-text">威胁1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#威胁2"><span class="toc-number">2.1.6.</span> <span class="toc-text">威胁2</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-1"><span class="toc-number">2.2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大可爱"><span class="toc-number">2.2.1.</span> <span class="toc-text">大可爱</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HCTF2016"><span class="toc-number">3.</span> <span class="toc-text">HCTF2016</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一层"><span class="toc-number">3.1.</span> <span class="toc-text">第一层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MISC签到"><span class="toc-number">3.1.1.</span> <span class="toc-text">MISC签到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IOS99"><span class="toc-number">3.1.2.</span> <span class="toc-text">IOS99</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第N层"><span class="toc-number">3.2.</span> <span class="toc-text">第N层</span></a></li></ol></li></ol>
         
     </div>
     <style>
