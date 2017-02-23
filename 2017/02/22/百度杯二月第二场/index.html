@@ -15,15 +15,16 @@
 
 
 
-<meta name="description" content="做题却也不如你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Isron">
-<meta property="og:url" content="https://clearloveqaq.github.io/tags/CTF/index.html">
+<meta name="description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="百度杯二月第二场">
+<meta property="og:url" content="https://clearloveqaq.github.io/2017/02/22/百度杯二月第二场/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做题却也不如你">
+<meta property="og:description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
+<meta property="og:updated_time" content="2017-02-23T10:52:30.774Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Isron">
-<meta name="twitter:description" content="做题却也不如你">
+<meta name="twitter:title" content="百度杯二月第二场">
+<meta name="twitter:description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: CTF | Isron</title>
+<title>百度杯二月第二场 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,9 +66,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -271,198 +272,213 @@
     </div>
     <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-百度杯二月第二场" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2017/02/22/百度杯二月第二场/" class="archive-article-date">
-      <time datetime="2017-02-22T03:07:04.000Z" itemprop="datePublished">02-22</time>
+    <div class="article-meta">
+      <a href="/2017/02/22/百度杯二月第二场/" class="article-date">
+      <time datetime="2017-02-22T03:07:04.000Z" itemprop="datePublished">2017-02-22</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      百度杯二月第二场
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+      </div>
       
-        </div></section>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+          
+        <p>这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会<br><a id="more"></a></p>
+<h2 id="MISC-1"><a href="#MISC-1" class="headerlink" title="MISC-1"></a>MISC-1</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">include</span> <span class="string">"flag.php"</span>; <span class="comment">//包含flag.php</span></div><div class="line">$a = @$_REQUEST[<span class="string">'hello'</span>];</div><div class="line"><span class="keyword">if</span>(!preg_match(<span class="string">'/^\w*$/'</span>,$a ))&#123;</div><div class="line">  <span class="keyword">die</span>(<span class="string">'ERROR'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">eval</span>(<span class="string">"var_dump($$a);"</span>);</div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>$_REQUEST与$_POST,$_GET都用于PHP接受表单。</p>
+<ul>
+<li>$_REQUEST具有$_POST $_GET的功能,但是$_REQUEST比较慢。通过post和get方法提交的所有数据都可以通过$_REQUEST数组获得</li>
+<li>$_GET安全性较低，传送数据量较小，get传输的数据在URL当中能够看到</li>
+<li>$_POST安全性较高，传送数据量较大，一般默认为不受限制，用户看不到数据的传送</li>
+</ul>
+<p>preg_match() 函数用于进行正则表达式匹配</p>
+<pre><code>语法：preg_match (pattern , subject, matches)
+</code></pre><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pattern</td>
+<td>正则表达式</td>
+</tr>
+<tr>
+<td>subject</td>
+<td>需要匹配的检索对象</td>
+</tr>
+<tr>
+<td>matches</td>
+<td>可选，存储匹配结果的数组</td>
+</tr>
+</tbody>
+</table>
+<pre><code>\w：匹配字母或数字或下划线或汉字
+if(!preg_match(&apos;/^\w*$/&apos;,$a )){ //当匹配不到上述信息时执行ERROR
+</code></pre><p>题目说flag在某六位变量中,所以使用超全局变量$GLOBALS将所有的全局变量输出出来。</p>
+<pre><code>$GLOBALS 这种全局变量用于在 PHP 脚本中的任意位置访问全局变量
+</code></pre><h2 id="MISC-2"><a href="#MISC-2" class="headerlink" title="MISC-2"></a>MISC-2</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">include</span> <span class="string">"flag.php"</span>;</div><div class="line">$a = @$_REQUEST[<span class="string">'hello'</span>];</div><div class="line"><span class="keyword">eval</span>( <span class="string">"var_dump($a);"</span>);</div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div></pre></td></tr></table></figure>
+<p>提示flag不在变量中，那么可以根据eval的特性</p>
+<pre><code>语法：eval(phpcode)
+</code></pre><p>进行代码执行</p>
+<pre><code>?hello=);echo `cat flag.php`;//
+eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
+</code></pre><p>闭合前面的括号执行后面的cat flag.php得到flag</p>
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
+    </div>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/11/14/CTF知识点总结/" class="archive-article-date">
-      <time datetime="2016-11-14T07:31:21.000Z" itemprop="datePublished">11-14</time>
-</a>
-
-
-        </div>
-         
+  </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/总结/">总结</a></li></ul>
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
+        <p><span>Created:</span>2017-02-22, 11:07:04</p>
+        <p><span>Updated:</span>2017-02-23, 18:52:30</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/02/22/百度杯二月第二场/" title="百度杯二月第二场">https://clearloveqaq.github.io/2017/02/22/百度杯二月第二场/</a>
+            <span class="copy-path" data-clipboard-text="From https://clearloveqaq.github.io/2017/02/22/百度杯二月第二场/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/12/01/ubuntu下LAMP的环境配置/">
+                    ubuntu下LAMP的环境配置
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-1"><span class="toc-number">1.</span> <span class="toc-text">MISC-1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-2"><span class="toc-number">2.</span> <span class="toc-text">MISC-2</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
     
+<div class="share">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/11/09/南邮/" class="archive-article-date">
-      <time datetime="2016-11-09T03:56:41.000Z" itemprop="datePublished">11-09</time>
-</a>
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/09/南邮/">南邮CTF</a>
-    </h1>
-  
 
-        <div class="article-info info-on-archive">
-          
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/22/百度杯二月第二场/" data-title="百度杯二月第二场" data-url="https://clearloveqaq.github.io/2017/02/22/百度杯二月第二场/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/12/01/ubuntu下LAMP的环境配置/" title="Next: ubuntu下LAMP的环境配置">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/21/第七季极客大挑战/" class="archive-article-date">
-      <time datetime="2016-10-21T02:32:23.000Z" itemprop="datePublished">10-21</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu下LAMP的环境配置/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/一些感想/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/09/22/sql盲注学习笔记/" class="archive-article-date">
-      <time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">09-22</time>
-</a>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
