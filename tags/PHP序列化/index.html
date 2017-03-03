@@ -15,16 +15,15 @@
 
 
 
-<meta name="description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sql绕过技巧">
-<meta property="og:url" content="https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/index.html">
+<meta name="description" content="做题却也不如你">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Isron">
+<meta property="og:url" content="https://clearloveqaq.github.io/tags/PHP序列化/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
-<meta property="og:updated_time" content="2016-10-29T10:27:23.349Z">
+<meta property="og:description" content="做题却也不如你">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sql绕过技巧">
-<meta name="twitter:description" content="做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf">
+<meta name="twitter:title" content="Isron">
+<meta name="twitter:description" content="做题却也不如你">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>sql绕过技巧 | Isron</title>
+<title>Tag: PHP序列化 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,9 +65,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -272,192 +271,56 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="w-sql绕过技巧" class="article article-type-w" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2016/10/15/sql绕过技巧/" class="article-date">
-      <time datetime="2016-10-15T06:30:51.000Z" itemprop="datePublished">2016-10-15</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/" class="archive-article-date">
+      <time datetime="2017-03-01T10:32:33.000Z" itemprop="datePublished">03-01</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      sql绕过技巧
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">Jarvis OJ 神盾局的秘密</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAF/">WAF</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <p>做完第一部分sqli—labs时，去做sql注入题发现远没有想像的那么简单，实战中还会有很多的过滤跟waf，记录下我最近遇到的sql过滤跟waf<br><a id="more"></a></p>
-<h2 id="注释符被过滤"><a href="#注释符被过滤" class="headerlink" title="注释符被过滤"></a>注释符被过滤</h2><pre><code>解决方案，构造语句让分号完美闭合不去使用注释符。
-</code></pre><h2 id="and-or-被过滤"><a href="#and-or-被过滤" class="headerlink" title="and  or  被过滤"></a>and  or  被过滤</h2><pre><code>解决方案：用&amp;&amp;代替and 用 ||代替or 有时需要用url编码过的&amp;&amp;与||
-</code></pre><h2 id="空格被过滤"><a href="#空格被过滤" class="headerlink" title="空格被过滤"></a>空格被过滤</h2><pre><code>解决方案：如果注释符没被过滤可以用/**/来代替空格 如果注释符也被过滤掉则需要用 其他字符进行代替
-可以使用%09  %0a  %0b  %0c  %0d  %a0代替空格 情况不同，用不同的字符进行代替，或者使用括号分割语句当然分割的语句也要是不需要连一起的 union select 不能用括号分割。
-</code></pre><h2 id="union-select-被过滤"><a href="#union-select-被过滤" class="headerlink" title="union select 被过滤"></a>union select 被过滤</h2><pre><code>解决方案：如果对大小写敏感则可以用大小写进行绕过 比如：UnIoN SeLeCt 如果大小写不行还可以用叠加绕过
-如：uniunionon selselselectectect 具体要看他们过滤了几次 去叠加几次.
-</code></pre><h2 id="union-select-被过滤-1"><a href="#union-select-被过滤-1" class="headerlink" title="union+select 被过滤"></a>union+select 被过滤</h2><pre><code>解决方案：这个是当union 与 select 同时出现时进行过滤
-所以可以用union all select 代替 union select 或者利用之前用来代替空格的字符隔开union select。
-</code></pre><h2 id="waf之利用正则只去匹配数字"><a href="#waf之利用正则只去匹配数字" class="headerlink" title="waf之利用正则只去匹配数字"></a>waf之利用正则只去匹配数字</h2><pre><code>解决方案：多次对id进行重定义，当其只匹配一次id时可以进行绕过，如：id=1&amp;id=2&amp;id=0
-</code></pre><h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><pre><code>解决方案：利用%df去与%5c组成双字节 从而使后面的攻击代码不被转义 
-如：id=-1%df&apos; union select 1,2,3 --+ 当使用的是Mysql_set_charset(&apos;gbk&apos;,&apos;$conn&apos;);函数时可以避免被宽字节注入。
-</code></pre><h2 id="反引号绕过"><a href="#反引号绕过" class="headerlink" title="反引号绕过"></a>反引号绕过</h2><pre><code>解决方案：有的题目会将#作为数据库名，然后进行``绕过，反引号是为了区分MySQL的保留字与普通字符而引入的符号。
-</code></pre><h2 id="逗号绕过"><a href="#逗号绕过" class="headerlink" title="逗号绕过"></a>逗号绕过</h2><pre><code>解决方案：在使用盲注的时候，需要使用到substr(),mid(),limit。这些子句方法都需要使用到逗号。对于substr()和mid()这两个方法可以使用from to的方式来解决。
-</code></pre><h2 id="后续遇到的会进行补充"><a href="#后续遇到的会进行补充" class="headerlink" title="后续遇到的会进行补充"></a>后续遇到的会进行补充</h2>
-      
+
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li></ul>
     </div>
-    
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2016-10-15, 14:30:51</p>
-        <p><span>最后更新:</span>2016-10-29, 18:27:23</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/15/sql绕过技巧/" title="sql绕过技巧">https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/10/16/sqlmap常见使用语法/">
-                    sqlmap常见使用语法
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/09/22/sql盲注学习笔记/">
-                    sql盲注学习笔记
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#注释符被过滤"><span class="toc-number">1.</span> <span class="toc-text">注释符被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#and-or-被过滤"><span class="toc-number">2.</span> <span class="toc-text">and  or  被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空格被过滤"><span class="toc-number">3.</span> <span class="toc-text">空格被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤"><span class="toc-number">4.</span> <span class="toc-text">union select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#union-select-被过滤-1"><span class="toc-number">5.</span> <span class="toc-text">union+select 被过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#waf之利用正则只去匹配数字"><span class="toc-number">6.</span> <span class="toc-text">waf之利用正则只去匹配数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#宽字节注入"><span class="toc-number">7.</span> <span class="toc-text">宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反引号绕过"><span class="toc-number">8.</span> <span class="toc-text">反引号绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#逗号绕过"><span class="toc-number">9.</span> <span class="toc-text">逗号绕过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续遇到的会进行补充"><span class="toc-number">10.</span> <span class="toc-text">后续遇到的会进行补充</span></a></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
+  
+  
+    </div></section>
+  
 
     
-<div class="share">
-    
 
-    
-        <div class="addthis_sharing_toolbox"></div>
-    
-</div>
-
-
-
-
-
-
-
-    
-      <div class="duoshuo" id="comments">
-    <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/10/15/sql绕过技巧/" data-title="sql绕过技巧" data-url="https://clearloveqaq.github.io/2016/10/15/sql绕过技巧/"></div>
-    <script>
-        var duoshuoQuery = {short_name:"clearloveqaq"};
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-            s.async = true; s.charset = 'UTF-8';
-            (d.head || d.body).appendChild(s);
-        }
-
-        
-    </script>
-    
-    <script> loadComment(); </script>
-
-</div>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/10/16/sqlmap常见使用语法/" title="上一篇: sqlmap常见使用语法">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2016/09/22/sql盲注学习笔记/" title="下一篇: sql盲注学习笔记">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu下LAMP的环境配置/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/一些感想/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
