@@ -18,7 +18,7 @@
 <meta name="description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="南邮CTF">
-<meta property="og:url" content="https://clearloveqaq.github.io/2016/11/09/南邮/index.html">
+<meta property="og:url" content="http://isron.dropsec.xyz/2016/11/09/南邮/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="南邮涉及了那么多知识点，怎么能不总结一下呢。">
 <meta property="og:image" content="http://tuku02-qn.icp114.cn/public/16-11-9/24630102.jpg">
@@ -209,10 +209,6 @@
                     
                       <a class="main-nav-link switch-friends-link" href="http://rcoil.me">RcoIl</a>
                     
-                      <a class="main-nav-link switch-friends-link" href="https://c-mfile.github.io/">C-M</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="https://g0die.github.io/">咯咯</a>
-                    
                     </div>
                 </section>
                 
@@ -371,7 +367,7 @@ gzcompress(): 压缩字符串
 </code></pre><p>查看URL可知传入了一个show.php文件那么我们可以用普通的远程文件包含，利用php流的filter去进行文件包含获取他base64编码后的源码</p>
 <pre><code>?file=php://filter/convert.base64-encode/resource=index.php
 </code></pre><p>当然文件包含不止这一种方法，在以后的学习中会进行更新</p>
-<h3 id="单身一百年也没用"><a href="#单身一百年也没用" class="headerlink" title="单身一百年也没用"></a>单身一百年也没用</h3><p>很明显之前的方法以及不能用了，那么就用firebug查看一下HTTP协议进行的过程，发现有两个请求头与响应头，在第二个响应头里有flag。<a href="https://clearloveqaq.github.io/2016/11/08/http%E5%8D%8F%E8%AE%AE/">HTTP协议</a></p>
+<h3 id="单身一百年也没用"><a href="#单身一百年也没用" class="headerlink" title="单身一百年也没用"></a>单身一百年也没用</h3><p>很明显之前的方法以及不能用了，那么就用firebug查看一下HTTP协议进行的过程，发现有两个请求头与响应头，在第二个响应头里有flag。<a href="https://clearloveqaq.github.io/2016/11/08/http%E5%8D%8F%E8%AE%AE/" target="_blank" rel="external">HTTP协议</a></p>
 <h3 id="Download"><a href="#Download" class="headerlink" title="Download~!"></a>Download~!</h3><p>查看源代码可以得到</p>
 <pre><code>download.php?url=eGluZ3hpbmdkaWFuZGVuZy5tcDM=&quot;
 </code></pre><p>url为歌曲xingxingdiandeng.mp3 base64编码之后的内容那么想到去任意下载得到index.php的源码发现是拒绝的那么换个思路去download.php的源码得到其源码发现还有一个hereiskey.php文件继续下载得到flag。</p>
@@ -399,7 +395,7 @@ if($_GET[id]) {
 </code></pre><p>也就是说输入一个id值将其转换为int型由于不能为1024，那么：</p>
 <pre><code>intval(1024.1)=1024
 </code></pre><p>所以可以用1024.1进行绕过得到flag</p>
-<h3 id="sql-injection-3"><a href="#sql-injection-3" class="headerlink" title="sql injection 3"></a>sql injection 3</h3><p>输入id=1’发现单引号被转义了可以想到是经典的宽字节注入<a href="https://clearloveqaq.github.io/2016/10/15/sql%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/">sql注入绕过</a><br>payload:<br>查询全部的表名：</p>
+<h3 id="sql-injection-3"><a href="#sql-injection-3" class="headerlink" title="sql injection 3"></a>sql injection 3</h3><p>输入id=1’发现单引号被转义了可以想到是经典的宽字节注入<a href="https://clearloveqaq.github.io/2016/10/15/sql%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/" target="_blank" rel="external">sql注入绕过</a><br>payload:<br>查询全部的表名：</p>
 <pre><code>http://115.28.150.176/sqli/index.php?id=1%df&apos; union select group_concat(table_name),2 from information_schema.tables where table_schema=database() --+
 </code></pre><p>查询全部的列名：</p>
 <pre><code>http://115.28.150.176/sqli/index.php?id=1%df&apos; union select group_concat(column_name),2 from information_schema.columns where table_schema=database() --+
@@ -659,8 +655,8 @@ for i in range(26):
         <p><span>发布时间:</span>2016-11-09, 11:56:41</p>
         <p><span>最后更新:</span>2016-11-17, 21:39:37</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮CTF">https://clearloveqaq.github.io/2016/11/09/南邮/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/11/09/南邮/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/09/南邮/" title="南邮CTF">http://isron.dropsec.xyz/2016/11/09/南邮/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2016/11/09/南邮/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -733,7 +729,7 @@ for i in range(26):
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/09/南邮/" data-title="南邮CTF" data-url="https://clearloveqaq.github.io/2016/11/09/南邮/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/09/南邮/" data-title="南邮CTF" data-url="http://isron.dropsec.xyz/2016/11/09/南邮/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
