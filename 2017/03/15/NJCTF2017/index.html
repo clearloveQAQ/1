@@ -15,15 +15,19 @@
 
 
 
-<meta name="description" content="做题却也不如你">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Isron">
-<meta property="og:url" content="http://isron.dropsec.xyz/tags/WAF/index.html">
+<meta name="description" content="这次出了很多Web题目都很有意思，很多都没做出来，赛后总结一下吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NJCTF2017">
+<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/15/NJCTF2017/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做题却也不如你">
+<meta property="og:description" content="这次出了很多Web题目都很有意思，很多都没做出来，赛后总结一下吧">
+<meta property="og:image" content="http://i1.piimg.com/567571/3fef7aff8ed61a23.png">
+<meta property="og:image" content="http://p1.bpimg.com/567571/f92d79e53847c0b2.png">
+<meta property="og:updated_time" content="2017-03-15T03:26:25.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Isron">
-<meta name="twitter:description" content="做题却也不如你">
+<meta name="twitter:title" content="NJCTF2017">
+<meta name="twitter:description" content="这次出了很多Web题目都很有意思，很多都没做出来，赛后总结一下吧">
+<meta name="twitter:image" content="http://i1.piimg.com/567571/3fef7aff8ed61a23.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +59,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: WAF | Isron</title>
+<title>NJCTF2017 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -65,9 +69,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -274,56 +278,181 @@
     </div>
     <link class="menu-list" tags="標籤" friends="友情鏈接" about="關於我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-NJCTF2017" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2016/10/15/sql绕过技巧/" class="archive-article-date">
-      <time datetime="2016-10-15T06:30:51.000Z" itemprop="datePublished">10-15</time>
+    <div class="article-meta">
+      <a href="/2017/03/15/NJCTF2017/" class="article-date">
+      <time datetime="2017-03-15T02:20:48.000Z" itemprop="datePublished">2017-03-15</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NJCTF2017
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 
-          
+        
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WAF/">WAF</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这次出了很多Web题目都很有意思，很多都没做出来，赛后总结一下吧<a id="more"></a></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>打开发现让登录，右下可以注册，直接想到去年ISCC的mysql超长字符串截取，注册<code>admin                  q</code>,由于mysql只截取前十六位所以直接用admin就能登陆获取flag。</p>
+<h2 id="Get-Flag"><a href="#Get-Flag" class="headerlink" title="Get Flag"></a>Get Flag</h2><p>一个输入框可以查询图片信息，随便输入一个发现<img src="http://i1.piimg.com/567571/3fef7aff8ed61a23.png" alt="">base64解码之后发现是<code>cat: images/....: No such file or directory</code>发现了一个cat想到是linux命令但是也没深入去想然后一个<a href="RcoIl.github.io">傻仔</a>告诉我是命令执行,尝试利用管道命令||发现返回<br><img src="http://p1.bpimg.com/567571/f92d79e53847c0b2.png" alt=""><br>说明过滤掉了||，然后告诉我说用&amp;<br>payload：<code>&amp; cd ../../ &amp;&amp; ls</code>,<code>&amp; cd ../../ &amp;&amp; cat 9iZM2qTEmq67SOdJp%!oJm2%M4!nhS_thi5_flag</code></p>
+
+      
+    </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文標題:</span><a href="/2017/03/15/NJCTF2017/">NJCTF2017</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主頁">Isron</a></p>
+        <p><span>發布時間:</span>2017-03-15, 10:20:48</p>
+        <p><span>最後更新:</span>2017-03-15, 11:26:25</p>
+        <p>
+            <span>原始鏈接:</span><a class="post-url" href="/2017/03/15/NJCTF2017/" title="NJCTF2017">http://isron.dropsec.xyz/2017/03/15/NJCTF2017/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/15/NJCTF2017/　　作者: Isron" title="點擊複製文章鏈接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>許可協議:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"姓名標示-非商業性-相同方式分享 4.0 國際"</a> 轉載請保留原文鏈接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/15/Linux下命令分割符的区别/">
+                    Linux 下命令分割符的区别
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/03/13/Jarvis-OJ-api调用/">
+                    Jarvis OJ api调用
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目錄</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Login"><span class="toc-number">1.1.</span> <span class="toc-text">Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Flag"><span class="toc-number">1.2.</span> <span class="toc-text">Get Flag</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隱藏目錄"  title="點擊按鈕隱藏或者顯示文章目錄">
+
+    <script>
+        yiliaConfig.toc = ["隱藏目錄", "顯示目錄", !!"false"];
+    </script>
+
+
 
     
+<div class="share">
+    
 
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/15/NJCTF2017/" data-title="NJCTF2017" data-url="http://isron.dropsec.xyz/2017/03/15/NJCTF2017/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/15/Linux下命令分割符的区别/" title="上一篇: Linux 下命令分割符的区别">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/03/13/Jarvis-OJ-api调用/" title="下一篇: Jarvis OJ api调用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux下命令分割符的区别/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ-api调用/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/简单的Python爬虫/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/PHP序列化与反序列化/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu下LAMP的环境配置/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/一些感想/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
