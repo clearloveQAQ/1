@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/4b90803e9609112f.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/7a56c50170c787ae.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/e63b285dd2955ad6.png">
-<meta property="og:updated_time" content="2017-03-18T04:44:42.667Z">
+<meta property="og:updated_time" content="2017-03-18T05:26:01.500Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NJCTF2017">
 <meta name="twitter:description" content="NJCTF题目还是不错的，虽然很多都没做出来，总结总结慢慢积累">
@@ -165,13 +165,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
+                        <li>菜单</li>
+                        <li>标签</li>
                         
-                        <li>Friends</li>
+                        <li>友情链接</li>
                         
                         
-                        <li>About Me</li>
+                        <li>关于我</li>
                         
                     </ul>
                 </div>
@@ -220,6 +220,10 @@
                     <div id="js-friends">
                     
                       <a class="main-nav-link switch-friends-link" href="https://rcoil.github.io/">RcoIl</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zjw.dropsec.xyz/">Hello_C</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://blog.dropsec.xyz/">Drops</a>
                     
                     </div>
                 </section>
@@ -281,7 +285,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap"><article id="post-NJCTF2017" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -324,7 +328,7 @@
       
           
         <p>NJCTF题目还是不错的，虽然很多都没做出来，总结总结慢慢积累<a id="more"></a></p>
-<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>打开发现让登录，右下可以注册，直接想到去年ISCC的mysql超长字符串截取，注册<code>admin                  q</code>,由于mysql只截取前十六位所以直接用admin就能登陆获取flag。</p>
+<h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>打开发现让登录，右下可以注册，直接想到去年ISCC的mysql超长字符串截取，注册admin             q,由于mysql只截取前十六位所以直接用admin就能登陆获取flag。</p>
 <h2 id="Get-Flag"><a href="#Get-Flag" class="headerlink" title="Get Flag"></a>Get Flag</h2><p>一个输入框可以查询图片信息，随便输入一个发现<br><img src="http://i1.piimg.com/567571/3fef7aff8ed61a23.png" alt=""><br>base64解码之后发现是<code>cat: images/....: No such file or directory</code>发现了一个cat想到是linux命令但是也没深入去想然后<a href="https://RcoIl.github.io" target="_blank" rel="external">傻仔</a>告诉我是命令执行,尝试利用管道命令||发现返回<br><img src="http://p1.bpimg.com/567571/f92d79e53847c0b2.png" alt=""><br>说明过滤掉了||，然后告诉我说用&amp;进行命令执行<a href="http://isron.dropsec.xyz/2017/03/15/Linux%E4%B8%8B%E5%91%BD%E4%BB%A4%E5%88%86%E5%89%B2%E7%AC%A6%E7%9A%84%E5%8C%BA%E5%88%AB/">各种分隔符之间的区别</a><br>payload：<code>&amp; cd ../../ &amp;&amp; ls</code>,<code>&amp; cd ../../ &amp;&amp; cat 9iZM2qTEmq67SOdJp%!oJm2%M4!nhS_thi5_flag</code></p>
 <h2 id="Text-wall"><a href="#Text-wall" class="headerlink" title="Text wall"></a>Text wall</h2><p>一个留言墙发现可以随便留言，最开始想的是XSS但是发现并没有什么卵用，通过查看cookies:<code>24c5889e00902d6bcc65073f0e91ea30bbe203c2a:1:{i:0;s:9:&quot;hiehiehie&quot;;}</code>发现是PHP序列化，将<code>a:1:{i:0;s:9:&quot;hiehiehie&quot;;}</code>SHA1加密后正是前面的内容，然后就没头绪了，学长说在.index.php.swo下有源码，还是知识太少，获得源码<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">$lists = [];</div><div class="line"><span class="class"><span class="keyword">Class</span> <span class="title">filelist</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> highlight_file(<span class="string">'hiehiehie.txt'</span>, <span class="keyword">true</span>).highlight_file(<span class="keyword">$this</span>-&gt;source, <span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">........</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <pre><code>highlight_file ： 语法高亮一个文件
@@ -369,17 +373,17 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
   
     
     <div class="copyright">
-        <p><span>Title:</span><a href="/2017/03/15/NJCTF2017/">NJCTF2017</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
-        <p><span>Created:</span>2017-03-15, 10:20:48</p>
-        <p><span>Updated:</span>2017-03-18, 12:44:42</p>
+        <p><span>本文标题:</span><a href="/2017/03/15/NJCTF2017/">NJCTF2017</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
+        <p><span>发布时间:</span>2017-03-15, 10:20:48</p>
+        <p><span>最后更新:</span>2017-03-18, 13:26:01</p>
         <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/03/15/NJCTF2017/" title="NJCTF2017">http://isron.dropsec.xyz/2017/03/15/NJCTF2017/</a>
-            <span class="copy-path" data-clipboard-text="From http://isron.dropsec.xyz/2017/03/15/NJCTF2017/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/15/NJCTF2017/" title="NJCTF2017">http://isron.dropsec.xyz/2017/03/15/NJCTF2017/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/15/NJCTF2017/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
     </div>
 
@@ -406,7 +410,7 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
+        <strong class="toc-title">文章目录</strong>
         
             <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Login"><span class="toc-number">1.1.</span> <span class="toc-text">Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Flag"><span class="toc-number">1.2.</span> <span class="toc-text">Get Flag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text-wall"><span class="toc-number">1.3.</span> <span class="toc-text">Text wall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA1加密与MD5"><span class="toc-number">1.3.1.</span> <span class="toc-text">SHA1加密与MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码泄露"><span class="toc-number">1.3.2.</span> <span class="toc-text">源码泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wallet"><span class="toc-number">1.4.</span> <span class="toc-text">Wallet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pictures-wall"><span class="toc-number">1.5.</span> <span class="toc-text">pictures wall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Guess"><span class="toc-number">1.6.</span> <span class="toc-text">Guess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Come-on"><span class="toc-number">1.7.</span> <span class="toc-text">Come on</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#konck"><span class="toc-number">2.1.</span> <span class="toc-text">konck</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-crypto"><span class="toc-number">2.2.</span> <span class="toc-text">easy_crypto</span></a></li></ol></li></ol>
         
@@ -422,10 +426,10 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
         }
     </style>
 
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
     <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
     </script>
 
 
@@ -471,15 +475,15 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/15/Linux下命令分割符的区别/" title="Pre: Linux 下命令分割符的区别">
+            <a href="/2017/03/15/Linux下命令分割符的区别/" title="上一篇: Linux 下命令分割符的区别">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/13/Jarvis-OJ-api调用/" title="Next: Jarvis OJ api调用">
+            <a href="/2017/03/13/Jarvis-OJ-api调用/" title="下一篇: Jarvis OJ api调用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -502,14 +506,14 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
                 2016-2017 Isron
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -518,7 +522,7 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -551,9 +555,9 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
