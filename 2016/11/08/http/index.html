@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Isron" />
+
+
+
+<meta name="description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http协议">
+<meta property="og:url" content="http://isron.dropsec.xyz/2016/11/08/http/index.html">
+<meta property="og:site_name" content="Isron">
+<meta property="og:description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
+<meta property="og:updated_time" content="2016-11-09T03:54:02.413Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http协议">
+<meta name="twitter:description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Isron" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/111.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>http协议 | Isron</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56ff76c972fc0cf9"></script>
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d225745dd35ee207c5a863746000dcea";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/111.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Isron</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">The dream is to be realized.</p>
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSP/">CSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SHA1/">SHA1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XXE/">XXE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://rcoil.github.io/">RcoIl</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://zjw.dropsec.xyz/">Hello_C</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://blog.dropsec.xyz/">Drops</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">一个正在学习的菜鸡</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Isron</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/111.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Isron</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">The dream is to be realized.</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="https://mail.qq.com/cgi-bin/frame_html?sid=mNwN2kOtKnfYdjpt&r=745214a32ef2dee5dd3d9b17d5d30fd0" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/clearloveQAQ" title="GitHub"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-http" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/11/08/http/" class="article-date">
+      <time datetime="2016-11-08T09:59:28.000Z" itemprop="datePublished">2016-11-08</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      http协议
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。<br><a id="more"></a></p>
+<h2 id="HTTP协议概述"><a href="#HTTP协议概述" class="headerlink" title="HTTP协议概述"></a>HTTP协议概述</h2><p>　　HTTP是一种无状态的协议。无状态是指Web浏览器与Web服务器之间不需要建立持久的连接，也就是说当一个客户端向服务器发出请求，然后web服务器返回响应，连接就被关闭了，在服务器端不保留连接的有关信息。<br>　　HTTP请求只能由客户端发起，而服务器不能主动向客户发送数据。</p>
+<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>　　GET方法用于获取请求页面的指定信息。如果请求资源为动态脚本，那么返回文本是Web容器解析后的HTML源代码，而不是源文件。</p>
+<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>　　HEAD方法除了服务器不能在响应里面返回消息主体外，其他都与GET方法相同。此方法经常被用来测试超文本链接的有效性，可访问性和最近的改变。攻击者编写扫描工具时，就常用此方法，因为只测试资源是否存在，而不用返回消息主题，速度是最快的。</p>
+<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>　　POST方法也与GET方法相似，但最大的区别在于，GET方法没有请求内容，而POST是有请求内容的。POST    请求最多用于向服务器发送大量的数据。GET虽然也能发送数据，但是有长度的限制，并且GET请求会将发送的数据显示在浏览器端，二POST则不会。所以安全性相对来说高一点。<br>　　例如，上传文件，提交留言等，只要是想服务器传输大量的数据，通常都会使用POST请求。</p>
+<h3 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h3><p>　　PUT方法用于请求服务器把请求中的实体存储在请求资源下，如果请求资源已经在服务器中存在，那么将会用此请求中的数据替换原先的数据，作为指定资源的最新修改版。如果请求指定的资源不存在，将会创建这个资源，且数据位于请求正文。<br>　　通常情况下，服务器都会关闭PUT方法，因为它会为服务器创建文件，属于危险操作。</p>
+<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>　　DELETE方法用于请求源服务器删除请求的指定资源。服务器一般会关闭此方法，因为客户端可以进行删除文件操作，同样属于危险操作。</p>
+<h3 id="TRACE"><a href="#TRACE" class="headerlink" title="TRACE"></a>TRACE</h3><p>　　TRACE方法用于激发一个远程的应用层的请求信息回路，也就是说，回显服务器收到的请求。TRACE方法允许客户端去了解数据被请求链的另一端接收的情况，并且利用那些数据信息去测试或诊断。不过较为少见。</p>
+<h3 id="CONNECT"><a href="#CONNECT" class="headerlink" title="CONNECT"></a>CONNECT</h3><p>　　CONNECT方法是为了用于能动态切换到隧道的代理。</p>
+<h3 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h3><p>　　OPTIONS方法是用于请求获得由URI标识的资源在请求/响应的通信过程中可以使用的功能选项。通过这个方法，客户端可以在采取具体资源请求之前，决定对该资源采取何种必要措施，或者了解服务器的性能。</p>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>　　当客户端发出HTTP请求，服务器端接收后，会向客户发送响应信息，其中，HTTP响应中的第一行中，最重要的一点就是HTTP的状态码。HTTP协议中的状态码由三位数字组成。第一位数字定义了响应的类别，且只有以下5种。</p>
+<h3 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a>1xx</h3><p>　　信息提示，表示请求已被成功接收，继续处理。范围为100～101。</p>
+<h3 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h3><p>　　成功，服务器成功的处理了请求。范围为200～206。</p>
+<h3 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a>3xx</h3><p>　　重定向，重定向状态码用于告诉浏览器客户端，他们访问的资源已被移动，并告诉客户端新的资源地址位置。这时，浏览器将重新对新资源发起请求。范围为300～305。</p>
+<h3 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a>4xx</h3><p>　　客户端错误状态码，有时客户端会发送一些服务器无法处理的东西，比如格式错误的请求，或者最常见的请求一个不存在的URL。其范围为400～415。</p>
+<h3 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a>5xx</h3><p>　　有时候客户端发送了一条有效请求，但Web服务器自身却出错了，可能是Web服务器运行出错了，或者网站都挂了，5xx就是用来描述服务器内部错误的。范围为500～505。</p>
+<h3 id="常见状态码"><a href="#常见状态码" class="headerlink" title="常见状态码"></a>常见状态码</h3><pre><code>200: 客户端请求成功
+302: 重定向
+404: 请求资源不存在
+400: 客户端请求有语法错误，不能被服务器所理解
+401: 请求未经授权
+403: 服务器收到请求，但是拒绝提供服务
+500: 服务器内部错误
+503: 服务器当前不能处理客户端的请求，一段时间后可能恢复
+</code></pre><h2 id="HTTP消息"><a href="#HTTP消息" class="headerlink" title="HTTP消息"></a>HTTP消息</h2><p>　　HTTP消息又称为HTTP头（HTTP header），由四部分组成，分别是请求头，响应头，普通头和实体头。</p>
+<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>　　请求头只出现在HTTP请求中，请求报头允许客户端向服务器传递请求的附加信息和客户端自身的信息。常见的HTTP请求头如下：</p>
+<pre><code>Host ：指定被请求资源的Internet主机和端口号
+User-Agent：操作系统，浏览器版本及其他属性
+Referer：代表当前访问URL的上一个URL
+Cookie：一段文本，常用来表示请求者的身份
+</code></pre><h2 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h2>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/11/08/http/">http协议</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
+        <p><span>发布时间:</span>2016-11-08, 17:59:28</p>
+        <p><span>最后更新:</span>2016-11-09, 11:54:02</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/11/08/http/" title="http协议">http://isron.dropsec.xyz/2016/11/08/http/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2016/11/08/http/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/11/09/nanyou/">
+                    南邮CTF
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/10/25/sqli-labs/">
+                    sqli-labs学习笔记总结
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP协议概述"><span class="toc-number">1.</span> <span class="toc-text">HTTP协议概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求方法"><span class="toc-number">2.</span> <span class="toc-text">HTTP请求方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET"><span class="toc-number">2.1.</span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD"><span class="toc-number">2.2.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST"><span class="toc-number">2.3.</span> <span class="toc-text">POST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUT"><span class="toc-number">2.4.</span> <span class="toc-text">PUT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">2.5.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TRACE"><span class="toc-number">2.6.</span> <span class="toc-text">TRACE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CONNECT"><span class="toc-number">2.7.</span> <span class="toc-text">CONNECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OPTIONS"><span class="toc-number">2.8.</span> <span class="toc-text">OPTIONS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP状态码"><span class="toc-number">3.</span> <span class="toc-text">HTTP状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1xx"><span class="toc-number">3.1.</span> <span class="toc-text">1xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2xx"><span class="toc-number">3.2.</span> <span class="toc-text">2xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3xx"><span class="toc-number">3.3.</span> <span class="toc-text">3xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4xx"><span class="toc-number">3.4.</span> <span class="toc-text">4xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5xx"><span class="toc-number">3.5.</span> <span class="toc-text">5xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见状态码"><span class="toc-number">3.6.</span> <span class="toc-text">常见状态码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP消息"><span class="toc-number">4.</span> <span class="toc-text">HTTP消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#请求头"><span class="toc-number">4.1.</span> <span class="toc-text">请求头</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#未完待续"><span class="toc-number">5.</span> <span class="toc-text">未完待续</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+
+    
+        <div class="addthis_sharing_toolbox"></div>
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/11/08/http/" data-title="http协议" data-url="http://isron.dropsec.xyz/2016/11/08/http/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"clearloveqaq"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/11/09/nanyou/" title="上一篇: 南邮CTF">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/10/25/sqli-labs/" title="下一篇: sqli-labs学习笔记总结">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/CSP/">Bypass_Csp</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/SHA1/">SHA1碰撞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux_shell/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ_api/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/python_s/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/php_unserialize/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ_shield/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/ZCTF2017/">ZCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/baidu_php/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu_lamp/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/more_thoughts/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF_sum/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/nanyou/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/geek/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql_bypass/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql_mz/">sql盲注学习笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 Isron
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
