@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://isron.dropsec.xyz/2017/03/03/php_unserialize/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="序列化是将变量转换为可保存或传输的字符串的过程;反序列化就是在适当的时候把这个字符串再转化成原来的变量使用">
-<meta property="og:updated_time" content="2017-03-03T04:56:42.233Z">
+<meta property="og:updated_time" content="2017-03-23T03:45:23.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP序列化与反序列化">
 <meta name="twitter:description" content="序列化是将变量转换为可保存或传输的字符串的过程;反序列化就是在适当的时候把这个字符串再转化成原来的变量使用">
@@ -402,7 +402,7 @@ unserialize：在适当的时候将字符串转化为原来的变量
         <p><span>Title:</span><a href="/2017/03/03/php_unserialize/">PHP序列化与反序列化</a></p>
         <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
         <p><span>Created:</span>2017-03-03, 10:57:17</p>
-        <p><span>Updated:</span>2017-03-03, 12:56:42</p>
+        <p><span>Updated:</span>2017-03-23, 11:45:23</p>
         <p>
             <span>Full URL:</span><a class="post-url" href="/2017/03/03/php_unserialize/" title="PHP序列化与反序列化">http://isron.dropsec.xyz/2017/03/03/php_unserialize/</a>
             <span class="copy-path" data-clipboard-text="From http://isron.dropsec.xyz/2017/03/03/php_unserialize/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
@@ -585,11 +585,11 @@ unserialize：在适当的时候将字符串转化为原来的变量
     
         var oOpenInNew = {
             
-            
-            
-            
-            
-            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             
@@ -601,6 +601,23 @@ unserialize：在适当的时候将字符串转化为原来的变量
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>

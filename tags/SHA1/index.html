@@ -15,15 +15,12 @@
 
 
 
-<meta name="description" content="做题却也不如你">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Isron">
 <meta property="og:url" content="http://isron.dropsec.xyz/tags/SHA1/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="做题却也不如你">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Isron">
-<meta name="twitter:description" content="做题却也不如你">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -395,11 +392,11 @@
     
         var oOpenInNew = {
             
-            
-            
-            
-            
-            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
              archives: ".archive-article-title", 
              miniArchives: "a.post-list-link", 
             
@@ -411,6 +408,23 @@
         }
     
 </script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "(つェ⊂) " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "(*´∇｀*) " + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
