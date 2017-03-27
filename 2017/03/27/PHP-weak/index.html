@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
+<meta name="description" content="参加ZCTF线下时遇到一个关于php弱类型的题目">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bypass_Csp">
-<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/19/CSP/index.html">
+<meta property="og:title" content="PHP-弱类型">
+<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/27/PHP-weak/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
-<meta property="og:updated_time" content="2017-03-19T07:09:48.938Z">
+<meta property="og:description" content="参加ZCTF线下时遇到一个关于php弱类型的题目">
+<meta property="og:updated_time" content="2017-03-27T08:59:16.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bypass_Csp">
-<meta name="twitter:description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
+<meta name="twitter:title" content="PHP-弱类型">
+<meta name="twitter:description" content="参加ZCTF线下时遇到一个关于php弱类型的题目">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Bypass_Csp | Isron</title>
+<title>PHP-弱类型 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSP" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-PHP-weak" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/19/CSP/" class="article-date">
-      <time datetime="2017-03-19T04:35:38.000Z" itemprop="datePublished">2017-03-19</time>
+      <a href="/2017/03/27/PHP-weak/" class="article-date">
+      <time datetime="2017-03-27T08:46:16.000Z" itemprop="datePublished">2017-03-27</time>
 </a>
 
 
@@ -298,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Bypass_Csp
+      PHP-弱类型
     </h1>
   
 
@@ -309,7 +309,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSP/">CSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS/">XSS</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -319,128 +319,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="什么是CSP"><a href="#什么是CSP" class="headerlink" title="什么是CSP"></a>什么是CSP</h2><p>内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。<a id="more"></a></p>
-<h2 id="CSP语法"><a href="#CSP语法" class="headerlink" title="CSP语法"></a>CSP语法</h2><h3 id="CSP指令"><a href="#CSP指令" class="headerlink" title="CSP指令"></a>CSP指令</h3><table>
-<thead>
-<tr>
-<th>指令</th>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default-src</td>
-<td>‘self’ cdn.example.com</td>
-<td>定义对所有类型的默认加载策略，如果没有单独定义策略，就执行默认策略</td>
-</tr>
-<tr>
-<td>script-src</td>
-<td>‘self’ js.example.com</td>
-<td>定义对js的加载策略</td>
-</tr>
-<tr>
-<td>style-src</td>
-<td>‘self’ css.example.com</td>
-<td>定义对样式表的加载策略</td>
-</tr>
-<tr>
-<td>img-src</td>
-<td>‘self’ img.example.com</td>
-<td>定义对图片的加载策略</td>
-</tr>
-<tr>
-<td>connect-src</td>
-<td>‘self’</td>
-<td>针对Ajax/Websocket等请求的加载策略，不允许的情况下，浏览器会模拟一个状态为400的响应</td>
-</tr>
-<tr>
-<td>font-src</td>
-<td>font.example.com</td>
-<td>定义对字体的加载策略</td>
-</tr>
-<tr>
-<td>object-src</td>
-<td>‘self’</td>
-<td>定义对引用资源的加载策略，如<code>&lt;object&gt;&lt;embed&gt;&lt;applet&gt;</code>等</td>
-</tr>
-<tr>
-<td>frame-src</td>
-<td>‘self’</td>
-<td>定义对frame的加载策略，建议改用child-src</td>
-</tr>
-<tr>
-<td>media-src</td>
-<td>media.example.com</td>
-<td>定义对音频和视频的加载策略</td>
-</tr>
-</tbody>
-</table>
-<h3 id="CSP语法-1"><a href="#CSP语法-1" class="headerlink" title="CSP语法"></a>CSP语法</h3><table>
-<thead>
-<tr>
-<th>指令值</th>
-<th>指令示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>img-src *</td>
-<td>允许加载所有资源</td>
-</tr>
-<tr>
-<td>‘none’</td>
-<td>img-src ‘none’</td>
-<td>不允许加载一切资源</td>
-</tr>
-<tr>
-<td>‘self’</td>
-<td>img-src ‘self’</td>
-<td>只允许加载同源的资源</td>
-</tr>
-<tr>
-<td>data</td>
-<td>img-src data</td>
-<td>允许data:协议加载资源(如base64编码的图片)</td>
-</tr>
-<tr>
-<td>www.a.com</td>
-<td>img-src img.a.com</td>
-<td>允许加载指定域名的资源</td>
-</tr>
-<tr>
-<td>*.a.com</td>
-<td>img-src *.a.com</td>
-<td>允许加载a.com任何子域的资源</td>
-</tr>
-<tr>
-<td><code>https://img.com</code></td>
-<td>img-src <code>https://img.com</code></td>
-<td>允许加载img.com的https资源</td>
-</tr>
-<tr>
-<td>https:</td>
-<td>img-src https:</td>
-<td>允许加载https资源</td>
-</tr>
-<tr>
-<td>‘unsafe-inline’</td>
-<td>script-src ‘unsafe-inline’</td>
-<td>允许加载inline资源(如常见的style属性，onclick，inline js和inline css等等)</td>
-</tr>
-<tr>
-<td>‘unsafe-eval’</td>
-<td>script-src ‘unsafe-eval’</td>
-<td>允许加载动态js代码如 eval()函数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="CSP例子"><a href="#CSP例子" class="headerlink" title="CSP例子"></a>CSP例子</h2><h3 id="只允许加载同源资源"><a href="#只允许加载同源资源" class="headerlink" title="只允许加载同源资源"></a>只允许加载同源资源</h3><figure class="highlight csp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Content-Security-Policy</span>: <span class="keyword">default-src</span> <span class="string">'self'</span></div></pre></td></tr></table></figure>
-<h3 id="只加载同源的和子域的资源"><a href="#只加载同源的和子域的资源" class="headerlink" title="只加载同源的和子域的资源"></a>只加载同源的和子域的资源</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: default-src <span class="string">'self'</span> *<span class="selector-class">.mydomain</span><span class="selector-class">.com</span></div></pre></td></tr></table></figure>
-<h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><p>Github允许加载任何域的内容，但只能加载指定域的脚本，只能加载指定域的样式并可以执行内联样式，只能通过SSL加载指定域的flash插件<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy:default-src *; script-src <span class="string">'self'</span> <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net  <span class="keyword">https</span>://ssl.google-analytics.com <span class="keyword">https</span>://collector-cdn.github.com  <span class="keyword">https</span>://embed.github.com <span class="keyword">https</span>://raw.github.com; style-src <span class="string">'self'</span> <span class="string">'unsafe-inline'</span> <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net; object-src <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net</div></pre></td></tr></table></figure></p>
-<h2 id="Bypass-Csp"><a href="#Bypass-Csp" class="headerlink" title="Bypass_Csp"></a>Bypass_Csp</h2><p>一种安全策略的出生，避免不了怎么想着去Bypass</p>
+        <p>参加ZCTF线下时遇到一个关于php弱类型的题目<a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">error_reporting(<span class="number">0</span>);</div><div class="line">$l01o=<span class="number">0</span>;</div><div class="line">$o1l0=<span class="number">0</span>;</div><div class="line">$o10l=<span class="number">0</span>;</div><div class="line">$lo10=<span class="number">0</span>;</div><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'vhghf'</span>])) <span class="comment">//GET传入一个vhghf</span></div><div class="line">&#123;</div><div class="line">        $vhghf = $_GET[<span class="string">'vhghf'</span>];</div><div class="line">        $vhghf==<span class="string">"1"</span>?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>; <span class="comment">//如果vhghf等于1则退出</span></div><div class="line">        <span class="keyword">switch</span> ($vhghf)</div><div class="line">        &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">//如果vhghf等于1则$101o等于1</span></div><div class="line">                $l01o=<span class="number">1</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">&#125;</div><div class="line">$dfgdf=(<span class="keyword">array</span>)json_decode(@$_GET[<span class="string">'dfgdf'</span>]); <span class="comment">//GET传入dfgdf且进行json_decode且创建一个数组</span></div><div class="line"><span class="keyword">if</span>(is_array($dfgdf))&#123;  <span class="comment">//如果为数组则进行接下来的</span></div><div class="line">    is_numeric(@$dfgdf[<span class="string">"gvnghdjk"</span>])?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>; <span class="comment">//判断dfgdf中的gvnghdjk是否为数字或数字字符串</span></div><div class="line">    <span class="keyword">if</span>(@$dfgdf[<span class="string">"gvnghdjk"</span>])&#123;</div><div class="line">        ($dfgdf[<span class="string">"gvnghdjk"</span>]&gt;<span class="number">2017</span>)?$o1l0=<span class="number">1</span>:<span class="keyword">NULL</span>; <span class="comment">//gvnghdjk大于2017</span></div><div class="line">         </div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(is_array(@$dfgdf[<span class="string">"uxcndffznb"</span>]))&#123; <span class="comment">//uxcndffznb要为数组</span></div><div class="line">        <span class="keyword">if</span>(count($dfgdf[<span class="string">"uxcndffznb"</span>])!==<span class="number">2</span> <span class="keyword">OR</span> !is_array($dfgdf[<span class="string">"uxcndffznb"</span>][<span class="number">0</span>])) <span class="keyword">die</span>(<span class="string">"ha?"</span>); <span class="comment">//数组中有两个值，且第一个还要为数组</span></div><div class="line">        $kghdhfghdfgbcvhgffg = array_search(<span class="string">"ZCTF"</span>, $dfgdf[<span class="string">"uxcndffznb"</span>]); <span class="comment">//查询uxcndffznb中有没有ZCTF有则返回1没则返回false</span></div><div class="line">        $kghdhfghdfgbcvhgffg===<span class="keyword">false</span>?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>; <span class="comment">//如果为false则退出</span></div><div class="line">        <span class="keyword">foreach</span>($dfgdf[<span class="string">"uxcndffznb"</span>] <span class="keyword">as</span> $key=&gt;$val)&#123; <span class="comment">//查询uxcndffznb中是否有ZCTF如果有则退出</span></div><div class="line">            $val===<span class="string">"ZCTF"</span>?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>;</div><div class="line">        &#125;</div><div class="line">        $o10l=<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line">$cdggjydcnfsdyjaq = $_GET[<span class="string">'cdggjydcnfsdyjaq'</span>]; <span class="comment">//MD5碰撞</span></div><div class="line"><span class="keyword">if</span> ($cdggjydcnfsdyjaq != <span class="string">'15562'</span>) &#123;</div><div class="line">    <span class="keyword">if</span> (strstr($cdggjydcnfsdyjaq, <span class="string">'2017ZCTF'</span>)) &#123;</div><div class="line">        <span class="keyword">if</span> (substr(md5($cdggjydcnfsdyjaq),<span class="number">8</span>,<span class="number">16</span>) == substr(md5(<span class="string">'15562'</span>),<span class="number">8</span>,<span class="number">16</span>)) &#123;</div><div class="line">            $lo10=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span>($l01o &amp;&amp; $o1l0 &amp;&amp; $o10l &amp;&amp; $lo10)&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">'flag'</span>;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>共有四个比较</p>
+<h3 id="vhghf"><a href="#vhghf" class="headerlink" title="vhghf"></a>vhghf</h3><p><code>$vhghf==&quot;1&quot;?die(&quot;ha?&quot;):NULL;</code>将vhghf与1进行比较，而且是双等号，直接1+任意字母绕过。</p>
+<h3 id="dfgdf-“gvnghdjk”"><a href="#dfgdf-“gvnghdjk”" class="headerlink" title="dfgdf[“gvnghdjk”]"></a>dfgdf[“gvnghdjk”]</h3><p><code>dfgdf[&quot;gvnghdjk&quot;]&gt;2017</code>与第一个相似，2018加任意字母绕过。</p>
+<h3 id="dfgdf-“uxcndffznb”"><a href="#dfgdf-“uxcndffznb”" class="headerlink" title="$dfgdf[“uxcndffznb”]"></a>$dfgdf[“uxcndffznb”]</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$kghdhfghdfgbcvhgffg = array_search(<span class="string">"ZCTF"</span>, $dfgdf[<span class="string">"uxcndffznb"</span>]); <span class="comment">//查询uxcndffznb中有没有ZCTF有则返回1没则返回false</span></div><div class="line">$kghdhfghdfgbcvhgffg===<span class="keyword">false</span>?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>; <span class="comment">//如果为false则退出</span></div><div class="line"><span class="keyword">foreach</span>($dfgdf[<span class="string">"uxcndffznb"</span>] <span class="keyword">as</span> $key=&gt;$val)&#123; <span class="comment">//查询uxcndffznb中是否有ZCTF如果有则退出</span></div><div class="line">$val===<span class="string">"ZCTF"</span>?<span class="keyword">die</span>(<span class="string">"ha?"</span>):<span class="keyword">NULL</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>array_search是弱类型的比较，0双等于所有的无数字开头的字符串，可以用0去绕过array_search的比较</p>
+<h3 id="cdggjydcnfsdyjaq"><a href="#cdggjydcnfsdyjaq" class="headerlink" title="cdggjydcnfsdyjaq"></a>cdggjydcnfsdyjaq</h3><p>MD5碰撞，线上赛有提及，0e+任意数字双等于0e+任意数字</p>
 
       
     </div>
@@ -449,13 +334,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/19/CSP/">Bypass_Csp</a></p>
+        <p><span>本文标题:</span><a href="/2017/03/27/PHP-weak/">PHP-弱类型</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2017-03-19, 12:35:38</p>
-        <p><span>最后更新:</span>2017-03-19, 15:09:48</p>
+        <p><span>发布时间:</span>2017-03-27, 16:46:16</p>
+        <p><span>最后更新:</span>2017-03-27, 16:59:16</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/19/CSP/" title="Bypass_Csp">http://isron.dropsec.xyz/2017/03/19/CSP/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/19/CSP/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/03/27/PHP-weak/" title="PHP-弱类型">http://isron.dropsec.xyz/2017/03/27/PHP-weak/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/27/PHP-weak/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -467,16 +352,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/27/PHP-weak/">
-                    PHP-弱类型
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/17/SHA1/">
-                    SHA1碰撞
+                <a href="/2017/03/19/CSP/">
+                    Bypass_Csp
                 </a>
             </div>
         
@@ -488,7 +367,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是CSP"><span class="toc-number">1.</span> <span class="toc-text">什么是CSP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP语法"><span class="toc-number">2.</span> <span class="toc-text">CSP语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP指令"><span class="toc-number">2.1.</span> <span class="toc-text">CSP指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP语法-1"><span class="toc-number">2.2.</span> <span class="toc-text">CSP语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP例子"><span class="toc-number">3.</span> <span class="toc-text">CSP例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只允许加载同源资源"><span class="toc-number">3.1.</span> <span class="toc-text">只允许加载同源资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只加载同源的和子域的资源"><span class="toc-number">3.2.</span> <span class="toc-text">只加载同源的和子域的资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github"><span class="toc-number">3.3.</span> <span class="toc-text">github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bypass-Csp"><span class="toc-number">4.</span> <span class="toc-text">Bypass_Csp</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#vhghf"><span class="toc-number">1.</span> <span class="toc-text">vhghf</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfgdf-“gvnghdjk”"><span class="toc-number">2.</span> <span class="toc-text">dfgdf[“gvnghdjk”]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfgdf-“uxcndffznb”"><span class="toc-number">3.</span> <span class="toc-text">$dfgdf[“uxcndffznb”]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cdggjydcnfsdyjaq"><span class="toc-number">4.</span> <span class="toc-text">cdggjydcnfsdyjaq</span></a></li></ol>
         
     </div>
     <style>
@@ -546,15 +425,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/27/PHP-weak/" title="上一篇: PHP-弱类型">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/17/SHA1/" title="下一篇: SHA1碰撞">
+            <a href="/2017/03/19/CSP/" title="下一篇: Bypass_Csp">
                 <i class="fa fa-angle-right"></i>
             </a>
         
