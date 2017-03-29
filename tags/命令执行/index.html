@@ -15,16 +15,12 @@
 
 
 
-<meta name="description" content="总结了一些常见的sqlmap使用语法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sqlmap常见使用语法">
-<meta property="og:url" content="http://isron.dropsec.xyz/2016/10/16/sqlmap/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Isron">
+<meta property="og:url" content="http://isron.dropsec.xyz/tags/命令执行/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="总结了一些常见的sqlmap使用语法">
-<meta property="og:updated_time" content="2016-11-17T05:02:07.088Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sqlmap常见使用语法">
-<meta name="twitter:description" content="总结了一些常见的sqlmap使用语法">
+<meta name="twitter:title" content="Isron">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +52,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>sqlmap常见使用语法 | Isron</title>
+<title>Tag: 命令执行 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,9 +62,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -279,185 +275,56 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-sqlmap" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2016/10/16/sqlmap/" class="article-date">
-      <time datetime="2016-10-16T11:43:02.000Z" itemprop="datePublished">2016-10-16</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2017/03/29/CVE-2016-3714/" class="archive-article-date">
+      <time datetime="2017-03-29T10:48:02.000Z" itemprop="datePublished">03-29</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      sqlmap常见使用语法
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/29/CVE-2016-3714/">ImageMagick命令执行</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <p>总结了一些常见的sqlmap使用语法<br><a id="more"></a></p>
-<ol>
-<li>sqlmap.py <code>-u url --dbs</code> //爆数据库</li>
-<li>sqlmap.py <code>-u url --current-db</code> //爆当前库</li>
-<li>sqlmap.py <code>-u url --current-user</code> //爆当前用户</li>
-<li>sqlmap.py <code>-u url --users</code>   查看用户权限</li>
-<li>sqlmap.py <code>-u url --tables -D 数据库</code> //爆表段</li>
-<li>sqlmap.py <code>-u url --columns -T 表段 -D 数据库</code> //爆字段</li>
-<li>sqlmap.py <code>-u url --dump -C 字段 -T 表段 -D 数据库</code> //猜解字段</li>
-<li>sqlmap.py <code>-u url --dump --start=1 --stop=3 -C 字段 -T 表段 -D 数据库</code> //猜解1到3的字段</li>
-</ol>
-<p>后续遇到的会进行补充</p>
 
-      
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/命令执行/">命令执行</a></li></ul>
     </div>
-    
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/10/16/sqlmap/">sqlmap常见使用语法</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2016-10-16, 19:43:02</p>
-        <p><span>最后更新:</span>2016-11-17, 13:02:07</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/10/16/sqlmap/" title="sqlmap常见使用语法">http://isron.dropsec.xyz/2016/10/16/sqlmap/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2016/10/16/sqlmap/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/10/21/geek/">
-                    第七季极客大挑战
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/10/15/sql_bypass/">
-                    sql绕过技巧
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
+  
+  
+    </div></section>
+  
 
     
-<div class="share">
-    
 
-    
-        <div class="addthis_sharing_toolbox"></div>
-    
-</div>
-
-
-
-
-
-
-
-    
-        <section class="youyan" id="comments">
-    <script>
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2127971';
-            (d.head || d.body).appendChild(s);
-        }
-    </script>
-    
-    <script> loadComment(); </script>
-
-    <div id="uyan_frame"></div>
-</section>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/10/21/geek/" title="上一篇: 第七季极客大挑战">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2016/10/15/sql_bypass/" title="下一篇: sql绕过技巧">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/29/CVE-2016-3714/">ImageMagick命令执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/PHP-weak/">PHP-弱类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/CSP/">Bypass_Csp</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/SHA1/">SHA1碰撞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux_shell/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ_api/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/python_s/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/php_unserialize/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ_shield/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/ZCTF2017/">ZCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/baidu_php/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu_lamp/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/more_thoughts/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF_sum/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/nanyou/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/geek/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql_bypass/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql_mz/">sql盲注学习笔记</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
