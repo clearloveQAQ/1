@@ -15,16 +15,12 @@
 
 
 
-<meta name="description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Bypass_Csp">
-<meta property="og:url" content="http://isron.dropsec.xyz/2017/03/19/CSP/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Isron">
+<meta property="og:url" content="http://isron.dropsec.xyz/tags/CTF/page/2/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
-<meta property="og:updated_time" content="2017-03-19T07:09:48.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bypass_Csp">
-<meta name="twitter:description" content="什么是CSP内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。">
+<meta name="twitter:title" content="Isron">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +52,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Bypass_Csp | Isron</title>
+<title>Tag: CTF | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,9 +62,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: true,
+        isPost: false,
         isArchive: false,
-        isTag: false,
+        isTag: true,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -279,295 +275,60 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-CSP" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap">
   
-    <div class="article-meta">
-      <a href="/2017/03/19/CSP/" class="article-date">
-      <time datetime="2017-03-19T04:35:38.000Z" itemprop="datePublished">2017-03-19</time>
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+          <div class="article-meta">
+              <a href="/2016/09/22/sql_mz/" class="archive-article-date">
+      <time datetime="2016-09-22T01:52:17.000Z" itemprop="datePublished">09-22</time>
 </a>
 
 
-    </div>
+        </div>
+         
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Bypass_Csp
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/09/22/sql_mz/">sql盲注学习笔记</a>
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSP/">CSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XSS/">XSS</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <div class="article-info info-on-archive">
           
-        <h2 id="什么是CSP"><a href="#什么是CSP" class="headerlink" title="什么是CSP"></a>什么是CSP</h2><p>内容安全策略（Content Security Policy，简称CSP）是一种以可信白名单作机制，来限制网站中是否可以包含某来源内容。默认配置下不允许执行内联代码,用来减少XSS攻击。<a id="more"></a></p>
-<h2 id="CSP语法"><a href="#CSP语法" class="headerlink" title="CSP语法"></a>CSP语法</h2><h3 id="CSP指令"><a href="#CSP指令" class="headerlink" title="CSP指令"></a>CSP指令</h3><table>
-<thead>
-<tr>
-<th>指令</th>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>default-src</td>
-<td>‘self’ cdn.example.com</td>
-<td>定义对所有类型的默认加载策略，如果没有单独定义策略，就执行默认策略</td>
-</tr>
-<tr>
-<td>script-src</td>
-<td>‘self’ js.example.com</td>
-<td>定义对js的加载策略</td>
-</tr>
-<tr>
-<td>style-src</td>
-<td>‘self’ css.example.com</td>
-<td>定义对样式表的加载策略</td>
-</tr>
-<tr>
-<td>img-src</td>
-<td>‘self’ img.example.com</td>
-<td>定义对图片的加载策略</td>
-</tr>
-<tr>
-<td>connect-src</td>
-<td>‘self’</td>
-<td>针对Ajax/Websocket等请求的加载策略，不允许的情况下，浏览器会模拟一个状态为400的响应</td>
-</tr>
-<tr>
-<td>font-src</td>
-<td>font.example.com</td>
-<td>定义对字体的加载策略</td>
-</tr>
-<tr>
-<td>object-src</td>
-<td>‘self’</td>
-<td>定义对引用资源的加载策略，如<code>&lt;object&gt;&lt;embed&gt;&lt;applet&gt;</code>等</td>
-</tr>
-<tr>
-<td>frame-src</td>
-<td>‘self’</td>
-<td>定义对frame的加载策略，建议改用child-src</td>
-</tr>
-<tr>
-<td>media-src</td>
-<td>media.example.com</td>
-<td>定义对音频和视频的加载策略</td>
-</tr>
-</tbody>
-</table>
-<h3 id="CSP语法-1"><a href="#CSP语法-1" class="headerlink" title="CSP语法"></a>CSP语法</h3><table>
-<thead>
-<tr>
-<th>指令值</th>
-<th>指令示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>*</td>
-<td>img-src *</td>
-<td>允许加载所有资源</td>
-</tr>
-<tr>
-<td>‘none’</td>
-<td>img-src ‘none’</td>
-<td>不允许加载一切资源</td>
-</tr>
-<tr>
-<td>‘self’</td>
-<td>img-src ‘self’</td>
-<td>只允许加载同源的资源</td>
-</tr>
-<tr>
-<td>data</td>
-<td>img-src data</td>
-<td>允许data:协议加载资源(如base64编码的图片)</td>
-</tr>
-<tr>
-<td>www.a.com</td>
-<td>img-src img.a.com</td>
-<td>允许加载指定域名的资源</td>
-</tr>
-<tr>
-<td>*.a.com</td>
-<td>img-src *.a.com</td>
-<td>允许加载a.com任何子域的资源</td>
-</tr>
-<tr>
-<td><code>https://img.com</code></td>
-<td>img-src <code>https://img.com</code></td>
-<td>允许加载img.com的https资源</td>
-</tr>
-<tr>
-<td>https:</td>
-<td>img-src https:</td>
-<td>允许加载https资源</td>
-</tr>
-<tr>
-<td>‘unsafe-inline’</td>
-<td>script-src ‘unsafe-inline’</td>
-<td>允许加载inline资源(如常见的style属性，onclick，inline js和inline css等等)</td>
-</tr>
-<tr>
-<td>‘unsafe-eval’</td>
-<td>script-src ‘unsafe-eval’</td>
-<td>允许加载动态js代码如 eval()函数</td>
-</tr>
-</tbody>
-</table>
-<h2 id="CSP例子"><a href="#CSP例子" class="headerlink" title="CSP例子"></a>CSP例子</h2><h3 id="只允许加载同源资源"><a href="#只允许加载同源资源" class="headerlink" title="只允许加载同源资源"></a>只允许加载同源资源</h3><figure class="highlight csp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Content-Security-Policy</span>: <span class="keyword">default-src</span> <span class="string">'self'</span></div></pre></td></tr></table></figure>
-<h3 id="只加载同源的和子域的资源"><a href="#只加载同源的和子域的资源" class="headerlink" title="只加载同源的和子域的资源"></a>只加载同源的和子域的资源</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy: default-src <span class="string">'self'</span> *<span class="selector-class">.mydomain</span><span class="selector-class">.com</span></div></pre></td></tr></table></figure>
-<h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><p>Github允许加载任何域的内容，但只能加载指定域的脚本，只能加载指定域的样式并可以执行内联样式，只能通过SSL加载指定域的flash插件<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Content-Security-Policy:default-src *; script-src <span class="string">'self'</span> <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net  <span class="keyword">https</span>://ssl.google-analytics.com <span class="keyword">https</span>://collector-cdn.github.com  <span class="keyword">https</span>://embed.github.com <span class="keyword">https</span>://raw.github.com; style-src <span class="string">'self'</span> <span class="string">'unsafe-inline'</span> <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net; object-src <span class="keyword">https</span>://github.<span class="built_in">global</span>.ssl.fastly.net</div></pre></td></tr></table></figure></p>
-<h2 id="Bypass-Csp"><a href="#Bypass-Csp" class="headerlink" title="Bypass_Csp"></a>Bypass_Csp</h2><p>一种安全策略的出生，避免不了怎么想着去Bypass</p>
 
-      
+          
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
     </div>
-    
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/19/CSP/">Bypass_Csp</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2017-03-19, 12:35:38</p>
-        <p><span>最后更新:</span>2017-03-19, 15:09:48</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/19/CSP/" title="Bypass_Csp">http://isron.dropsec.xyz/2017/03/19/CSP/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/03/19/CSP/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/27/PHP-weak/">
-                    PHP-弱类型
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/17/SHA1/">
-                    SHA1碰撞
-                </a>
-            </div>
-        
-    </nav>
-
-  
 </article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
-        
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是CSP"><span class="toc-number">1.</span> <span class="toc-text">什么是CSP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP语法"><span class="toc-number">2.</span> <span class="toc-text">CSP语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP指令"><span class="toc-number">2.1.</span> <span class="toc-text">CSP指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSP语法-1"><span class="toc-number">2.2.</span> <span class="toc-text">CSP语法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSP例子"><span class="toc-number">3.</span> <span class="toc-text">CSP例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只允许加载同源资源"><span class="toc-number">3.1.</span> <span class="toc-text">只允许加载同源资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#只加载同源的和子域的资源"><span class="toc-number">3.2.</span> <span class="toc-text">只加载同源的和子域的资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github"><span class="toc-number">3.3.</span> <span class="toc-text">github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bypass-Csp"><span class="toc-number">4.</span> <span class="toc-text">Bypass_Csp</span></a></li></ol>
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-    <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-    </script>
-
-
+  
+  
+    </div></section>
+  
 
     
-<div class="share">
-    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/CTF/">&laquo; Prev</a><a class="page-number" href="/tags/CTF/">1</a><span class="page-number current">2</span>
+    </nav>
+  
 
-    
-        <div class="addthis_sharing_toolbox"></div>
-    
-</div>
-
-
-
-
-
-
-
-    
-        <section class="youyan" id="comments">
-    <script>
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2127971';
-            (d.head || d.body).appendChild(s);
-        }
-    </script>
-    
-    <script> loadComment(); </script>
-
-    <div id="uyan_frame"></div>
-</section>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/03/27/PHP-weak/" title="上一篇: PHP-弱类型">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/03/17/SHA1/" title="下一篇: SHA1碰撞">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/natas/">natas部分题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/29/CVE-2016-3714/">ImageMagick命令执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/PHP-weak/">PHP-弱类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/CSP/">Bypass_Csp</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/SHA1/">SHA1碰撞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux_shell/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ_api/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/python_s/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/php_unserialize/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ_shield/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/ZCTF2017/">ZCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/baidu_php/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu_lamp/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/more_thoughts/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF_sum/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/nanyou/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/geek/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql_bypass/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql_mz/">sql盲注学习笔记</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
 </div>
       <footer id="footer">
     <div class="outer">
