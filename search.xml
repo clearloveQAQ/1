@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[因缺思汀的绕过]]></title>
+      <url>http://isron.dropsec.xyz/2017/04/05/shiyanbar/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[natas部分题解]]></title>
       <url>http://isron.dropsec.xyz/2017/03/30/natas/</url>
       <content type="html"><![CDATA[<p>学长推荐了一个网站<a href="http://overthewire.org/wargames/natas/" target="_blank" rel="external">natas.lab</a>有些题目还是蛮有意思的<a id="more"></a></p>
@@ -86,6 +94,8 @@
         <tags>
             
             <tag> PHP </tag>
+            
+            <tag> 代码审计 </tag>
             
         </tags>
         
