@@ -30,6 +30,26 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Samba远程代码执行]]></title>
+      <url>http://isron.cn/2017/05/30/CVE-2017-7494/</url>
+      <content type="html"><![CDATA[<p>Samba是在Linux和UNIX系统上实现SMB协议的一个软件，这次的漏洞可以说是linux的“永恒之蓝”。<a id="more"></a></p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>Samba 3.5.0 之后到4.6.4/4.5.10/4.4.14中间的所有版本</p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>靶机：Redhat6.0<br>安装版本：samba-3.5.4-68.el6.i686<br>开放端口：445<br>也可以用<code>VulApps</code>搭建好的Docker靶场：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker pull medicean/vulapps:s_samba_1</div><div class="line">docker run -d -<span class="selector-tag">p</span> <span class="number">445</span>:<span class="number">445</span> -<span class="selector-tag">p</span> <span class="number">139</span>:<span class="number">139</span> -<span class="selector-tag">p</span> <span class="number">138</span>:<span class="number">138</span> -<span class="selector-tag">p</span> <span class="number">137</span>:<span class="number">137</span> medicean/vulapps:s_samba_1</div></pre></td></tr></table></figure></p>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>MSF已经放出了EXP，可以使用<code>msfupdate</code>进行更新，也可以直接去github下载：<a href="https://github.com/hdm/metasploit-framework/blob/0520d7cf76f8e5e654cb60f157772200c1b9e230/modules/exploits/linux/samba/is_known_pipename.rb" target="_blank" rel="external">github</a><br>首先加载我们的Exp:<code>use exploit/linux/samba/is_known_pipename</code><br><img src="https://ooo.0o0.ooo/2017/06/13/593fd217b5d09.jpg" alt=""><br>因为是32位的系统所以<code>target=&gt;2</code><br><img src="https://ooo.0o0.ooo/2017/06/13/593fd1d97c0f7.jpg" alt=""></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/13/593fd299b0207.jpg" alt=""></p>
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>下载最新的Samba版本手动更新</p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[七个字符Get Shell]]></title>
       <url>http://isron.cn/2017/04/10/shell-7/</url>
       <content type="html"><![CDATA[<p>如何在只有七个字符的限制下Get Shell<a id="more"></a></p>
@@ -49,11 +69,11 @@
         
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> 命令执行 </tag>
             
             <tag> Linux </tag>
+            
+            <tag> CTF </tag>
             
         </tags>
         
