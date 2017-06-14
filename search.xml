@@ -69,14 +69,35 @@
     
     <entry>
       <title><![CDATA[内网渗透笔记]]></title>
-      <url>http://isron.cn/2017/05/14/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/</url>
+      <url>http://isron.cn/2017/05/14/LAN_Pentest/</url>
       <content type="html"><![CDATA[<p>对于整个企业来说，拿下webshell往往只是第一步，还需要进行进一步的渗透，也就是我们说的内网渗透测试，之前对内网一直都有一种神秘的感觉，最近要去参加一个内网渗透的比赛，自己也对内网进行了一些了解。<a id="more"></a></p>
-]]></content>
+<h2 id="内网扫描"><a href="#内网扫描" class="headerlink" title="内网扫描"></a>内网扫描</h2><p>在拿下一台边界web服务器的时候，我们就可以从这台服务器开始，对它所处的内网进行探测，可以直接用写好的脚本进行ip与端口探测<a href="http://123.207.139.209/Pentest/scan.zip" target="_blank" rel="external">RASscan</a><br>用法：将<code>RASscan.py</code>与<code>socks.py</code>上传到一个可写的目录执行<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python RASscan<span class="selector-class">.py</span> start_ip stop_ip -t <span class="number">20</span></div></pre></td></tr></table></figure></p>
+<p>结果会保存在log.txt<br><img src="https://ooo.0o0.ooo/2017/06/14/5940c38264ec4.jpg" alt=""></p>
+<h2 id="内网代理"><a href="#内网代理" class="headerlink" title="内网代理"></a>内网代理</h2><p>最开始一直使用的<code>reGeorg+Proxifier</code>在有web服务的时候可以进行内网代理，但是后来在遇到深层内网时，往往不存在web服务，就接触到了<a href="http://sourceforge.net/projects/ssocks/" target="_blank" rel="external">sSocks</a></p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ipconfig /all</div><div class="line">netstat –an</div><div class="line">net <span class="literal">start</span></div><div class="line">net <span class="keyword">user</span></div><div class="line"><span class="title">net</span> <span class="keyword">user</span> <span class="title">/domain</span></div><div class="line">net <span class="keyword">group</span> <span class="title">“domain</span> admins”        <span class="comment">#查看域管理员</span></div><div class="line">net localgroup administrators</div><div class="line">net view /domain</div><div class="line">dsquery server         <span class="comment">#查看域控服务器</span></div><div class="line">dsquery subnet        <span class="comment">#查看域IP范围</span></div><div class="line">query <span class="keyword">user</span>           <span class="title">#查看有多少用户在登录</span></div><div class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"</span> /v fDenyTSConnections /t reg_dword /d <span class="number">0</span> /f 开启<span class="number">3389</span>远程终端</div></pre></td></tr></table></figure>]]></content>
       
         
         <tags>
             
             <tag> 渗透测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[写在安恒杯赛后]]></title>
+      <url>http://isron.cn/2017/05/09/anheng/</url>
+      <content type="html"><![CDATA[<p>算是自己第二次参加线下赛了吧，还有很长的路要走<a id="more"></a></p>
+<h2 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h2><p>上次参加ZCTF两天均为解题模式，这次为第一天解题，第二天攻防，第一天解题没什么说的，自己也经常在玩这个，不过还是很菜Web题一个没做出来，成功变成一名Misc选手，忙了一天最后还是取得了第三名的成绩，还不错。</p>
+<h2 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h2><p>第一次参加线下攻防的比赛，不过还好学长之前给了些小脚本，上去就先布上了waf与文件监控，前期也就没怎么失分，还在文件监控日志中发现了别人传给我们的大马，也利用他们的马拿到了几个靶机，接着就是在权限维持的时候出了一些问题，自己弱智的把不死马放到了<code>upload</code>目录下，直接就被发现了，很快自己手里的靶机就全没了，再后来上传服务都修复后，就再也没得到分，到下午突然发现好几个队开始一直得分100+的那种，自己也一直被打，到结束问别人才知道，服务器开了8080端口，直接利用<code>S2-045</code>就可以批量获得flag，自己当时也看到了<code>Tomcat</code>的日志却没去管，让队友去扫端口，扫到了8080也没跟我说Orz，最后也就拿到了二等奖。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>因为跟朋友有约定说要拿到一等奖，最后也没实现，自己也需要进一步的完善自己，努力去达成这个约定。<code>The dream is to be realized.</code></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 随笔 </tag>
             
         </tags>
         
@@ -102,9 +123,9 @@
         
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> 命令执行 </tag>
+            
+            <tag> CTF </tag>
             
             <tag> Linux </tag>
             
