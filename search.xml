@@ -106,7 +106,7 @@
     <entry>
       <title><![CDATA[简单的PHP内存马]]></title>
       <url>http://isron.cn/2017/04/20/php_no_die/</url>
-      <content type="html"><![CDATA[<p>在线下赛做权限维持时，最常用的就是上传一个不死shell，其实也就只是把进程写到了内存里，每隔一段时间便运行一次<a id="more"></a></p>
+      <content type="html"><![CDATA[<p>在线下赛做权限维持时，最常用的就是上传一个不死shell，其实也就只是把脚本写到了进程里，每隔一段时间便运行一次<a id="more"></a></p>
 <h3 id="set-time-limit"><a href="#set-time-limit" class="headerlink" title="set_time_limit()"></a>set_time_limit()</h3><p>set_time_limit — 设置脚本最大执行时间<br>语法:<code>set_time_limit ( int $seconds )</code><br>参数：<code>seconds</code>最大的执行时间，单位为秒。如果设置为0（零），没有时间方面的限制。 </p>
 <h3 id="ignore-user-abort"><a href="#ignore-user-abort" class="headerlink" title="ignore_user_abort()"></a>ignore_user_abort()</h3><p>ignore_user_abort — 设置客户端断开连接时是否中断脚本的执行<br>设置为1则不会中断执行</p>
 <h3 id="unlink-FILE"><a href="#unlink-FILE" class="headerlink" title="unlink(FILE)"></a>unlink(<strong>FILE</strong>)</h3><p>删除自身</p>
