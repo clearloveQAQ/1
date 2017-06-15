@@ -104,6 +104,24 @@
     </entry>
     
     <entry>
+      <title><![CDATA[Metasploit的基本使用]]></title>
+      <url>http://isron.cn/2017/04/29/Metasploit_Use/</url>
+      <content type="html"><![CDATA[<p>最近在学习的时候越来越多的会用到Metasploit(简称msf)，觉得是一个很强大的工具<a id="more"></a></p>
+<h2 id="MSF安装"><a href="#MSF安装" class="headerlink" title="MSF安装"></a>MSF安装</h2><p>如果使用kali的话是自带msf，其他版本的话需要自己下载：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">https:</span><span class="comment">//raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall</span></div><div class="line">chmod <span class="number">755</span> msfinstall</div><div class="line">./msfinstall</div></pre></td></tr></table></figure></p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">use exploit <span class="comment">#选用所需要的漏洞利用模块</span></div><div class="line">info <span class="comment">#显示当前所用exploit的详细信息</span></div><div class="line">show options <span class="comment">#显示当前exp攻击信息</span></div><div class="line">show targets <span class="comment">#显示支持的版本</span></div><div class="line">show payloads <span class="comment">#显示当前exp可用的攻击载荷</span></div><div class="line"><span class="built_in">set</span> payloads <span class="comment">#设置要用的攻击载荷</span></div><div class="line"><span class="built_in">set</span> targets <span class="comment">#设置靶机的版本</span></div><div class="line"><span class="built_in">set</span> LHOST <span class="comment">#设置攻击机ip</span></div><div class="line"><span class="built_in">set</span> LPORT <span class="comment">#设置攻击端口</span></div><div class="line"><span class="built_in">set</span> RHOST <span class="comment">#设置靶机ip</span></div><div class="line"><span class="built_in">set</span> RPORT <span class="comment">#设置靶机端口</span></div><div class="line">exploit <span class="comment">#执行渗透攻击或模块来攻击目标</span></div><div class="line">exploit -j <span class="comment">#在计划任务下进行渗透攻击</span></div><div class="line">exploit -h <span class="comment">#列出exploit命令的帮助信息。</span></div><div class="line">sessions <span class="_">-l</span> <span class="comment">#列出可用的交互会话</span></div><div class="line">sessions -i <span class="comment">#选用相应的交互会话</span></div></pre></td></tr></table></figure>
+<p>如果攻击成功一般会返回一个meterpreter：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ps <span class="comment">#列出当前系统进程</span></div><div class="line">Kill uid <span class="comment">#消灭指定uid系统进程</span></div><div class="line">keyscan_start <span class="comment">#开始键盘记录软件</span></div><div class="line">webcam_snap <span class="comment">#拍照</span></div><div class="line"><span class="keyword">screenshot </span><span class="comment">#截屏</span></div><div class="line"><span class="keyword">shell </span><span class="comment">#返回一个shell</span></div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 渗透测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[简单的PHP内存马]]></title>
       <url>http://isron.cn/2017/04/20/php_no_die/</url>
       <content type="html"><![CDATA[<p>在线下赛做权限维持时，最常用的就是上传一个不死shell，其实也就只是把脚本写到了进程里，每隔一段时间便运行一次<a id="more"></a></p>

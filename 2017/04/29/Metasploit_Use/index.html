@@ -15,16 +15,16 @@
 
 
 
-<meta name="description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
+<meta name="description" content="最近在学习的时候越来越多的会用到Metasploit(简称msf)，觉得是一个很强大的工具">
 <meta property="og:type" content="article">
-<meta property="og:title" content="http协议">
-<meta property="og:url" content="http://isron.cn/2016/11/08/http/index.html">
+<meta property="og:title" content="Metasploit的基本使用">
+<meta property="og:url" content="http://isron.cn/2017/04/29/Metasploit_Use/index.html">
 <meta property="og:site_name" content="Isron">
-<meta property="og:description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
-<meta property="og:updated_time" content="2017-04-04T06:01:00.959Z">
+<meta property="og:description" content="最近在学习的时候越来越多的会用到Metasploit(简称msf)，觉得是一个很强大的工具">
+<meta property="og:updated_time" content="2017-06-15T09:55:53.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="http协议">
-<meta name="twitter:description" content="在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。">
+<meta name="twitter:title" content="Metasploit的基本使用">
+<meta name="twitter:description" content="最近在学习的时候越来越多的会用到Metasploit(简称msf)，觉得是一个很强大的工具">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +56,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>http协议 | Isron</title>
+<title>Metasploit的基本使用 | Isron</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -279,11 +279,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-http" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Metasploit_Use" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/11/08/http/" class="article-date">
-      <time datetime="2016-11-08T09:59:28.000Z" itemprop="datePublished">2016-11-08</time>
+      <a href="/2017/04/29/Metasploit_Use/" class="article-date">
+      <time datetime="2017-04-29T08:52:12.000Z" itemprop="datePublished">2017-04-29</time>
 </a>
 
 
@@ -298,7 +298,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      http协议
+      Metasploit的基本使用
     </h1>
   
 
@@ -309,7 +309,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -319,37 +319,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>在读《Web安全深度剖析》时看到一些关于HTTP协议的东西，记录下来，供以后查看，学习。<br><a id="more"></a></p>
-<h2 id="HTTP协议概述"><a href="#HTTP协议概述" class="headerlink" title="HTTP协议概述"></a>HTTP协议概述</h2><p>　　HTTP是一种无状态的协议。无状态是指Web浏览器与Web服务器之间不需要建立持久的连接，也就是说当一个客户端向服务器发出请求，然后web服务器返回响应，连接就被关闭了，在服务器端不保留连接的有关信息。<br>　　HTTP请求只能由客户端发起，而服务器不能主动向客户发送数据。</p>
-<h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><h3 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h3><p>　　GET方法用于获取请求页面的指定信息。如果请求资源为动态脚本，那么返回文本是Web容器解析后的HTML源代码，而不是源文件。</p>
-<h3 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h3><p>　　HEAD方法除了服务器不能在响应里面返回消息主体外，其他都与GET方法相同。此方法经常被用来测试超文本链接的有效性，可访问性和最近的改变。攻击者编写扫描工具时，就常用此方法，因为只测试资源是否存在，而不用返回消息主题，速度是最快的。</p>
-<h3 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h3><p>　　POST方法也与GET方法相似，但最大的区别在于，GET方法没有请求内容，而POST是有请求内容的。POST    请求最多用于向服务器发送大量的数据。GET虽然也能发送数据，但是有长度的限制，并且GET请求会将发送的数据显示在浏览器端，二POST则不会。所以安全性相对来说高一点。<br>　　例如，上传文件，提交留言等，只要是想服务器传输大量的数据，通常都会使用POST请求。</p>
-<h3 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h3><p>　　PUT方法用于请求服务器把请求中的实体存储在请求资源下，如果请求资源已经在服务器中存在，那么将会用此请求中的数据替换原先的数据，作为指定资源的最新修改版。如果请求指定的资源不存在，将会创建这个资源，且数据位于请求正文。<br>　　通常情况下，服务器都会关闭PUT方法，因为它会为服务器创建文件，属于危险操作。</p>
-<h3 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h3><p>　　DELETE方法用于请求源服务器删除请求的指定资源。服务器一般会关闭此方法，因为客户端可以进行删除文件操作，同样属于危险操作。</p>
-<h3 id="TRACE"><a href="#TRACE" class="headerlink" title="TRACE"></a>TRACE</h3><p>　　TRACE方法用于激发一个远程的应用层的请求信息回路，也就是说，回显服务器收到的请求。TRACE方法允许客户端去了解数据被请求链的另一端接收的情况，并且利用那些数据信息去测试或诊断。不过较为少见。</p>
-<h3 id="CONNECT"><a href="#CONNECT" class="headerlink" title="CONNECT"></a>CONNECT</h3><p>　　CONNECT方法是为了用于能动态切换到隧道的代理。</p>
-<h3 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h3><p>　　OPTIONS方法是用于请求获得由URI标识的资源在请求/响应的通信过程中可以使用的功能选项。通过这个方法，客户端可以在采取具体资源请求之前，决定对该资源采取何种必要措施，或者了解服务器的性能。</p>
-<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>　　当客户端发出HTTP请求，服务器端接收后，会向客户发送响应信息，其中，HTTP响应中的第一行中，最重要的一点就是HTTP的状态码。HTTP协议中的状态码由三位数字组成。第一位数字定义了响应的类别，且只有以下5种。</p>
-<h3 id="1xx"><a href="#1xx" class="headerlink" title="1xx"></a>1xx</h3><p>　　信息提示，表示请求已被成功接收，继续处理。范围为100～101。</p>
-<h3 id="2xx"><a href="#2xx" class="headerlink" title="2xx"></a>2xx</h3><p>　　成功，服务器成功的处理了请求。范围为200～206。</p>
-<h3 id="3xx"><a href="#3xx" class="headerlink" title="3xx"></a>3xx</h3><p>　　重定向，重定向状态码用于告诉浏览器客户端，他们访问的资源已被移动，并告诉客户端新的资源地址位置。这时，浏览器将重新对新资源发起请求。范围为300～305。</p>
-<h3 id="4xx"><a href="#4xx" class="headerlink" title="4xx"></a>4xx</h3><p>　　客户端错误状态码，有时客户端会发送一些服务器无法处理的东西，比如格式错误的请求，或者最常见的请求一个不存在的URL。其范围为400～415。</p>
-<h3 id="5xx"><a href="#5xx" class="headerlink" title="5xx"></a>5xx</h3><p>　　有时候客户端发送了一条有效请求，但Web服务器自身却出错了，可能是Web服务器运行出错了，或者网站都挂了，5xx就是用来描述服务器内部错误的。范围为500～505。</p>
-<h3 id="常见状态码"><a href="#常见状态码" class="headerlink" title="常见状态码"></a>常见状态码</h3><pre><code>200: 客户端请求成功
-302: 重定向
-404: 请求资源不存在
-400: 客户端请求有语法错误，不能被服务器所理解
-401: 请求未经授权
-403: 服务器收到请求，但是拒绝提供服务
-500: 服务器内部错误
-503: 服务器当前不能处理客户端的请求，一段时间后可能恢复
-</code></pre><h2 id="HTTP消息"><a href="#HTTP消息" class="headerlink" title="HTTP消息"></a>HTTP消息</h2><p>　　HTTP消息又称为HTTP头（HTTP header），由四部分组成，分别是请求头，响应头，普通头和实体头。</p>
-<h3 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h3><p>　　请求头只出现在HTTP请求中，请求报头允许客户端向服务器传递请求的附加信息和客户端自身的信息。常见的HTTP请求头如下：</p>
-<pre><code>Host ：指定被请求资源的Internet主机和端口号
-User-Agent：操作系统，浏览器版本及其他属性
-Referer：代表当前访问URL的上一个URL
-Cookie：一段文本，常用来表示请求者的身份
-</code></pre>
+        <p>最近在学习的时候越来越多的会用到Metasploit(简称msf)，觉得是一个很强大的工具<a id="more"></a></p>
+<h2 id="MSF安装"><a href="#MSF安装" class="headerlink" title="MSF安装"></a>MSF安装</h2><p>如果使用kali的话是自带msf，其他版本的话需要自己下载：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">curl <span class="string">https:</span><span class="comment">//raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb &gt; msfinstall</span></div><div class="line">chmod <span class="number">755</span> msfinstall</div><div class="line">./msfinstall</div></pre></td></tr></table></figure></p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">use exploit <span class="comment">#选用所需要的漏洞利用模块</span></div><div class="line">info <span class="comment">#显示当前所用exploit的详细信息</span></div><div class="line">show options <span class="comment">#显示当前exp攻击信息</span></div><div class="line">show targets <span class="comment">#显示支持的版本</span></div><div class="line">show payloads <span class="comment">#显示当前exp可用的攻击载荷</span></div><div class="line"><span class="built_in">set</span> payloads <span class="comment">#设置要用的攻击载荷</span></div><div class="line"><span class="built_in">set</span> targets <span class="comment">#设置靶机的版本</span></div><div class="line"><span class="built_in">set</span> LHOST <span class="comment">#设置攻击机ip</span></div><div class="line"><span class="built_in">set</span> LPORT <span class="comment">#设置攻击端口</span></div><div class="line"><span class="built_in">set</span> RHOST <span class="comment">#设置靶机ip</span></div><div class="line"><span class="built_in">set</span> RPORT <span class="comment">#设置靶机端口</span></div><div class="line">exploit <span class="comment">#执行渗透攻击或模块来攻击目标</span></div><div class="line">exploit -j <span class="comment">#在计划任务下进行渗透攻击</span></div><div class="line">exploit -h <span class="comment">#列出exploit命令的帮助信息。</span></div><div class="line">sessions <span class="_">-l</span> <span class="comment">#列出可用的交互会话</span></div><div class="line">sessions -i <span class="comment">#选用相应的交互会话</span></div></pre></td></tr></table></figure>
+<p>如果攻击成功一般会返回一个meterpreter：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ps <span class="comment">#列出当前系统进程</span></div><div class="line">Kill uid <span class="comment">#消灭指定uid系统进程</span></div><div class="line">keyscan_start <span class="comment">#开始键盘记录软件</span></div><div class="line">webcam_snap <span class="comment">#拍照</span></div><div class="line"><span class="keyword">screenshot </span><span class="comment">#截屏</span></div><div class="line"><span class="keyword">shell </span><span class="comment">#返回一个shell</span></div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -357,13 +331,13 @@ Cookie：一段文本，常用来表示请求者的身份
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/11/08/http/">http协议</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/29/Metasploit_Use/">Metasploit的基本使用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Isron</a></p>
-        <p><span>发布时间:</span>2016-11-08, 17:59:28</p>
-        <p><span>最后更新:</span>2017-04-04, 14:01:00</p>
+        <p><span>发布时间:</span>2017-04-29, 16:52:12</p>
+        <p><span>最后更新:</span>2017-06-15, 17:55:53</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/11/08/http/" title="http协议">http://isron.cn/2016/11/08/http/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://isron.cn/2016/11/08/http/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/29/Metasploit_Use/" title="Metasploit的基本使用">http://isron.cn/2017/04/29/Metasploit_Use/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://isron.cn/2017/04/29/Metasploit_Use/　　作者: Isron" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -376,15 +350,15 @@ Cookie：一段文本，常用来表示请求者的身份
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/11/09/nanyou/">
-                    南邮CTF
+                <a href="/2017/05/09/anheng/">
+                    写在安恒杯赛后
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/10/25/sqli-labs/">
-                    sqli-labs学习笔记总结
+                <a href="/2017/04/20/php_no_die/">
+                    简单的PHP内存马
                 </a>
             </div>
         
@@ -396,7 +370,7 @@ Cookie：一段文本，常用来表示请求者的身份
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP协议概述"><span class="toc-number">1.</span> <span class="toc-text">HTTP协议概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP请求方法"><span class="toc-number">2.</span> <span class="toc-text">HTTP请求方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GET"><span class="toc-number">2.1.</span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HEAD"><span class="toc-number">2.2.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POST"><span class="toc-number">2.3.</span> <span class="toc-text">POST</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PUT"><span class="toc-number">2.4.</span> <span class="toc-text">PUT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DELETE"><span class="toc-number">2.5.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TRACE"><span class="toc-number">2.6.</span> <span class="toc-text">TRACE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CONNECT"><span class="toc-number">2.7.</span> <span class="toc-text">CONNECT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OPTIONS"><span class="toc-number">2.8.</span> <span class="toc-text">OPTIONS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP状态码"><span class="toc-number">3.</span> <span class="toc-text">HTTP状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1xx"><span class="toc-number">3.1.</span> <span class="toc-text">1xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2xx"><span class="toc-number">3.2.</span> <span class="toc-text">2xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3xx"><span class="toc-number">3.3.</span> <span class="toc-text">3xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4xx"><span class="toc-number">3.4.</span> <span class="toc-text">4xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5xx"><span class="toc-number">3.5.</span> <span class="toc-text">5xx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见状态码"><span class="toc-number">3.6.</span> <span class="toc-text">常见状态码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP消息"><span class="toc-number">4.</span> <span class="toc-text">HTTP消息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#请求头"><span class="toc-number">4.1.</span> <span class="toc-text">请求头</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MSF安装"><span class="toc-number">1.</span> <span class="toc-text">MSF安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">2.</span> <span class="toc-text">基本使用</span></a></li></ol>
         
     </div>
     <style>
@@ -440,7 +414,7 @@ Cookie：一段文本，常用来表示请求者的身份
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/11/09/nanyou/" title="上一篇: 南邮CTF">
+            <a href="/2017/05/09/anheng/" title="上一篇: 写在安恒杯赛后">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -448,7 +422,7 @@ Cookie：一段文本，常用来表示请求者的身份
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/10/25/sqli-labs/" title="下一篇: sqli-labs学习笔记总结">
+            <a href="/2017/04/20/php_no_die/" title="下一篇: 简单的PHP内存马">
                 <i class="fa fa-angle-right"></i>
             </a>
         
