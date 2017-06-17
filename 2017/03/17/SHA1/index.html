@@ -1,17 +1,95 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="Isron" />
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SHA1," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/img/111.png?v=5.1.1" />
+
+
+
 
 
 
@@ -21,540 +99,1056 @@
 <meta property="og:url" content="http://isron.cn/2017/03/17/SHA1/index.html">
 <meta property="og:site_name" content="Isron">
 <meta property="og:description" content="在群里面看到这样一个题目">
-<meta property="og:updated_time" content="2017-03-17T15:46:36.977Z">
+<meta property="og:updated_time" content="2017-06-17T11:49:08.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SHA1碰撞">
 <meta name="twitter:description" content="在群里面看到这样一个题目">
 
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
 
-    <link rel="alternate" href="/atom.xml" title="Isron" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/img/111.png">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>SHA1碰撞 | Isron</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
+  };
 </script>
 
 
-    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+  <link rel="canonical" href="http://isron.cn/2017/03/17/SHA1/"/>
 
 
 
-    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+  <title>SHA1碰撞 | Isron</title>
+  
 
 
 
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-56ff76c972fc0cf9"></script>
 
 
 
-    <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?d225745dd35ee207c5a863746000dcea";
-            var s = document.getElementsByTagName("script")[0]; 
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+
+
+
+
+
+
 
 
 </head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/111.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">Isron</a></h1>
-        </hgroup>
 
-        
-        <p class="header-subtitle">The dream is to be realized.</p>
-        
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="true" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
-        
+  
+  
+    
+  
 
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
 
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>Menu</li>
-                        <li>Tags</li>
-                        
-                        <li>Friends</li>
-                        
-                        
-                        <li>About Me</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=isron@qq.com" title="Email"></a>
-                            
-                                <a class="fa 新浪微博" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
-                            
-                                <a class="fa GitHub" href="https://github.com/clearloveQAQ" title="GitHub"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CMS/">CMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSP/">CSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF/">CTF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CVE/">CVE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP序列化/">PHP序列化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pyhon/">Pyhon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SHA1/">SHA1</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WAF/">WAF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web安全/">Web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XSS/">XSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XXE/">XXE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/代码审计/">代码审计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/命令执行/">命令执行</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/渗透测试/">渗透测试</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/环境配置/">环境配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://rcoil.me/">RcoIl</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://zjw.dropsec.xyz/">Hello_C</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://blog.dropsec.xyz/">Drops</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://whc.dropsec.xyz/">Haigo</a>
-                    
-                      <a class="main-nav-link switch-friends-link" href="http://xq.dropsec.xyz/">Mr_white</a>
-                    
-                    </div>
-                </section>
-                
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Isron</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">The dream is to be realized.</p>
+      
+  </div>
 
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">一个正在学习的菜鸡</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Isron</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/111.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Isron</a></h1>
-            </hgroup>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-            <p class="header-subtitle">The dream is to be realized.</p>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=isron@qq.com" title="Email"></a>
-                            
-                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="新浪微博"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="https://github.com/clearloveQAQ" title="GitHub"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
-</nav>
-      <div class="body-wrap"><article id="post-SHA1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/03/17/SHA1/" class="article-date">
-      <time datetime="2017-03-17T14:59:14.000Z" itemprop="datePublished">2017-03-17</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      SHA1碰撞
-    </h1>
-  
-
-      </header>
+            首页
+          </a>
+        </li>
       
-      <div class="article-info article-info-post">
         
-
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CTF/">CTF</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SHA1/">SHA1</a></li></ul>
-    </div>
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
 
-        <div class="clearfix"></div>
-      </div>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+        <li class="menu-item menu-item-search">
           
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://isron.cn/2017/03/17/SHA1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Isron">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/111.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Isron">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SHA1碰撞</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T22:59:14+08:00">
+                2017-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/03/17/SHA1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         <p>在群里面看到这样一个题目<a id="more"></a><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?php</span></span></div><div class="line"><span class="keyword">require</span> <span class="string">'flag.php'</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">'name'</span>]) <span class="keyword">and</span> <span class="keyword">isset</span>($_GET[<span class="string">'password'</span>])) &#123;</div><div class="line">    $name = (string)$_GET[<span class="string">'name'</span>];</div><div class="line">    $password = (string)$_GET[<span class="string">'password'</span>];</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ($name == $password) &#123;</div><div class="line">        <span class="keyword">print</span> <span class="string">'Your password can not be your name.'</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (sha1($name) === sha1($password)) &#123;</div><div class="line">      <span class="keyword">die</span>(<span class="string">'Flag: '</span>.$flag);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">print</span> <span class="string">'&lt;p class="alert"&gt;Invalid password.&lt;/p&gt;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure></p>
 <p>还以为是当初那个利用数组绕过弱等的题目，然后发现<code>name</code>跟<code>password</code>各有一个<code>string</code>限制，而且是<code>===</code>强等于,Google了一下发现一篇<a href="https://github.com/bl4de/ctf/blob/master/2017/BostonKeyParty_2017/Prudentialv2/Prudentialv2_Cloud_50.md" target="_blank" rel="external">文章</a>对两篇PDF加密可以获得同样的SHA1值,还是挺有意思的，附上代码：<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line">import requests</div><div class="line"></div><div class="line"># this is copy/paste from Hex editor - two different files with the same SHA1 checksum</div><div class="line">name = '<span class="number">255044462</span>D312E33 <span class="number">0A25E2E3</span> CFD30A0A <span class="number">0A312030</span> <span class="number">206</span>F626A <span class="number">0</span>A3C3C2F <span class="number">57696474</span> <span class="number">68203220</span> <span class="number">3020522</span>F <span class="number">48656967</span> <span class="number">68742033</span> <span class="number">20302052</span> <span class="number">2F547970</span> <span class="number">65203420</span> <span class="number">3020522</span>F <span class="number">53756274</span> <span class="number">79706520</span> <span class="number">35203020</span> <span class="number">522F4669</span> <span class="number">6C746572</span> <span class="number">20362030</span> <span class="number">20522F43</span> <span class="number">6F6C6F72</span> <span class="number">53706163</span> <span class="number">65203720</span> <span class="number">3020522</span>F <span class="number">4C656E67</span> <span class="number">74682038</span> <span class="number">20302052</span> <span class="number">2F426974</span> <span class="number">73506572</span> <span class="number">436F6D70</span> <span class="number">6</span>F6E656E <span class="number">7420383</span>E <span class="number">3E0A7374</span> <span class="number">7265616</span>D <span class="number">0</span>AFFD8FF FE0024<span class="number">53 48412D31</span> <span class="number">20697320</span> <span class="number">64656164</span> <span class="number">21212121</span> <span class="number">21852</span>FEC <span class="number">09233975</span> <span class="number">9C39B1A1</span> C63C4C97 E1FFFE01 <span class="number">7</span>F46DC93 A6B67E01 <span class="number">3</span>B029AAA <span class="number">1</span>DB2560B <span class="number">45</span>CA67D6 <span class="number">88</span>C7F84B <span class="number">8</span>C4C791F E02B3DF6 <span class="number">14</span>F86DB1 <span class="number">690901C5</span> <span class="number">6B45C153</span> <span class="number">0</span>AFEDFB7 <span class="number">6038E972</span> <span class="number">722</span>FE7AD <span class="number">728F0E49</span> <span class="number">04E046C2</span> <span class="number">30570</span>FE9 D41398AB E12EF5BC <span class="number">942</span>BE335 <span class="number">42</span>A4802D <span class="number">98</span>B5D70F <span class="number">2</span>A332EC3 <span class="number">7</span>FAC3514 E74DDC0F <span class="number">2</span>CC1A874 CD0C78<span class="number">30 5A215664</span> <span class="number">61309789</span> <span class="number">606</span>BD0BF <span class="number">3</span>F98CDA8 <span class="number">044629A1</span> <span class="number">3</span>C68746D <span class="number">6</span>C3E0A3C <span class="number">73637269</span> <span class="number">7074206</span>C <span class="number">616E6775</span> <span class="number">6167653</span>D <span class="number">6A617661</span> <span class="number">73637269</span> <span class="number">70742074</span> <span class="number">7970653</span>D <span class="number">22746578</span> <span class="number">742F6A61</span> <span class="number">76617363</span> <span class="number">72697074</span> <span class="number">223</span>E0A3C <span class="number">212D2D20</span> <span class="number">40617277</span> <span class="number">202</span>D2D3E <span class="number">0A0A7661</span> <span class="number">72206820</span> <span class="number">3</span>D20646F <span class="number">63756D65</span> <span class="number">6E742E67</span> <span class="number">6574456</span>C <span class="number">656</span>D656E <span class="number">74734279</span> <span class="number">5461674</span>E <span class="number">616D6528</span> <span class="number">2248544</span>D <span class="number">4</span>C22295B <span class="number">305D2E69</span> <span class="number">6E6E6572</span> <span class="number">48544</span>D4C <span class="number">2E636861</span> <span class="number">72436F64</span> <span class="number">65417428</span> <span class="number">31303229</span> <span class="number">2E746F53</span> <span class="number">7472696</span>E <span class="number">67283136</span> <span class="number">293B0A69</span> <span class="number">66202868</span> <span class="number">203D3D20</span> <span class="number">27373327</span> <span class="number">29207</span>B0A <span class="number">20202020</span> <span class="number">646F6375</span> <span class="number">6D656E74</span> <span class="number">2E626F64</span> <span class="number">792</span>E696E <span class="number">6E657248</span> <span class="number">544D4C20</span> <span class="number">3</span>D20223C <span class="number">5354594</span>C <span class="number">453</span>E626F <span class="number">64797B62</span> <span class="number">61636B67</span> <span class="number">726</span>F756E <span class="number">642</span>D636F <span class="number">6</span>C6F723A <span class="number">5245443</span>B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">383</span>B3C2F <span class="number">48313E22</span> <span class="number">3B0A7D20</span> <span class="number">656C7365</span> <span class="number">207B0A20</span> <span class="number">20202064</span> <span class="number">6</span>F63756D <span class="number">656</span>E742E <span class="number">626F6479</span> <span class="number">2</span>E696E6E <span class="number">65724854</span> <span class="number">4</span>D4C203D <span class="number">20223C53</span> <span class="number">54594C45</span> <span class="number">3E626F64</span> <span class="number">797B6261</span> <span class="number">636B6772</span> <span class="number">6F756E64</span> <span class="number">2</span>D636F6C <span class="number">6F723A42</span> <span class="number">4</span>C55453B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">393</span>B3C2F <span class="number">48313E22</span> <span class="number">3</span>B0A7D0A <span class="number">0A3C2F73</span> <span class="number">63726970</span> <span class="number">743</span>E0A0A'</div><div class="line"></div><div class="line">password = '<span class="number">25504446</span> <span class="number">2D312E33</span> <span class="number">0A25E2E3</span> CFD30A0A <span class="number">0A312030</span> <span class="number">206</span>F626A <span class="number">0</span>A3C3C2F <span class="number">57696474</span> <span class="number">68203220</span> <span class="number">3020522</span>F <span class="number">48656967</span> <span class="number">68742033</span> <span class="number">20302052</span> <span class="number">2F547970</span> <span class="number">65203420</span> <span class="number">3020522</span>F <span class="number">53756274</span> <span class="number">79706520</span> <span class="number">35203020</span> <span class="number">522F4669</span> <span class="number">6C746572</span> <span class="number">20362030</span> <span class="number">20522F43</span> <span class="number">6F6C6F72</span> <span class="number">53706163</span> <span class="number">65203720</span> <span class="number">3020522</span>F <span class="number">4C656E67</span> <span class="number">74682038</span> <span class="number">20302052</span> <span class="number">2F426974</span> <span class="number">73506572</span> <span class="number">436F6D70</span> <span class="number">6</span>F6E656E <span class="number">7420383</span>E <span class="number">3E0A7374</span> <span class="number">7265616</span>D <span class="number">0</span>AFFD8FF FE0024<span class="number">53 48412D31</span> <span class="number">20697320</span> <span class="number">64656164</span> <span class="number">21212121</span> <span class="number">21852</span>FEC <span class="number">09233975</span> <span class="number">9C39B1A1</span> C63C4C97 E1FFFE01 <span class="number">7346</span>DC<span class="number">91 66B67E11</span> <span class="number">8</span>F029AB6 <span class="number">21</span>B2560F F9CA67CC A8C7F85B A84C7903 <span class="number">0</span>C2B3DE2 <span class="number">18</span>F86DB3 <span class="keyword">A</span><span class="number">90901D5</span> DF45C14F <span class="number">26</span>FEDFB3 DC38E96A C22FE7BD <span class="number">728F0E45</span> BCE046D2 <span class="number">3</span>C570FEB <span class="number">141398</span>BB <span class="number">552</span>EF5A0 A82BE331 FEA48037 B8B5D71F <span class="number">0</span>E332EDF <span class="number">93</span>AC3500 EB4DDC0D ECC1A864 <span class="number">790</span>C782C <span class="number">76215660</span> DD309791 D06BD0AF <span class="number">3</span>F98CDA4 BC4629B1 <span class="number">3</span>C68746D <span class="number">6</span>C3E0A3C <span class="number">73637269</span> <span class="number">7074206</span>C <span class="number">616E6775</span> <span class="number">6167653</span>D <span class="number">6A617661</span> <span class="number">73637269</span> <span class="number">70742074</span> <span class="number">7970653</span>D <span class="number">22746578</span> <span class="number">742F6A61</span> <span class="number">76617363</span> <span class="number">72697074</span> <span class="number">223</span>E0A3C <span class="number">212D2D20</span> <span class="number">40617277</span> <span class="number">202</span>D2D3E <span class="number">0A0A7661</span> <span class="number">72206820</span> <span class="number">3</span>D20646F <span class="number">63756D65</span> <span class="number">6E742E67</span> <span class="number">6574456</span>C <span class="number">656</span>D656E <span class="number">74734279</span> <span class="number">5461674</span>E <span class="number">616D6528</span> <span class="number">2248544</span>D <span class="number">4</span>C22295B <span class="number">305D2E69</span> <span class="number">6E6E6572</span> <span class="number">48544</span>D4C <span class="number">2E636861</span> <span class="number">72436F64</span> <span class="number">65417428</span> <span class="number">31303229</span> <span class="number">2E746F53</span> <span class="number">7472696</span>E <span class="number">67283136</span> <span class="number">293B0A69</span> <span class="number">66202868</span> <span class="number">203D3D20</span> <span class="number">27373327</span> <span class="number">29207</span>B0A <span class="number">20202020</span> <span class="number">646F6375</span> <span class="number">6D656E74</span> <span class="number">2E626F64</span> <span class="number">792</span>E696E <span class="number">6E657248</span> <span class="number">544D4C20</span> <span class="number">3</span>D20223C <span class="number">5354594</span>C <span class="number">453</span>E626F <span class="number">64797B62</span> <span class="number">61636B67</span> <span class="number">726</span>F756E <span class="number">642</span>D636F <span class="number">6</span>C6F723A <span class="number">5245443</span>B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">383</span>B3C2F <span class="number">48313E22</span> <span class="number">3B0A7D20</span> <span class="number">656C7365</span> <span class="number">207B0A20</span> <span class="number">20202064</span> <span class="number">6</span>F63756D <span class="number">656</span>E742E <span class="number">626F6479</span> <span class="number">2</span>E696E6E <span class="number">65724854</span> <span class="number">4</span>D4C203D <span class="number">20223C53</span> <span class="number">54594C45</span> <span class="number">3E626F64</span> <span class="number">797B6261</span> <span class="number">636B6772</span> <span class="number">6F756E64</span> <span class="number">2</span>D636F6C <span class="number">6F723A42</span> <span class="number">4</span>C55453B <span class="number">7D206831</span> <span class="number">7</span>B666F6E <span class="number">742D7369</span> <span class="number">7A653A35</span> <span class="number">3030253</span>B <span class="number">7D3C2F53</span> <span class="number">54594C45</span> <span class="number">3E3C4831</span> <span class="number">3E262378</span> <span class="number">31663634</span> <span class="number">393</span>B3C2F <span class="number">48313E22</span> <span class="number">3</span>B0A7D0A <span class="number">0A3C2F73</span> <span class="number">63726970</span> <span class="number">743</span>E0A0A'</div><div class="line"></div><div class="line">print '[+] create URL decoded strings to send as GET parameters [name] and [password]...'</div><div class="line">name = ''.join(name.split(' '))</div><div class="line">password = ''.join(password.split(' '))</div><div class="line"></div><div class="line">namestr = ''.join(['%' + name[i] + name[i + <span class="number">1</span>]</div><div class="line">           for i in range(<span class="number">0</span>, len(name)) if i % <span class="number">2</span> == <span class="number">0</span>])</div><div class="line"></div><div class="line">passwordstr = ''.join(['%' + password[j] + password[j + <span class="number">1</span>]</div><div class="line">           for j in range(<span class="number">0</span>, len(password)) if j % <span class="number">2</span> == <span class="number">0</span>])</div><div class="line"></div><div class="line">print '[+] sending request to http://<span class="number">127.0.0.1</span>/upload/test.php/?name=[name]&amp;password=[password]'</div><div class="line"></div><div class="line">u = 'http://<span class="number">127.0.0.1</span>/upload/test.php/?name=&#123;&#125;&amp;password=&#123;&#125;'.format(namestr, passwordstr)</div><div class="line"></div><div class="line">resp = requests.get(u, headers=&#123;</div><div class="line">    'Host': '<span class="number">127.0.0.1</span>'</div><div class="line">&#125;)</div><div class="line"></div><div class="line">print '[+] read FLAG from response...\n\n'</div><div class="line">print resp.content</div></pre></td></tr></table></figure></p>
 
       
     </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SHA1/" rel="tag"># SHA1</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/Linux_shell/" rel="next" title="Linux 下命令分割符的区别">
+                <i class="fa fa-chevron-left"></i> Linux 下命令分割符的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/19/CSP/" rel="prev" title="Bypass_Csp">
+                Bypass_Csp <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
     
   </div>
-  
-    
-    <div class="copyright">
-        <p><span>Title:</span><a href="/2017/03/17/SHA1/">SHA1碰撞</a></p>
-        <p><span>Author:</span><a href="/" title="Back to Homepage">Isron</a></p>
-        <p><span>Created:</span>2017-03-17, 22:59:14</p>
-        <p><span>Updated:</span>2017-03-17, 23:46:36</p>
-        <p>
-            <span>Full URL:</span><a class="post-url" href="/2017/03/17/SHA1/" title="SHA1碰撞">http://isron.cn/2017/03/17/SHA1/</a>
-            <span class="copy-path" data-clipboard-text="From http://isron.cn/2017/03/17/SHA1/　　By Isron" title="Copy Article&#39;s Link &amp; Author"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>License:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"CC BY-NC-SA 4.0"</a> Keep Link &amp; Author if Distribute.
-        </p>
-    </div>
 
 
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/03/19/CSP/">
-                    Bypass_Csp
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/03/15/Linux_shell/">
-                    Linux 下命令分割符的区别
-                </a>
-            </div>
-        
-    </nav>
-
-  
-</article>
-
-    <div id="toc" class="toc-article">
-        <strong class="toc-title">Contents</strong>
-        
-            
-        
-    </div>
-    <style>
-        .left-col .switch-btn,
-        .left-col .switch-area {
-            display: none;
-        }
-        .toc-level-3 i,
-        .toc-level-3 ol {
-            display: none !important;
-        }
-    </style>
-
-    <input type="button" id="tocButton" value="Hide"  title="Show or Hide Table of Contents">
-
-    <script>
-        yiliaConfig.toc = ["Hide", "Show", !!"false"];
-    </script>
-
-
-
-    
-<div class="share">
-    
-
-    
-        <div class="addthis_sharing_toolbox"></div>
-    
-</div>
-
-
-
-
-
-
-
-    
-        <section class="youyan" id="comments">
-    <script>
-        var loadComment = function(){
-            var d = document, s = d.createElement('script');
-            s.src = 'http://v2.uyan.cc/code/uyan.js?uid=2136497';
-            (d.head || d.body).appendChild(s);
-        }
-    </script>
-    
-    <script> loadComment(); </script>
-
-    <div id="uyan_frame"></div>
-</section>
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2017/03/19/CSP/" title="Pre: Bypass_Csp">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="Mini Archives"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2017/03/15/Linux_shell/" title="Next: Linux 下命令分割符的区别">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/06/16/CVE-2017-8464/">Windows快捷方式远程代码执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/msf_backdoor/">MSF生成木马后门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/CVE-2017-8917/">Joomla3.7.0 Core SQL注入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/30/CVE-2017-7494/">Samba远程代码执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/24/ISCC-shudu/">ISCC_很普通的数独</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/LAN_Pentest/">内网渗透笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/09/anheng/">写在安恒杯赛后</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/29/Metasploit_Use/">Metasploit的基本使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/20/php_no_die/">简单的PHP内存马</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/10/shell-7/">七个字符Get Shell</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/05/shiyanbar/">因缺思汀的绕过</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/30/natas/">natas部分题解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/29/CVE-2016-3714/">ImageMagick命令执行</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/27/PHP-weak/">PHP-弱类型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/19/CSP/">Bypass_Csp</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/17/SHA1/">SHA1碰撞</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/Linux_shell/">Linux 下命令分割符的区别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/NJCTF2017/">NJCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/13/Jarvis-OJ_api/">Jarvis OJ api调用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/05/python_s/">简单的Python爬虫</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/php_unserialize/">PHP序列化与反序列化</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/Jarvis-OJ_shield/">Jarvis OJ 神盾局的秘密</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/01/ZCTF2017/">ZCTF2017</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/baidu_php/">百度杯二月第二场</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/01/ubuntu_lamp/">ubuntu下LAMP的环境配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/more_thoughts/">一些感想</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/14/CTF_sum/">CTF知识点总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/09/nanyou/">南邮CTF</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/08/http/">http协议</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/25/sqli-labs/">sqli-labs学习笔记总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/21/geek/">第七季极客大挑战</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/16/sqlmap/">sqlmap常见使用语法</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/15/sql_bypass/">sql绕过技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/22/sql_mz/">sql盲注学习笔记</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016-2017 Isron
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
         </div>
         
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>| </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-</footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
-
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script>
-    // Open in New Window
-    
-        var oOpenInNew = {
-            
-             title: "a.article-title, .article-more-link a", 
-             post: ".article-entry a[href], .copyright a[href]", 
-             tags: ".article-tag a", 
-             categories: ".article-category a, a.tag-list-link", 
-             articleNav: "#article-nav a, #post-nav-button a", 
-             archives: ".archive-article-title", 
-             miniArchives: "a.post-list-link", 
-            
-             friends: "#js-friends a", 
-             socail: ".social a" 
-        }
-        for (var x in oOpenInNew) {
-            $(oOpenInNew[x]).attr("target", "_blank");
-        }
-    
-</script>
-
-    <script>
-        var originTitle = document.title;
-        var titleTime;
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                document.title = "(つェ⊂) " + originTitle;
-                clearTimeout(titleTime);
-            }
-            else {
-                document.title = "(*´∇｀*) " + originTitle;
-                titleTime = setTimeout(function() {
-                    document.title = originTitle;
-                }, 2000);
-            }
-        })
-    </script>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
   </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/111.png"
+               alt="Isron" />
+          <p class="site-author-name" itemprop="name">Isron</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=isron@qq.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3262993654/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="新浪微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  新浪微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/clearloveQAQ" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://rcoil.me/" title="RcoIl" target="_blank">RcoIl</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zjw.dropsec.xyz/" title="Hello_C" target="_blank">Hello_C</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.dropsec.xyz/" title="Drops" target="_blank">Drops</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://whc.dropsec.xyz/" title="Haigo" target="_blank">Haigo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xq.dropsec.xyz/" title="Mr_white" target="_blank">Mr_white</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Isron</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "9940cf6a1e8f4f189c79fd76f9433ce2",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
 </body>
 </html>
