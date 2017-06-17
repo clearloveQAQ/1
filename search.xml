@@ -26,9 +26,9 @@
             
             <tag> CVE </tag>
             
-            <tag> 命令执行 </tag>
-            
             <tag> Windows </tag>
+            
+            <tag> 命令执行 </tag>
             
         </tags>
         
@@ -372,9 +372,9 @@
             
             <tag> CVE </tag>
             
-            <tag> Web安全 </tag>
-            
             <tag> 命令执行 </tag>
+            
+            <tag> Web安全 </tag>
             
         </tags>
         
