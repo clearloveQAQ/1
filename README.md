@@ -1,2 +1,0 @@
-# clearloveqaq.github.io
-myblog
