@@ -48,9 +48,9 @@
             
             <tag> CVE </tag>
             
-            <tag> Windows </tag>
-            
             <tag> 命令执行 </tag>
+            
+            <tag> Windows </tag>
             
         </tags>
         
@@ -160,7 +160,7 @@
         
         <tags>
             
-            <tag> Pyhon </tag>
+            <tag> Python </tag>
             
         </tags>
         
@@ -394,9 +394,9 @@
             
             <tag> CVE </tag>
             
-            <tag> 命令执行 </tag>
-            
             <tag> Web安全 </tag>
+            
+            <tag> 命令执行 </tag>
             
         </tags>
         
